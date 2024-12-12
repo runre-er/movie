@@ -4,22 +4,22 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.sql.Time;
-
 @Getter
 @Setter
 @Entity
-@Table (name ="production_category")
+@Table(name = "production_category")
 public class ProductionCategory {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(name="category_id")
-    private int categoryId;
+    @ManyToOne
+    @JoinColumn(name = "production_id")
+    private Production production;
 
-    @Column(name="production_id")
-    private int productionId;
+    @ManyToOne
+    @JoinColumn(name = "category_id")
+    private Category category;
 
 }

@@ -4,25 +4,24 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.sql.Time;
-
 @Getter
 @Setter
 @Entity
-@Table (name ="rating")
+@Table(name = "rating")
 public class Rating {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(name="production_id")
-    private int productionId;
+    @ManyToOne // todo buraya lazy gerekebılır
+    @JoinColumn(name = "production_id", referencedColumnName = "id", nullable = false)
+    private Production production;
 
-    @Column (name="user_rating")
+    @Column(name = "user_rating")
     private double userRating;
 
-    @Column (name="user_count")
-    private int userCount;
+    @Column(name = "user_votes_count")
+    private int userVotesCount;
 
 }

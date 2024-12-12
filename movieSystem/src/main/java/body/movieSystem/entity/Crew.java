@@ -7,18 +7,20 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table (name ="crew")
+@Table(name = "crew")
 public class Crew {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column (name="person_id")
-    private int personId;
+    @ManyToOne
+    @JoinColumn(name = "production_id") // Foreign key
+    private Production production;
 
-    @Column (name="production_id")
-    private int productionId;
+    @ManyToOne
+    @JoinColumn(name = "person_id") // Foreign key
+    private Person crewMember;
 
     private String role;
 
