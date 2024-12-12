@@ -7,19 +7,20 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name = "production_category")
+@Table(name = "production_categories")
 public class ProductionCategory {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Long id;
 
-    @ManyToOne
-    @JoinColumn(name = "production_id")
-    private Production production;
+  @Column(name = "production_id")
+  private Long productionId;
 
-    @ManyToOne
-    @JoinColumn(name = "category_id")
-    private Category category;
+  @ManyToOne
+  @JoinColumn(name = "category_id", insertable = false, updatable = false)
+  private Category category;
 
+  @Column(name = "category_id")
+  private Long categoryId;
 }

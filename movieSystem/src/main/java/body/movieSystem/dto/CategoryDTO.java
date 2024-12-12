@@ -7,9 +7,7 @@ import lombok.*;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class RevenueDTO {
+public class CategoryDTO {
   private Long id;
-  private Long productionId;
-  private Double revenueAmount;
-  private String revenueSource;
+  private String name;
 }

@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-12-12T21:02:42+0300",
+    date = "2024-12-13T01:07:07+0300",
     comments = "version: 1.6.3, compiler: javac, environment: Java 21.0.1 (Oracle Corporation)"
 )
 @Component
@@ -41,9 +41,7 @@ public class RevenueMapperImpl implements RevenueMapper {
 
         revenue.setId( revenueDTO.getId() );
         revenue.setProductionId( revenueDTO.getProductionId() );
-        if ( revenueDTO.getRevenueAmount() != null ) {
-            revenue.setRevenueAmount( revenueDTO.getRevenueAmount() );
-        }
+        revenue.setRevenueAmount( revenueDTO.getRevenueAmount() );
         revenue.setRevenueSource( revenueDTO.getRevenueSource() );
 
         return revenue;

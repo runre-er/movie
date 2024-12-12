@@ -7,21 +7,26 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name = "crew")
+@Table(name = "crews")
 public class Crew {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Long id;
 
-    @ManyToOne
-    @JoinColumn(name = "production_id") // Foreign key
-    private Production production;
+  @Column(name = "production_id")
+  private Long productionId;
 
-    @ManyToOne
-    @JoinColumn(name = "person_id") // Foreign key
-    private Person crewMember;
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "production_id", insertable = false, updatable = false) // Foreign key
+  private Production production;
 
-    private String role;
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "person_id", insertable = false, updatable = false) // Foreign key
+  private Person crewMember;
 
+  @Column(name = "person_id")
+  private Long personId;
+
+  private String role;
 }

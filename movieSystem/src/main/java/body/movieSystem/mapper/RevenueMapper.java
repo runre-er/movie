@@ -2,7 +2,9 @@ package body.movieSystem.mapper;
 
 import body.movieSystem.dto.RevenueDTO;
 import body.movieSystem.entity.Revenue;
+
 import java.util.List;
+
 import org.mapstruct.Mapper;
 
 @Mapper

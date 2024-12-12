@@ -7,7 +7,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name = "revenue")
+@Table(name = "revenues")
 public class Revenue {
 
   @Id
@@ -18,7 +18,7 @@ public class Revenue {
   private Long productionId;
 
   @Column(name = "revenue_amount")
-  private double revenueAmount;
+  private Double revenueAmount;
 
   @Column(name = "revenue_source")
   private String revenueSource;

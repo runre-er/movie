@@ -9,15 +9,16 @@ import java.util.List;
 @Getter
 @Setter
 @Entity
-@Table(name = "category")
+@Table(name = "categories")
 public class Category {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Long id;
 
-    private String name;
+  private String name;
 
-    @OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
-    private List<ProductionCategory> productionCategories;
+  // TODO silme işlemi denenmeli
+  @OneToMany(mappedBy = "category", cascade = CascadeType.REMOVE)
+  private List<ProductionCategory> productionCategories;
 }
