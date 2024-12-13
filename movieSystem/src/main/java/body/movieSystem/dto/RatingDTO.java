@@ -1,6 +1,9 @@
 package body.movieSystem.dto;
 
 import java.time.LocalDate;
+
+import body.movieSystem.dto.validation.annotation.NonNullId;
+import jakarta.validation.constraints.NotBlank;
 import lombok.*;
 
 @Getter
@@ -10,9 +13,9 @@ import lombok.*;
 @AllArgsConstructor
 public class RatingDTO {
   private Long id;
-  private Long productionId;
-  private Long userId;
+  @NonNullId private Long productionId;
+  @NonNullId private Long userId;
   private Double userRating;
-  private String userComment;
+  @NotBlank private String userComment;
   private LocalDate userRatingDate;
 }

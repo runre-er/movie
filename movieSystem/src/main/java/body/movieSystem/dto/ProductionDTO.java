@@ -1,5 +1,7 @@
 package body.movieSystem.dto;
 
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
 import java.time.LocalDate;
 import lombok.*;
 
@@ -10,9 +12,12 @@ import lombok.*;
 @AllArgsConstructor
 public class ProductionDTO {
   private Long id;
-  private String productionCountry;
-  private String productionName;
+  @NotBlank private String productionCountry;
+  @NotBlank private String productionName;
   private LocalDate releaseDate;
+
+  @Min(1)
   private Integer runtime;
-  private String originalTitle;
+
+  @NotBlank private String originalTitle;
 }

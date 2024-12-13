@@ -1,5 +1,8 @@
 package body.movieSystem.dto;
 
+import body.movieSystem.dto.validation.annotation.NonNullId;
+import jakarta.validation.constraints.DecimalMin;
+import jakarta.validation.constraints.NotBlank;
 import lombok.*;
 
 @Getter
@@ -9,7 +12,10 @@ import lombok.*;
 @AllArgsConstructor
 public class RevenueDTO {
   private Long id;
-  private Long productionId;
+  @NonNullId private Long productionId;
+
+  @DecimalMin(value = "0.0", inclusive = false)
   private Double revenueAmount;
-  private String revenueSource;
+
+  @NotBlank private String revenueSource;
 }

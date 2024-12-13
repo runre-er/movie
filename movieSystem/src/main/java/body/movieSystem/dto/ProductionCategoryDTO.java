@@ -1,5 +1,6 @@
 package body.movieSystem.dto;
 
+import body.movieSystem.dto.validation.annotation.NonNullId;
 import body.movieSystem.entity.Category;
 import body.movieSystem.entity.Production;
 import lombok.*;
@@ -11,7 +12,7 @@ import lombok.*;
 @AllArgsConstructor
 public class ProductionCategoryDTO {
   private Long id;
-  private Long productionId;
+  @NonNullId private Long productionId;
   private Category category;
-  private Long categoryId;
+  @NonNullId private Long categoryId;
 }
