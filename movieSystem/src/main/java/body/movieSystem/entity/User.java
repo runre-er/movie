@@ -2,6 +2,8 @@ package body.movieSystem.entity;
 
 import jakarta.persistence.*;
 import java.time.LocalDate;
+import java.util.List;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -29,4 +31,8 @@ public class User {
       columnDefinition = "TIMESTAMP",
       nullable = false)
   private LocalDate createdTime;
+
+  @OneToMany
+  @JoinColumn(name = "user_id")
+  private List<Rating> ratings;
 }
