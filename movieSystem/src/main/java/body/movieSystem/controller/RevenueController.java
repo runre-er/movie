@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/productions/revenues")
+@RequestMapping("/api/productions/revenues")
 public class RevenueController {
 
   private final RevenueService revenueService;

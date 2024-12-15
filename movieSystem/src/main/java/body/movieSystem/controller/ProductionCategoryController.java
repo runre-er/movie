@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/production-categories")
+@RequestMapping("/api/production-categories")
 public class ProductionCategoryController {
 
   private final ProductionCategoryService productionCategoryService;
