@@ -17,9 +17,8 @@ public class Revenue {
   @Column(name = "production_id")
   private Long productionId;
 
-  @Column(name = "revenue_amount")
-  private Double revenueAmount;
+  private Double amount;
 
-  @Column(name = "revenue_source")
-  private String revenueSource;
+  @Column(name = "rev_source")
+  private String RevSource;
 }

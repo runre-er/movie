@@ -1,7 +1,9 @@
 package body.movieSystem.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import java.time.LocalDate;
+import java.util.List;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -15,15 +17,19 @@ public class Person {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
-  @Column(name = "person_name")
-  private String personName;
+  private String name;
 
-  @Column(name = "person_surname")
-  private String personSurname;
+  private String surname;
 
   @Column(name = "birth_date")
   private LocalDate birthDate;
 
   @Column(name = "birth_country")
   private String birthCountry;
+
+  @OneToMany(mappedBy = "person", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+  @JsonBackReference
+  private List<Actor> per_actors;
+
+
 }

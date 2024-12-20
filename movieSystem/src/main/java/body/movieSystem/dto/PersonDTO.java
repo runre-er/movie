@@ -1,7 +1,5 @@
 package body.movieSystem.dto;
 
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 import java.time.LocalDate;
 import lombok.*;
 
@@ -11,9 +9,9 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 public class PersonDTO {
-  private Long id;
-  @NotBlank private String personName;
-  @NotBlank private String personSurname;
-  @NotNull private LocalDate birthDate;
-  @NotBlank private String birthCountry;
+    private Long id;
+    private String name;
+    private String surname;
+    private LocalDate birthDate;
+    private String birthCountry;
 }

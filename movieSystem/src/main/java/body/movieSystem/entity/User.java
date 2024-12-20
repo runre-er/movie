@@ -3,7 +3,6 @@ package body.movieSystem.entity;
 import jakarta.persistence.*;
 import java.time.LocalDate;
 import java.util.List;
-
 import lombok.Getter;
 import lombok.Setter;
 
@@ -17,22 +16,25 @@ public class User {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
-  @Column(name = "user_name",nullable = false, unique = true)
-  private String userName;
+  @Column(nullable = false)
+  private String name;
 
-  @Column(name = "email",nullable = false, unique = true)
+  @Column(name = "sur_name", nullable = false)
+  private String surName;
+
+  @Column(nullable = false, unique = true)
+  private String nick;
+
+  @Column(name = "email", nullable = false, unique = true)
   private String email;
 
-  @Column(name = "password",nullable = false)
+  @Column(name = "password", nullable = false)
   private String password;
 
-  @Column(
-      name = "created_time",
-      columnDefinition = "TIMESTAMP",
-      nullable = false)
-  private LocalDate createdTime;
+  @Column(name = "registration_time", columnDefinition = "TIMESTAMP", nullable = false)
+  private LocalDate registrationTime;
 
-  @OneToMany
-  @JoinColumn(name = "user_id")
-  private List<Rating> ratings;
+  @OneToMany(cascade = CascadeType.REMOVE) // todo dene bı yapmıcak bu
+  @JoinColumn(name = "user_id", insertable = false, updatable = false)
+  private List<Comment> comments;
 }

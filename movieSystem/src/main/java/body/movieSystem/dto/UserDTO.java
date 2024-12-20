@@ -1,6 +1,5 @@
 package body.movieSystem.dto;
 
-import jakarta.validation.constraints.NotBlank;
 import java.time.LocalDate;
 import lombok.*;
 
@@ -11,8 +10,9 @@ import lombok.*;
 @AllArgsConstructor
 public class UserDTO {
   private Long id;
-  @NotBlank private String username;
-  @NotBlank private String email;
-  @NotBlank private String password;
-  private LocalDate createdTime;
+  private String name;
+  private String surName;
+  private String nick;
+  private String email;
+  private LocalDate registrationTime;
 }

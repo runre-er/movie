@@ -4,6 +4,7 @@ import body.movieSystem.dto.ProductionDTO;
 import body.movieSystem.entity.Production;
 import body.movieSystem.mapper.ProductionMapper;
 import body.movieSystem.repository.ProductionRepository;
+import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -25,6 +26,9 @@ public class ProductionService {
     return repository.findAll(pageable).map(mapper::toDTO);
   }
 
+  public Optional<ProductionDTO> findProductionById(Long id) {
+    return repository.findById(id).map(mapper::toDTO);
+  }
 }
 
 // todo specification arc resolver //

@@ -11,10 +11,6 @@ import java.util.List;
 public interface ProductionMapper {
     ProductionDTO toDTO(Production production);
 
-    @Mapping(target = "revenues", ignore = true)
-    @Mapping(target = "ratings", ignore = true)
-    @Mapping(target = "productionCategories", ignore = true)
-    @Mapping(target = "crewList", ignore = true)
     Production toEntity(ProductionDTO productionDTO);
 
     List<ProductionDTO> toDTOList(List<Production> productions);

@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-12-16T13:45:51+0300",
+    date = "2024-12-20T20:11:53+0300",
     comments = "version: 1.6.3, compiler: javac, environment: Java 21.0.1 (Oracle Corporation)"
 )
 @Component
@@ -24,8 +24,8 @@ public class PersonMapperImpl implements PersonMapper {
         PersonDTO.PersonDTOBuilder personDTO = PersonDTO.builder();
 
         personDTO.id( person.getId() );
-        personDTO.personName( person.getPersonName() );
-        personDTO.personSurname( person.getPersonSurname() );
+        personDTO.name( person.getName() );
+        personDTO.surname( person.getSurname() );
         personDTO.birthDate( person.getBirthDate() );
         personDTO.birthCountry( person.getBirthCountry() );
 
@@ -41,8 +41,8 @@ public class PersonMapperImpl implements PersonMapper {
         Person person = new Person();
 
         person.setId( personDTO.getId() );
-        person.setPersonName( personDTO.getPersonName() );
-        person.setPersonSurname( personDTO.getPersonSurname() );
+        person.setName( personDTO.getName() );
+        person.setSurname( personDTO.getSurname() );
         person.setBirthDate( personDTO.getBirthDate() );
         person.setBirthCountry( personDTO.getBirthCountry() );
 
