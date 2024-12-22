@@ -14,9 +14,11 @@ public class Star {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
-  @Column(name = "production_id")
-  private Long productionId;
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "production_id")
+  private Production production;
 
-  @Column(name = "person_id")
-  private Long personId;
+  @ManyToOne
+  @JoinColumn(name = "person_id")
+  private Person persons;
 }

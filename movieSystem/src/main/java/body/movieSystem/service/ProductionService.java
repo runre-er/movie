@@ -26,8 +26,8 @@ public class ProductionService {
     return repository.findAll(pageable).map(mapper::toDTO);
   }
 
-  public Optional<ProductionDTO> findProductionById(Long id) {
-    return repository.findById(id).map(mapper::toDTO);
+  public Optional<ProductionDTO> findProductionById(Long productionId) {
+    return repository.findByIdWithAllRelations(productionId).map(mapper::toDTO);
   }
 }
 

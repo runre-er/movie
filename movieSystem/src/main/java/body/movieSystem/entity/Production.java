@@ -1,9 +1,10 @@
 package body.movieSystem.entity;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Set;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -49,24 +50,17 @@ public class Production {
 
   @OneToMany(cascade = CascadeType.REMOVE) // todo dene bı yapmıcak bu
   @JoinColumn(name = "production_id", insertable = false, updatable = false)
-  private List<Star> stars;
-
-  @OneToMany(cascade = CascadeType.REMOVE) // todo dene bı yapmıcak bu
-  @JoinColumn(name = "production_id", insertable = false, updatable = false)
-  private List<Writer> writers;
-
-  @OneToMany(cascade = CascadeType.REMOVE) // todo dene bı yapmıcak bu
-  @JoinColumn(name = "production_id", insertable = false, updatable = false)
-  private List<Director> directors;
-
-  @OneToMany(cascade = CascadeType.REMOVE) // todo dene bı yapmıcak bu
-  @JoinColumn(name = "production_id", insertable = false, updatable = false)
   private List<Comment> comments;
 
-  @OneToMany(mappedBy = "production", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-  @JsonManagedReference
-  private List<Actor> prod_actors;
+  @OneToMany(mappedBy = "production", fetch = FetchType.LAZY)
+  private Set<Actor> actors;
 
+  @OneToMany(mappedBy = "production", fetch = FetchType.LAZY)
+  private Set<Writer> writers;
 
+  @OneToMany(mappedBy = "production", fetch = FetchType.LAZY)
+  private Set<Director> directors;
 
+  @OneToMany(mappedBy = "production", fetch = FetchType.LAZY)
+  private Set<Star> stars;
 }

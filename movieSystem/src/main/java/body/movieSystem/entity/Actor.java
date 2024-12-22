@@ -1,7 +1,5 @@
 package body.movieSystem.entity;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -17,12 +15,10 @@ public class Actor {
   private Long id;
 
   @ManyToOne(fetch = FetchType.LAZY)
-  @JoinColumn(name = "production_id", nullable = false) // Foreign key
-  @JsonBackReference
+  @JoinColumn(name = "production_id")
   private Production production;
 
-  @ManyToOne
-  @JoinColumn(name = "person_id", nullable = false) // Foreign key
-  @JsonManagedReference
-  private Person person;
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "person_id")
+  private Person persons;
 }

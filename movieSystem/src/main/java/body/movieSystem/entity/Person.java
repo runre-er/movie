@@ -27,9 +27,5 @@ public class Person {
   @Column(name = "birth_country")
   private String birthCountry;
 
-  @OneToMany(mappedBy = "person", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-  @JsonBackReference
-  private List<Actor> per_actors;
-
 
 }
