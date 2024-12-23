@@ -1,3 +1,4 @@
+C:\Users\ernur\Desktop\project\imdb-db\movie\movieSystem\src\main\java\body\movieSystem\entity\Job.java
 C:\Users\ernur\Desktop\project\imdb-db\movie\movieSystem\src\main\java\body\movieSystem\dto\RevenueDTO.java
 C:\Users\ernur\Desktop\project\imdb-db\movie\movieSystem\src\main\java\body\movieSystem\entity\Person.java
 C:\Users\ernur\Desktop\project\imdb-db\movie\movieSystem\src\main\java\body\movieSystem\service\RevenueService.java
@@ -11,10 +12,11 @@ C:\Users\ernur\Desktop\project\imdb-db\movie\movieSystem\src\main\java\body\movi
 C:\Users\ernur\Desktop\project\imdb-db\movie\movieSystem\src\main\java\body\movieSystem\entity\Revenue.java
 C:\Users\ernur\Desktop\project\imdb-db\movie\movieSystem\src\main\java\body\movieSystem\entity\Star.java
 C:\Users\ernur\Desktop\project\imdb-db\movie\movieSystem\src\main\java\body\movieSystem\entity\Actor.java
-C:\Users\ernur\Desktop\project\imdb-db\movie\movieSystem\src\main\java\body\movieSystem\entity\Role.java
+C:\Users\ernur\Desktop\project\imdb-db\movie\movieSystem\src\main\java\body\movieSystem\dto\JobDTO.java
 C:\Users\ernur\Desktop\project\imdb-db\movie\movieSystem\src\main\java\body\movieSystem\entity\Production.java
 C:\Users\ernur\Desktop\project\imdb-db\movie\movieSystem\src\main\java\body\movieSystem\repository\PersonRepository.java
 C:\Users\ernur\Desktop\project\imdb-db\movie\movieSystem\src\main\java\body\movieSystem\service\ProductionService.java
+C:\Users\ernur\Desktop\project\imdb-db\movie\movieSystem\src\main\java\body\movieSystem\dto\TechCrewDTO.java
 C:\Users\ernur\Desktop\project\imdb-db\movie\movieSystem\src\main\java\body\movieSystem\dto\validation\validator\NonNullIdValidator.java
 C:\Users\ernur\Desktop\project\imdb-db\movie\movieSystem\src\main\java\body\movieSystem\dto\ProductionDTO.java
 C:\Users\ernur\Desktop\project\imdb-db\movie\movieSystem\src\main\java\body\movieSystem\entity\ImdbScore.java

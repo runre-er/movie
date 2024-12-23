@@ -27,7 +27,7 @@ public class ProductionController {
     return ResponseEntity.ok(service.findAllPageable(pageable));
   }
 
-  @GetMapping("/{id}")
+  @GetMapping("/allData/{id}")
   public ResponseEntity<Optional<ProductionDTO>> findProduction(@PathVariable Long id) {
     return ResponseEntity.ok(service.findProductionById(id));
   }

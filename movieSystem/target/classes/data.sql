@@ -389,7 +389,7 @@ INSERT INTO imdb_scores (score, votes_count, production_id) VALUES
 (7.9, 105000, 20);  -- South Park: Joining the Panderverse
 
 
-INSERT INTO roles (role) VALUES
+INSERT INTO jobs (name) VALUES
 ('Producer'),
 ('Editor'),
 ('Cinematographer'),

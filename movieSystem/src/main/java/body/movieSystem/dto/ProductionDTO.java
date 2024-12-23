@@ -22,9 +22,9 @@ public class ProductionDTO {
   private Set<PersonDTO> writers;
   private Set<PersonDTO> directors;
   private Set<PersonDTO> stars;
-  private String languageId;
+  private Language language;
+  private Genre genre;
   private Country country;
-  private String genreId;
   private List<Comment> comments;
   private List<ImdbScore> imdbScores;
   private List<Revenue> revenues;

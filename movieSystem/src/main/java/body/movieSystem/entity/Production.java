@@ -4,7 +4,6 @@ import jakarta.persistence.*;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Set;
-
 import lombok.Getter;
 import lombok.Setter;
 
@@ -30,11 +29,13 @@ public class Production {
   @Column(name = "play_time")
   private int playTime;
 
-  @Column(name = "language_id")
-  private String languageId;
+  @ManyToOne(fetch = FetchType.EAGER) // todo dene bı yapmıcak bu
+  @JoinColumn(name = "language_id", nullable = false)
+  private Language language;
 
-  @Column(name = "genre_id")
-  private String genreId;
+  @ManyToOne(fetch = FetchType.EAGER) // todo dene bı yapmıcak bu
+  @JoinColumn(name = "genre_id", nullable = false)
+  private Genre genre;
 
   @ManyToOne(fetch = FetchType.EAGER) // todo dene bı yapmıcak bu
   @JoinColumn(name = "country_id", nullable = false)

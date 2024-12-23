@@ -8,10 +8,10 @@ body\movieSystem\entity\Genre.class
 body\movieSystem\entity\Language.class
 body\movieSystem\repository\UserRepository.class
 body\movieSystem\service\PersonService.class
+body\movieSystem\entity\Job.class
 body\movieSystem\entity\Revenue.class
 body\movieSystem\dto\ProductionDTO.class
 body\movieSystem\dto\RevenueDTO$RevenueDTOBuilder.class
-body\movieSystem\entity\Role.class
 body\movieSystem\mapper\RevenueMapperImpl.class
 body\movieSystem\dto\UserDTO.class
 body\movieSystem\service\RevenueService.class
@@ -35,12 +35,14 @@ body\movieSystem\dto\ProductionDTO$ProductionDTOBuilder.class
 body\movieSystem\entity\Star.class
 body\movieSystem\repository\RevenueRepository.class
 body\movieSystem\entity\Person.class
+body\movieSystem\dto\JobDTO.class
 body\movieSystem\dto\validation\validator\NonNullIdValidator.class
 body\movieSystem\MovieSystemApplication.class
 body\movieSystem\mapper\UserMapper.class
 body\movieSystem\entity\Actor.class
 body\movieSystem\controller\ProductionController.class
 body\movieSystem\entity\Country.class
+body\movieSystem\dto\TechCrewDTO.class
 body\movieSystem\mapper\RevenueMapper.class
 body\movieSystem\entity\TechCrew.class
 body\movieSystem\mapper\PersonMapper.class

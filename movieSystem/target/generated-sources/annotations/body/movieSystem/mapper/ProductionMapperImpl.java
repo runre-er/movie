@@ -21,7 +21,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-12-22T14:53:16+0300",
+    date = "2024-12-23T13:33:18+0300",
     comments = "version: 1.6.3, compiler: javac, environment: Java 21.0.1 (Oracle Corporation)"
 )
 @Component
@@ -40,9 +40,9 @@ public class ProductionMapperImpl implements ProductionMapper {
         productionDTO.originalTitle( production.getOriginalTitle() );
         productionDTO.releaseDate( production.getReleaseDate() );
         productionDTO.playTime( production.getPlayTime() );
-        productionDTO.languageId( production.getLanguageId() );
+        productionDTO.language( production.getLanguage() );
+        productionDTO.genre( production.getGenre() );
         productionDTO.country( production.getCountry() );
-        productionDTO.genreId( production.getGenreId() );
         List<Comment> list = production.getComments();
         if ( list != null ) {
             productionDTO.comments( new ArrayList<Comment>( list ) );
@@ -145,8 +145,8 @@ public class ProductionMapperImpl implements ProductionMapper {
         production.setOriginalTitle( productionDTO.getOriginalTitle() );
         production.setReleaseDate( productionDTO.getReleaseDate() );
         production.setPlayTime( productionDTO.getPlayTime() );
-        production.setLanguageId( productionDTO.getLanguageId() );
-        production.setGenreId( productionDTO.getGenreId() );
+        production.setLanguage( productionDTO.getLanguage() );
+        production.setGenre( productionDTO.getGenre() );
         production.setCountry( productionDTO.getCountry() );
         List<Revenue> list = productionDTO.getRevenues();
         if ( list != null ) {

@@ -17,9 +17,11 @@ public class TechCrew {
   @Column(name = "production_id")
   private Long productionId;
 
-  @Column(name = "person_id")
-  private Long personId;
+  @ManyToOne(fetch = FetchType.EAGER) // todo dene bı yapmıcak bu
+  @JoinColumn(name = "person_id", nullable = false)
+  private Person person;
 
-  @Column(name = "role_id")
-  private Long roleId;
+  @ManyToOne(fetch = FetchType.EAGER) // todo dene bı yapmıcak bu
+  @JoinColumn(name = "role_id", nullable = false)
+  private Job job;
 }
