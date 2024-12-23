@@ -38,12 +38,11 @@ public interface ProductionMapper {
     if (entities == null) return Collections.emptySet();
 
     return entities.stream()
-            .map(entity -> convertToPersonDTO(entity))
+            .map(this::convertToPersonDTO)
             .filter(Objects::nonNull)
             .collect(Collectors.toSet());
   }
 
-  @SuppressWarnings("unchecked")
   default <T> PersonDTO convertToPersonDTO(T entity) {
     Map<Class<?>, Function<Object, PersonDTO>> converters =
             Map.of(
