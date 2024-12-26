@@ -10,18 +10,19 @@ import lombok.Setter;
 @Table(name = "tech_crews")
 public class TechCrew {
 
-  @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-  @Column(name = "production_id")
-  private Long productionId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "production_id")
+    private Production production;
 
-  @ManyToOne(fetch = FetchType.EAGER) // todo dene bı yapmıcak bu
-  @JoinColumn(name = "person_id", nullable = false)
-  private Person person;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "person_id")
+    private Person person;  // todo person lıstelerı olabılır
 
-  @ManyToOne(fetch = FetchType.EAGER) // todo dene bı yapmıcak bu
-  @JoinColumn(name = "role_id", nullable = false)
-  private Job job;
+    @ManyToOne(fetch = FetchType.EAGER) // todo dene bı yapmıcak bu
+    @JoinColumn(name = "job_id", nullable = false)
+    private Job job;
 }

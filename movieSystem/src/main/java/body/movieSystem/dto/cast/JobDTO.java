@@ -1,6 +1,5 @@
 package body.movieSystem.dto.cast;
 
-import body.movieSystem.dto.validation.annotation.NonNullId;
 import lombok.*;
 
 @Getter
@@ -9,6 +8,5 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 public class JobDTO {
-  @NonNullId private Long id;
-  private String name;
+    private String name;
 }

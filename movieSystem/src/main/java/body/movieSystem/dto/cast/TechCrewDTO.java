@@ -9,8 +9,8 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 public class TechCrewDTO {
-  @NonNullId private Long id;
-  @NonNullId private Long productionId;
-  private PersonDTO person;
-  private JobDTO name;
+    @NonNullId
+    private Long id;
+    private PersonDTO person;
+    private JobDTO job;
 }
