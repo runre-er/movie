@@ -20,5 +20,5 @@ public class Star {
 
   @ManyToOne
   @JoinColumn(name = "person_id")
-  private Person persons;
+  private Person person;
 }

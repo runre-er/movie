@@ -3,6 +3,8 @@ package body.movieSystem.entity;
 import jakarta.persistence.*;
 import java.time.LocalDate;
 import java.util.List;
+
+import jakarta.validation.constraints.Email;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -26,9 +28,10 @@ public class User {
   private String nick;
 
   @Column(name = "email", nullable = false, unique = true)
+  @Email(message = "invalid email!")
   private String email;
 
-  @Column(name = "password", nullable = false)
+  @Column(name = "password", nullable = false, length = 60)
   private String password;
 
   @Column(name = "registration_time", columnDefinition = "TIMESTAMP", nullable = false)

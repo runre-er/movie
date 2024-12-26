@@ -10,6 +10,7 @@ import lombok.Setter;
 @Table(name = "writers")
 public class Writer {
 
+
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
@@ -20,5 +21,5 @@ public class Writer {
 
   @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "person_id")
-  private Person persons;
+  private Person person;
 }

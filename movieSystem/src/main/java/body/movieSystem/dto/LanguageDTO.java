@@ -1,6 +1,6 @@
 package body.movieSystem.dto;
 
-import java.time.LocalDate;
+import body.movieSystem.dto.validation.annotation.NonNullId;
 import lombok.*;
 
 @Getter
@@ -8,10 +8,8 @@ import lombok.*;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class PersonDTO {
+public class LanguageDTO {
+    @NonNullId
     private Long id;
     private String name;
-    private String surname;
-    private LocalDate birthDate;
-    private String birthCountry;
 }

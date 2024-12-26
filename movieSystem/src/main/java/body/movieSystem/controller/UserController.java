@@ -11,11 +11,11 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/users")
 public class UserController {
 
-  private final UserService userService;
+  private final UserService service;
 
   @PostMapping
-  public ResponseEntity<UserDTO> saveUser(@RequestBody UserDTO userDTO) {
+  public ResponseEntity<UserDTO> save(@RequestBody UserDTO userDTO) {
 
-    return ResponseEntity.ok(userService.saveUser(userDTO));
+    return ResponseEntity.ok(service.save(userDTO));
   }
 }

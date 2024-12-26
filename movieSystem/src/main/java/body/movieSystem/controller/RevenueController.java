@@ -12,11 +12,11 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/productions/revenues")
 public class RevenueController {
 
-  private final RevenueService revenueService;
+  private final RevenueService service;
 
   @PostMapping
-  public ResponseEntity<RevenueDTO> saveRevenue(@RequestBody @Valid RevenueDTO revenueDTO) {
+  public ResponseEntity<RevenueDTO> save(@RequestBody @Valid RevenueDTO revenueDTO) {
 
-    return ResponseEntity.ok(revenueService.saveRevenue(revenueDTO));
+    return ResponseEntity.ok(service.save(revenueDTO));
   }
 }

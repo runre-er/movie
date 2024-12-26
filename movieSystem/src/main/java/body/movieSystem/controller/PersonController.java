@@ -1,6 +1,6 @@
 package body.movieSystem.controller;
 
-import body.movieSystem.dto.PersonDTO;
+import body.movieSystem.dto.cast.PersonDTO;
 import body.movieSystem.service.PersonService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -11,10 +11,10 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/persons")
 public class PersonController {
 
-  private final PersonService personService;
+  private final PersonService service;
 
   @PostMapping
-  public ResponseEntity<PersonDTO> savePerson(@RequestBody PersonDTO personDTO) {
-    return ResponseEntity.ok(personService.savePerson(personDTO));
+  public ResponseEntity<PersonDTO> save(@RequestBody PersonDTO personDTO) {
+    return ResponseEntity.ok(service.save(personDTO));
   }
 }

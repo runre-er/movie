@@ -54,14 +54,14 @@ public class Production {
   private List<Comment> comments;
 
   @OneToMany(mappedBy = "production", fetch = FetchType.LAZY)
-  private Set<Actor> actors;
+  private List<Actor> actors;
 
   @OneToMany(mappedBy = "production", fetch = FetchType.LAZY)
-  private Set<Writer> writers;
+  private List<Writer> writers;
 
   @OneToMany(mappedBy = "production", fetch = FetchType.LAZY)
-  private Set<Director> directors;
+  private List<Director> directors;
 
   @OneToMany(mappedBy = "production", fetch = FetchType.LAZY)
-  private Set<Star> stars;
+  private List<Star> stars;
 }

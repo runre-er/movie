@@ -5,15 +5,15 @@ import jakarta.validation.Constraint;
 import jakarta.validation.Payload;
 import java.lang.annotation.*;
 
-@Target({ElementType.FIELD}) // Anotasyonun nerelerde kullanılabileceğini belirtir (alanlar)
-@Retention(RetentionPolicy.RUNTIME) // Anotasyonun çalışma zamanında erişilebilir olmasını sağlar
-@Constraint(validatedBy = NonNullIdValidator.class) // Anotasyonu hangi doğrulayıcı sınıfının işleyeceğini belirtir
-@Documented // Javadoc'a dahil edilmesini sağlar
+@Target({ElementType.FIELD})
+@Retention(RetentionPolicy.RUNTIME)
+@Constraint(validatedBy = NonNullIdValidator.class)
+@Documented
 public @interface NonNullId {
 
-  String message() default "ID alanı boş olamaz ve pozitif olmalıdır"; // Varsayılan hata mesajı
+  String message() default "ID alanı boş olamaz ve pozitif olmalıdır";
 
-  Class<?>[] groups() default {}; // Doğrulama grupları (ileri seviye kullanım için)
+  Class<?>[] groups() default {};
 
-  Class<? extends Payload>[] payload() default {}; // Ek bilgiler taşımak için (ileri seviye kullanım için)
+  Class<? extends Payload>[] payload() default {};
 }

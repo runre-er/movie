@@ -8,14 +8,14 @@ public class NonNullIdValidator implements ConstraintValidator<NonNullId, Long> 
 
     @Override
     public void initialize(NonNullId constraintAnnotation) {
-        // Gerekirse başlatma işlemleri burada yapılabilir (genellikle boş bırakılır)
+
     }
 
     @Override
     public boolean isValid(Long value, ConstraintValidatorContext context) {
         if (value == null) {
-            return false; // ID null ise doğrulama başarısız
+            return false;
         }
-        return value > 0; // ID pozitif değilse doğrulama başarısız
+        return value > 0;
     }
 }

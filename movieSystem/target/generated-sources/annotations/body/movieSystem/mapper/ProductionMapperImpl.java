@@ -1,17 +1,18 @@
 package body.movieSystem.mapper;
 
-import body.movieSystem.dto.PersonDTO;
+import body.movieSystem.dto.ProductionCrewDTO;
 import body.movieSystem.dto.ProductionDTO;
+import body.movieSystem.dto.cast.ActorDTO;
+import body.movieSystem.dto.cast.DirectorDTO;
+import body.movieSystem.dto.cast.PersonDTO;
+import body.movieSystem.dto.cast.StarDTO;
+import body.movieSystem.dto.cast.WriterDTO;
 import body.movieSystem.entity.Actor;
-import body.movieSystem.entity.Comment;
 import body.movieSystem.entity.Director;
-import body.movieSystem.entity.ImdbScore;
 import body.movieSystem.entity.Person;
 import body.movieSystem.entity.Production;
-import body.movieSystem.entity.Revenue;
 import body.movieSystem.entity.Star;
 import body.movieSystem.entity.Writer;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -21,7 +22,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-12-23T13:33:18+0300",
+    date = "2024-12-26T12:28:50+0300",
     comments = "version: 1.6.3, compiler: javac, environment: Java 21.0.1 (Oracle Corporation)"
 )
 @Component
@@ -40,96 +41,8 @@ public class ProductionMapperImpl implements ProductionMapper {
         productionDTO.originalTitle( production.getOriginalTitle() );
         productionDTO.releaseDate( production.getReleaseDate() );
         productionDTO.playTime( production.getPlayTime() );
-        productionDTO.language( production.getLanguage() );
-        productionDTO.genre( production.getGenre() );
-        productionDTO.country( production.getCountry() );
-        List<Comment> list = production.getComments();
-        if ( list != null ) {
-            productionDTO.comments( new ArrayList<Comment>( list ) );
-        }
-        List<ImdbScore> list1 = production.getImdbScores();
-        if ( list1 != null ) {
-            productionDTO.imdbScores( new ArrayList<ImdbScore>( list1 ) );
-        }
-        List<Revenue> list2 = production.getRevenues();
-        if ( list2 != null ) {
-            productionDTO.revenues( new ArrayList<Revenue>( list2 ) );
-        }
-
-        productionDTO.actors( toPersonDTOSet(production.getActors()) );
-        productionDTO.writers( toPersonDTOSet(production.getWriters()) );
-        productionDTO.directors( toPersonDTOSet(production.getDirectors()) );
-        productionDTO.stars( toPersonDTOSet(production.getStars()) );
 
         return productionDTO.build();
-    }
-
-    @Override
-    public PersonDTO toPersonDTO(Actor actor) {
-        if ( actor == null ) {
-            return null;
-        }
-
-        PersonDTO.PersonDTOBuilder personDTO = PersonDTO.builder();
-
-        personDTO.id( actorPersonsId( actor ) );
-        personDTO.name( actorPersonsName( actor ) );
-        personDTO.surname( actorPersonsSurname( actor ) );
-        personDTO.birthDate( actorPersonsBirthDate( actor ) );
-        personDTO.birthCountry( actorPersonsBirthCountry( actor ) );
-
-        return personDTO.build();
-    }
-
-    @Override
-    public PersonDTO toPersonDTO(Writer writer) {
-        if ( writer == null ) {
-            return null;
-        }
-
-        PersonDTO.PersonDTOBuilder personDTO = PersonDTO.builder();
-
-        personDTO.id( writerPersonsId( writer ) );
-        personDTO.name( writerPersonsName( writer ) );
-        personDTO.surname( writerPersonsSurname( writer ) );
-        personDTO.birthDate( writerPersonsBirthDate( writer ) );
-        personDTO.birthCountry( writerPersonsBirthCountry( writer ) );
-
-        return personDTO.build();
-    }
-
-    @Override
-    public PersonDTO toPersonDTO(Director director) {
-        if ( director == null ) {
-            return null;
-        }
-
-        PersonDTO.PersonDTOBuilder personDTO = PersonDTO.builder();
-
-        personDTO.id( directorPersonsId( director ) );
-        personDTO.name( directorPersonsName( director ) );
-        personDTO.surname( directorPersonsSurname( director ) );
-        personDTO.birthDate( directorPersonsBirthDate( director ) );
-        personDTO.birthCountry( directorPersonsBirthCountry( director ) );
-
-        return personDTO.build();
-    }
-
-    @Override
-    public PersonDTO toPersonDTO(Star star) {
-        if ( star == null ) {
-            return null;
-        }
-
-        PersonDTO.PersonDTOBuilder personDTO = PersonDTO.builder();
-
-        personDTO.id( starPersonsId( star ) );
-        personDTO.name( starPersonsName( star ) );
-        personDTO.surname( starPersonsSurname( star ) );
-        personDTO.birthDate( starPersonsBirthDate( star ) );
-        personDTO.birthCountry( starPersonsBirthCountry( star ) );
-
-        return personDTO.build();
     }
 
     @Override
@@ -145,25 +58,6 @@ public class ProductionMapperImpl implements ProductionMapper {
         production.setOriginalTitle( productionDTO.getOriginalTitle() );
         production.setReleaseDate( productionDTO.getReleaseDate() );
         production.setPlayTime( productionDTO.getPlayTime() );
-        production.setLanguage( productionDTO.getLanguage() );
-        production.setGenre( productionDTO.getGenre() );
-        production.setCountry( productionDTO.getCountry() );
-        List<Revenue> list = productionDTO.getRevenues();
-        if ( list != null ) {
-            production.setRevenues( new ArrayList<Revenue>( list ) );
-        }
-        List<ImdbScore> list1 = productionDTO.getImdbScores();
-        if ( list1 != null ) {
-            production.setImdbScores( new ArrayList<ImdbScore>( list1 ) );
-        }
-        List<Comment> list2 = productionDTO.getComments();
-        if ( list2 != null ) {
-            production.setComments( new ArrayList<Comment>( list2 ) );
-        }
-        production.setActors( personDTOSetToActorSet( productionDTO.getActors() ) );
-        production.setWriters( personDTOSetToWriterSet( productionDTO.getWriters() ) );
-        production.setDirectors( personDTOSetToDirectorSet( productionDTO.getDirectors() ) );
-        production.setStars( personDTOSetToStarSet( productionDTO.getStars() ) );
 
         return production;
     }
@@ -196,263 +90,139 @@ public class ProductionMapperImpl implements ProductionMapper {
         return set;
     }
 
-    private Long actorPersonsId(Actor actor) {
-        Person persons = actor.getPersons();
-        if ( persons == null ) {
+    @Override
+    public ProductionCrewDTO toCrewDTO(Production production) {
+        if ( production == null ) {
             return null;
         }
-        return persons.getId();
+
+        ProductionCrewDTO.ProductionCrewDTOBuilder productionCrewDTO = ProductionCrewDTO.builder();
+
+        productionCrewDTO.actors( actorListToActorDTOList( production.getActors() ) );
+        productionCrewDTO.writers( writerListToWriterDTOList( production.getWriters() ) );
+        productionCrewDTO.directors( directorListToDirectorDTOList( production.getDirectors() ) );
+        productionCrewDTO.stars( starListToStarDTOList( production.getStars() ) );
+
+        return productionCrewDTO.build();
     }
 
-    private String actorPersonsName(Actor actor) {
-        Person persons = actor.getPersons();
-        if ( persons == null ) {
+    protected PersonDTO personToPersonDTO(Person person) {
+        if ( person == null ) {
             return null;
         }
-        return persons.getName();
+
+        PersonDTO.PersonDTOBuilder personDTO = PersonDTO.builder();
+
+        personDTO.id( person.getId() );
+        personDTO.name( person.getName() );
+        personDTO.surname( person.getSurname() );
+        personDTO.birthDate( person.getBirthDate() );
+        personDTO.birthCountry( person.getBirthCountry() );
+
+        return personDTO.build();
     }
 
-    private String actorPersonsSurname(Actor actor) {
-        Person persons = actor.getPersons();
-        if ( persons == null ) {
+    protected ActorDTO actorToActorDTO(Actor actor) {
+        if ( actor == null ) {
             return null;
         }
-        return persons.getSurname();
+
+        ActorDTO.ActorDTOBuilder actorDTO = ActorDTO.builder();
+
+        actorDTO.id( actor.getId() );
+        actorDTO.person( personToPersonDTO( actor.getPerson() ) );
+
+        return actorDTO.build();
     }
 
-    private LocalDate actorPersonsBirthDate(Actor actor) {
-        Person persons = actor.getPersons();
-        if ( persons == null ) {
+    protected List<ActorDTO> actorListToActorDTOList(List<Actor> list) {
+        if ( list == null ) {
             return null;
         }
-        return persons.getBirthDate();
+
+        List<ActorDTO> list1 = new ArrayList<ActorDTO>( list.size() );
+        for ( Actor actor : list ) {
+            list1.add( actorToActorDTO( actor ) );
+        }
+
+        return list1;
     }
 
-    private String actorPersonsBirthCountry(Actor actor) {
-        Person persons = actor.getPersons();
-        if ( persons == null ) {
+    protected WriterDTO writerToWriterDTO(Writer writer) {
+        if ( writer == null ) {
             return null;
         }
-        return persons.getBirthCountry();
+
+        WriterDTO.WriterDTOBuilder writerDTO = WriterDTO.builder();
+
+        writerDTO.id( writer.getId() );
+        writerDTO.person( personToPersonDTO( writer.getPerson() ) );
+
+        return writerDTO.build();
     }
 
-    private Long writerPersonsId(Writer writer) {
-        Person persons = writer.getPersons();
-        if ( persons == null ) {
+    protected List<WriterDTO> writerListToWriterDTOList(List<Writer> list) {
+        if ( list == null ) {
             return null;
         }
-        return persons.getId();
+
+        List<WriterDTO> list1 = new ArrayList<WriterDTO>( list.size() );
+        for ( Writer writer : list ) {
+            list1.add( writerToWriterDTO( writer ) );
+        }
+
+        return list1;
     }
 
-    private String writerPersonsName(Writer writer) {
-        Person persons = writer.getPersons();
-        if ( persons == null ) {
+    protected DirectorDTO directorToDirectorDTO(Director director) {
+        if ( director == null ) {
             return null;
         }
-        return persons.getName();
+
+        DirectorDTO.DirectorDTOBuilder directorDTO = DirectorDTO.builder();
+
+        directorDTO.id( director.getId() );
+        directorDTO.person( personToPersonDTO( director.getPerson() ) );
+
+        return directorDTO.build();
     }
 
-    private String writerPersonsSurname(Writer writer) {
-        Person persons = writer.getPersons();
-        if ( persons == null ) {
+    protected List<DirectorDTO> directorListToDirectorDTOList(List<Director> list) {
+        if ( list == null ) {
             return null;
         }
-        return persons.getSurname();
+
+        List<DirectorDTO> list1 = new ArrayList<DirectorDTO>( list.size() );
+        for ( Director director : list ) {
+            list1.add( directorToDirectorDTO( director ) );
+        }
+
+        return list1;
     }
 
-    private LocalDate writerPersonsBirthDate(Writer writer) {
-        Person persons = writer.getPersons();
-        if ( persons == null ) {
+    protected StarDTO starToStarDTO(Star star) {
+        if ( star == null ) {
             return null;
         }
-        return persons.getBirthDate();
+
+        StarDTO.StarDTOBuilder starDTO = StarDTO.builder();
+
+        starDTO.id( star.getId() );
+        starDTO.person( personToPersonDTO( star.getPerson() ) );
+
+        return starDTO.build();
     }
 
-    private String writerPersonsBirthCountry(Writer writer) {
-        Person persons = writer.getPersons();
-        if ( persons == null ) {
-            return null;
-        }
-        return persons.getBirthCountry();
-    }
-
-    private Long directorPersonsId(Director director) {
-        Person persons = director.getPersons();
-        if ( persons == null ) {
-            return null;
-        }
-        return persons.getId();
-    }
-
-    private String directorPersonsName(Director director) {
-        Person persons = director.getPersons();
-        if ( persons == null ) {
-            return null;
-        }
-        return persons.getName();
-    }
-
-    private String directorPersonsSurname(Director director) {
-        Person persons = director.getPersons();
-        if ( persons == null ) {
-            return null;
-        }
-        return persons.getSurname();
-    }
-
-    private LocalDate directorPersonsBirthDate(Director director) {
-        Person persons = director.getPersons();
-        if ( persons == null ) {
-            return null;
-        }
-        return persons.getBirthDate();
-    }
-
-    private String directorPersonsBirthCountry(Director director) {
-        Person persons = director.getPersons();
-        if ( persons == null ) {
-            return null;
-        }
-        return persons.getBirthCountry();
-    }
-
-    private Long starPersonsId(Star star) {
-        Person persons = star.getPersons();
-        if ( persons == null ) {
-            return null;
-        }
-        return persons.getId();
-    }
-
-    private String starPersonsName(Star star) {
-        Person persons = star.getPersons();
-        if ( persons == null ) {
-            return null;
-        }
-        return persons.getName();
-    }
-
-    private String starPersonsSurname(Star star) {
-        Person persons = star.getPersons();
-        if ( persons == null ) {
-            return null;
-        }
-        return persons.getSurname();
-    }
-
-    private LocalDate starPersonsBirthDate(Star star) {
-        Person persons = star.getPersons();
-        if ( persons == null ) {
-            return null;
-        }
-        return persons.getBirthDate();
-    }
-
-    private String starPersonsBirthCountry(Star star) {
-        Person persons = star.getPersons();
-        if ( persons == null ) {
-            return null;
-        }
-        return persons.getBirthCountry();
-    }
-
-    protected Actor personDTOToActor(PersonDTO personDTO) {
-        if ( personDTO == null ) {
+    protected List<StarDTO> starListToStarDTOList(List<Star> list) {
+        if ( list == null ) {
             return null;
         }
 
-        Actor actor = new Actor();
-
-        actor.setId( personDTO.getId() );
-
-        return actor;
-    }
-
-    protected Set<Actor> personDTOSetToActorSet(Set<PersonDTO> set) {
-        if ( set == null ) {
-            return null;
+        List<StarDTO> list1 = new ArrayList<StarDTO>( list.size() );
+        for ( Star star : list ) {
+            list1.add( starToStarDTO( star ) );
         }
 
-        Set<Actor> set1 = new LinkedHashSet<Actor>( Math.max( (int) ( set.size() / .75f ) + 1, 16 ) );
-        for ( PersonDTO personDTO : set ) {
-            set1.add( personDTOToActor( personDTO ) );
-        }
-
-        return set1;
-    }
-
-    protected Writer personDTOToWriter(PersonDTO personDTO) {
-        if ( personDTO == null ) {
-            return null;
-        }
-
-        Writer writer = new Writer();
-
-        writer.setId( personDTO.getId() );
-
-        return writer;
-    }
-
-    protected Set<Writer> personDTOSetToWriterSet(Set<PersonDTO> set) {
-        if ( set == null ) {
-            return null;
-        }
-
-        Set<Writer> set1 = new LinkedHashSet<Writer>( Math.max( (int) ( set.size() / .75f ) + 1, 16 ) );
-        for ( PersonDTO personDTO : set ) {
-            set1.add( personDTOToWriter( personDTO ) );
-        }
-
-        return set1;
-    }
-
-    protected Director personDTOToDirector(PersonDTO personDTO) {
-        if ( personDTO == null ) {
-            return null;
-        }
-
-        Director director = new Director();
-
-        director.setId( personDTO.getId() );
-
-        return director;
-    }
-
-    protected Set<Director> personDTOSetToDirectorSet(Set<PersonDTO> set) {
-        if ( set == null ) {
-            return null;
-        }
-
-        Set<Director> set1 = new LinkedHashSet<Director>( Math.max( (int) ( set.size() / .75f ) + 1, 16 ) );
-        for ( PersonDTO personDTO : set ) {
-            set1.add( personDTOToDirector( personDTO ) );
-        }
-
-        return set1;
-    }
-
-    protected Star personDTOToStar(PersonDTO personDTO) {
-        if ( personDTO == null ) {
-            return null;
-        }
-
-        Star star = new Star();
-
-        star.setId( personDTO.getId() );
-
-        return star;
-    }
-
-    protected Set<Star> personDTOSetToStarSet(Set<PersonDTO> set) {
-        if ( set == null ) {
-            return null;
-        }
-
-        Set<Star> set1 = new LinkedHashSet<Star>( Math.max( (int) ( set.size() / .75f ) + 1, 16 ) );
-        for ( PersonDTO personDTO : set ) {
-            set1.add( personDTOToStar( personDTO ) );
-        }
-
-        return set1;
+        return list1;
     }
 }

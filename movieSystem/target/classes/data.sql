@@ -268,8 +268,8 @@ INSERT INTO writers (production_id, person_id) VALUES
 (5, 129), (5, 130);
 
 INSERT INTO directors (production_id, person_id) VALUES
-(1, 101), (2, 102), (3, 103), (4, 104), (5, 105),
-(6, 106), (7, 107), (8, 108), (9, 109), (10, 110);
+(6, 106), (7, 107), (8, 108), (9, 109), (10, 110),
+(1, 101), (2, 102), (3, 103), (4, 104), (5, 105);
 
 INSERT INTO actors (production_id, person_id) VALUES
 (1, 81), (1, 82), (1, 83), (1, 84),
@@ -344,7 +344,7 @@ INSERT INTO comments (message, user_id, language_id, production_id) VALUES
 ('I couldn’t stop watching The Curse!', 30, 1, 10);  -- Grace Walker, English, The Curse
 
 -- Revenue Tablosu
-INSERT INTO revenues (production_id, amount, rev_source) VALUES
+INSERT INTO revenues (production_id, amount, source) VALUES
 (1, 500000.00, 'Box Office'),
 (2, 750000.00, 'Streaming'),
 (3, 1000000.00, 'Syndication'),

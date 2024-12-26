@@ -1,9 +1,7 @@
 package body.movieSystem.entity;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import java.time.LocalDate;
-import java.util.List;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -26,6 +24,4 @@ public class Person {
 
   @Column(name = "birth_country")
   private String birthCountry;
-
-
 }

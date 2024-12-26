@@ -19,6 +19,5 @@ public class Revenue {
 
   private Double amount;
 
-  @Column(name = "rev_source")
-  private String RevSource;
+  private String source;
 }

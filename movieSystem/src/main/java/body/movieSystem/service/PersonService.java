@@ -1,6 +1,6 @@
 package body.movieSystem.service;
 
-import body.movieSystem.dto.PersonDTO;
+import body.movieSystem.dto.cast.PersonDTO;
 import body.movieSystem.entity.Person;
 import body.movieSystem.mapper.PersonMapper;
 import body.movieSystem.repository.PersonRepository;
@@ -11,11 +11,11 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class PersonService {
 
-  private final PersonRepository personRepository;
-  private final PersonMapper personMapper;
+  private final PersonRepository repository;
+  private final PersonMapper mapper;
 
-  public PersonDTO savePerson(PersonDTO personDTO) {
-    Person person = personMapper.toEntity(personDTO);
-    return personMapper.toDTO(personRepository.save(person));
+  public PersonDTO save(PersonDTO personDTO) {
+    Person person = mapper.toEntity(personDTO);
+    return mapper.toDTO(repository.save(person));
   }
 }
