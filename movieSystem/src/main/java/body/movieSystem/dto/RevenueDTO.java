@@ -8,8 +8,8 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 public class RevenueDTO {
-  private Long id;
-  private Long productionId;
-  private Double amount;
-  private String source;
+    private Long id;
+    private Long productionId;
+    private Double amount;
+    private String source;
 }

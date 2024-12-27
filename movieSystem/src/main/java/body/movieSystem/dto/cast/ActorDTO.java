@@ -1,6 +1,5 @@
 package body.movieSystem.dto.cast;
 
-
 import body.movieSystem.dto.validation.annotation.NonNullId;
 import lombok.*;
 
@@ -10,6 +9,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ActorDTO {
-  @NonNullId private Long id;
-  private PersonDTO person;
+    @NonNullId
+    private Long id;
+    private PersonDTO person;
 }

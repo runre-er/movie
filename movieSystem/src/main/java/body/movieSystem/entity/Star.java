@@ -10,15 +10,15 @@ import lombok.Setter;
 @Table(name = "stars")
 public class Star {
 
-  @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-  @ManyToOne(fetch = FetchType.LAZY)
-  @JoinColumn(name = "production_id")
-  private Production production;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "production_id")
+    private Production production;
 
-  @ManyToOne
-  @JoinColumn(name = "person_id")
-  private Person person;
+    @ManyToOne
+    @JoinColumn(name = "person_id")
+    private Person person;
 }

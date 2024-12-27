@@ -15,31 +15,28 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class LanguageService {
 
-  private final LanguageRepository repository;
-  private final LanguageMapper mapper;
+    private final LanguageRepository repository;
+    private final LanguageMapper mapper;
 
-  public List<LanguageDTO> findAll() {
-    return repository.findAll()
-            .stream()
-            .map(mapper::toDTO)
-            .collect(Collectors.toList());
-  }
-
-  public LanguageDTO findById(Long id) {
-    return repository.findById(id)
-            .map(mapper::toDTO)
-            .orElseThrow(() -> new EntityNotFoundException("Language not found with id: " + id));
-  }
-
-  public LanguageDTO save(LanguageDTO languageDTO) {
-    Language entity = mapper.toEntity(languageDTO);
-    return mapper.toDTO(repository.save(entity));
-  }
-
-  public void delete(Long id) {
-    if (!repository.existsById(id)) {
-      throw new EntityNotFoundException("Language not found with id: " + id);
+    public List<LanguageDTO> findAll() {
+        return repository.findAll()
+                .stream()
+                .map(mapper::toDTO)
+                .collect(Collectors.toList());
     }
-    repository.deleteById(id);
-  }
+    public LanguageDTO findById(Long id) {
+        return repository.findById(id)
+                .map(mapper::toDTO)
+                .orElseThrow(() -> new EntityNotFoundException("Language not found with id: " + id));
+    }
+    public LanguageDTO save(LanguageDTO languageDTO) {
+        Language entity = mapper.toEntity(languageDTO);
+        return mapper.toDTO(repository.save(entity));
+    }
+    public void delete(Long id) {
+        if (!repository.existsById(id)) {
+            throw new EntityNotFoundException("Language not found with id: " + id);
+        }
+        repository.deleteById(id);
+    }
 }

@@ -11,11 +11,11 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class JobService {
 
-  private final JobRepository repository;
-  private final JobMapper mapper;
+    private final JobRepository repository;
+    private final JobMapper mapper;
 
-  public JobDTO saveJob(JobDTO jobDTO) {
-    Job job = mapper.toEntity(jobDTO);
-    return mapper.toDTO(repository.save(job));
-  }
+    public JobDTO saveJob(JobDTO jobDTO) {
+        Job job = mapper.toEntity(jobDTO);
+        return mapper.toDTO(repository.save(job));
+    }
 }

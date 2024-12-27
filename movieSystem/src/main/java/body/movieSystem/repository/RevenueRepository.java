@@ -7,4 +7,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface RevenueRepository
-    extends JpaRepository<Revenue, Long>, JpaSpecificationExecutor<Revenue> {}
+        extends JpaRepository<Revenue, Long>, JpaSpecificationExecutor<Revenue> {
+}

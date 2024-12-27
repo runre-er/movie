@@ -14,31 +14,28 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/productions")
 public class ProductionController {
 
-  private final ProductionService service;
+    private final ProductionService service;
 
-  @PostMapping
-  public ResponseEntity<ProductionDTO> save(@RequestBody ProductionDTO productionDTO) {
-    return ResponseEntity.ok(service.save(productionDTO));
-  }
+    @PostMapping
+    public ResponseEntity<ProductionDTO> save(@RequestBody ProductionDTO productionDTO) {
+        return ResponseEntity.ok(service.save(productionDTO));
+    }
+    @GetMapping
+    public ResponseEntity<Page<ProductionDTO>> test(Pageable pageable) {
+        return ResponseEntity.ok(service.findAllPageable(pageable));
+    }
+    @GetMapping("/{id}")
+    public ProductionDTO findById(@PathVariable Long id) {
+        return ResponseEntity.ok(service.findById(id)).getBody();
+    }
+    @GetMapping("/{id}/crew")
+    public ProductionCrewDTO findCrewById(@PathVariable Long id) {
+        return ResponseEntity.ok(service.findCrewById(id)).getBody();
+    }
 
-  @GetMapping
-  public ResponseEntity<Page<ProductionDTO>> test(Pageable pageable) {
-    return ResponseEntity.ok(service.findAllPageable(pageable));
-  }
-
-  @GetMapping("/{id}")
-  public ProductionDTO findById(@PathVariable Long id) {
-    return ResponseEntity.ok(service.findById(id)).getBody();
-  }
-
-  @GetMapping("/{id}/crew")
-  public ProductionCrewDTO findCrewById(@PathVariable Long id) {
-    return ResponseEntity.ok(service.findCrewById(id)).getBody();
-  }
-
-  // todo  fıltre lı olarak dene ,  arc resolver bununla alakalı ıkısını bırlestır ,arc resolver
-  // ıcınde bır fonksıyon
-  // todo ıkı adet degıslen alıyor , fıltre elemanı ve pageable olarak
+    // todo  fıltre lı olarak dene ,  arc resolver bununla alakalı ıkısını bırlestır ,arc resolver
+    // ıcınde bır fonksıyon
+    // todo ıkı adet degıslen alıyor , fıltre elemanı ve pageable olarak
 }
 //        GET    /productions                    # Tüm yapımları listele
 //        GET    /productions/{id}              # Belirli bir yapımın detaylarını getir

@@ -2,19 +2,18 @@ package body.movieSystem.mapper;
 
 import body.movieSystem.dto.RevenueDTO;
 import body.movieSystem.entity.Revenue;
+import org.mapstruct.Mapper;
 
 import java.util.List;
 
-import org.mapstruct.Mapper;
-
 @Mapper
 public interface RevenueMapper {
-  RevenueDTO toDTO(Revenue revenue);
+    RevenueDTO toDTO(Revenue revenue);
 
-  Revenue toEntity(RevenueDTO revenueDTO);
+    Revenue toEntity(RevenueDTO revenueDTO);
 
-  List<RevenueDTO> toDTOList(List<Revenue> revenues);
+    List<RevenueDTO> toDTOList(List<Revenue> revenues);
 
-  List<Revenue> toEntityList(List<RevenueDTO> revenueDTOS);
+    List<Revenue> toEntityList(List<RevenueDTO> revenueDTOS);
 
 }

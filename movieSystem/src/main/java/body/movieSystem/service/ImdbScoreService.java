@@ -15,31 +15,28 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class ImdbScoreService {
 
-  private final ImdbScoreRepository repository;
-  private final ImdbScoreMapper mapper;
+    private final ImdbScoreRepository repository;
+    private final ImdbScoreMapper mapper;
 
-  public List<ImdbScoreDTO> findAll() {
-    return repository.findAll()
-            .stream()
-            .map(mapper::toDTO)
-            .collect(Collectors.toList());
-  }
-
-  public ImdbScoreDTO findById(Long id) {
-    return repository.findById(id)
-            .map(mapper::toDTO)
-            .orElseThrow(() -> new EntityNotFoundException("ImdbScore not found with id: " + id));
-  }
-
-  public ImdbScoreDTO save(ImdbScoreDTO imdbScoreDTO) {
-    ImdbScore entity = mapper.toEntity(imdbScoreDTO);
-    return mapper.toDTO(repository.save(entity));
-  }
-
-  public void delete(Long id) {
-    if (!repository.existsById(id)) {
-      throw new EntityNotFoundException("ImdbScore not found with id: " + id);
+    public List<ImdbScoreDTO> findAll() {
+        return repository.findAll()
+                .stream()
+                .map(mapper::toDTO)
+                .collect(Collectors.toList());
     }
-    repository.deleteById(id);
-  }
+    public ImdbScoreDTO findById(Long id) {
+        return repository.findById(id)
+                .map(mapper::toDTO)
+                .orElseThrow(() -> new EntityNotFoundException("ImdbScore not found with id: " + id));
+    }
+    public ImdbScoreDTO save(ImdbScoreDTO imdbScoreDTO) {
+        ImdbScore entity = mapper.toEntity(imdbScoreDTO);
+        return mapper.toDTO(repository.save(entity));
+    }
+    public void delete(Long id) {
+        if (!repository.existsById(id)) {
+            throw new EntityNotFoundException("ImdbScore not found with id: " + id);
+        }
+        repository.deleteById(id);
+    }
 }

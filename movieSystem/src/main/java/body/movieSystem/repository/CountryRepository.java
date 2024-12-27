@@ -7,4 +7,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface CountryRepository
-    extends JpaRepository<Country, Long>, JpaSpecificationExecutor<Country> {}
+        extends JpaRepository<Country, Long>, JpaSpecificationExecutor<Country> {
+}

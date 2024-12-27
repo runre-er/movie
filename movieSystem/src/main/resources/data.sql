@@ -1,5 +1,5 @@
 
-INSERT INTO languages (name) VALUES
+insert into languages (name) values
 ('English'),
 ('Spanish'),
 ('French'),
@@ -11,7 +11,7 @@ INSERT INTO languages (name) VALUES
 ('Russian'),
 ('Portuguese');
 
-INSERT INTO countries (name) VALUES
+insert into countries (name) values
 ('USA'),
 ('Canada'),
 ('UK'),
@@ -23,7 +23,7 @@ INSERT INTO countries (name) VALUES
 ('India'),
 ('South Korea');
 
-INSERT INTO genres (name) VALUES
+insert into genres (name) values
 ('Action'),
 ('Adventure'),
 ('Animation'),
@@ -48,7 +48,7 @@ INSERT INTO genres (name) VALUES
 
 
 -- Production Tablosu
-INSERT INTO productions (title, original_title, release_date, play_time, language_id, country_id, genre_id) VALUES
+insert into productions (title, original_title, release_date, play_time, language_id, country_id, genre_id) values
 ('Frasier', 'Frasier', '2023-10-11', 30, 1, 1, 5), -- English, USA, Comedy
 ('Teen Wolf: The Movie', 'Teen Wolf: The Movie', '2023-01-26', 90, 1, 2, 1), -- English, USA, Action
 ('The Price Is Right: A Tribute to Bob Barker', 'The Price Is Right', '2023-08-31', 120, 1, 1, 7), -- English, USA, Documentary
@@ -70,7 +70,7 @@ INSERT INTO productions (title, original_title, release_date, play_time, languag
 ('Lego Jurassic Park: The Unofficial Retelling', 'Lego Jurassic Park', '2023-10-10', 50, 1, 2, 3), -- English, USA, Animation
 ('South Park: Joining the Panderverse', 'South Park', '2023-10-27', 60, 1, 5, 5); -- English, USA, Comedy
 
-INSERT INTO persons (name, surname, birth_date, birth_country) VALUES
+insert into persons (name, surname, birth_date, birth_country) values
 ('James', 'McAvoy', '1979-04-21', 'UK'),
 ('Emma', 'Stone', '1988-11-06', 'USA'),
 ('Ben', 'Affleck', '1972-08-15', 'USA'),
@@ -253,25 +253,25 @@ INSERT INTO persons (name, surname, birth_date, birth_country) VALUES
 ('Liam', 'Brown', '1991-07-16', 'Houston, USA');
 
 
-INSERT INTO stars (production_id, person_id) VALUES
+insert into stars (production_id, person_id) values
 (1, 141), (1, 142), (1, 143),
 (2, 144), (2, 145), (2, 146),
 (3, 147), (3, 148), (3, 149),
 (4, 150), (4, 151), (4, 152),
 (5, 153), (5, 154), (5, 155);
 
-INSERT INTO writers (production_id, person_id) VALUES
+insert into writers (production_id, person_id) values
 (1, 121), (1, 122),
 (2, 123), (2, 124),
 (3, 125), (3, 126),
 (4, 127), (4, 128),
 (5, 129), (5, 130);
 
-INSERT INTO directors (production_id, person_id) VALUES
+insert into directors (production_id, person_id) values
 (6, 106), (7, 107), (8, 108), (9, 109), (10, 110),
 (1, 101), (2, 102), (3, 103), (4, 104), (5, 105);
 
-INSERT INTO actors (production_id, person_id) VALUES
+insert into actors (production_id, person_id) values
 (1, 81), (1, 82), (1, 83), (1, 84),
 (2, 85), (2, 86), (2, 87), (2, 88),
 (3, 89), (3, 90), (3, 91), (3, 92),
@@ -279,7 +279,7 @@ INSERT INTO actors (production_id, person_id) VALUES
 (5, 86), (5, 97), (5, 98), (5, 99);
 
 -- User Tablosu
-INSERT INTO users (name, sur_name, nick, email, password, registration_time) VALUES
+insert into users (name, sur_name, nick, email, password, registration_time) values
 ('john_doe', 'Doe', 'john_doe', 'johndoe@example.com', 'hashed_password_1', '2023-11-22'),
 ('jane_smith', 'Smith', 'jane_smith', 'janesmith@example.com', 'hashed_password_2', '2023-12-01'),
 ('alice_johnson', 'Johnson', 'alice_johnson', 'alicejohnson@example.com', 'hashed_password_3', '2023-11-15'),
@@ -311,7 +311,7 @@ INSERT INTO users (name, sur_name, nick, email, password, registration_time) VAL
 ('ella_roy', 'Roy', 'ella_roy', 'ellaroy@example.com', 'hashed_password_29', '2023-09-15'),
 ('grace_walker', 'Walker', 'grace_walker', 'gracewalker@example.com', 'hashed_password_30', '2023-08-25');
 
-INSERT INTO comments (message, user_id, language_id, production_id) VALUES
+insert into comments (message, user_id, language_id, production_id) values
 ('Great show, I loved it!', 1, 1, 1),  -- John Doe, English, Frasier
 ('Exciting movie with great plot!', 2, 1, 2),  -- Jane Smith, English, Teen Wolf: The Movie
 ('A wonderful tribute!', 3, 1, 3),  -- Alice Johnson, English, The Price Is Right
@@ -344,7 +344,7 @@ INSERT INTO comments (message, user_id, language_id, production_id) VALUES
 ('I couldn’t stop watching The Curse!', 30, 1, 10);  -- Grace Walker, English, The Curse
 
 -- Revenue Tablosu
-INSERT INTO revenues (production_id, amount, source) VALUES
+insert into revenues (production_id, amount, source) values
 (1, 500000.00, 'Box Office'),
 (2, 750000.00, 'Streaming'),
 (3, 1000000.00, 'Syndication'),
@@ -366,7 +366,7 @@ INSERT INTO revenues (production_id, amount, source) VALUES
 (19, 350000.00, 'Streaming'),
 (20, 600000.00, 'Box Office');
 
-INSERT INTO imdb_scores (score, votes_count, production_id) VALUES
+insert into imdb_scores (score, votes_count, production_id) values
 (8.5, 150000, 1),  -- Frasier
 (6.9, 80000, 2),  -- Teen Wolf: The Movie
 (7.2, 120000, 3),  -- The Price Is Right: A Tribute to Bob Barker
@@ -389,7 +389,7 @@ INSERT INTO imdb_scores (score, votes_count, production_id) VALUES
 (7.9, 105000, 20);  -- South Park: Joining the Panderverse
 
 
-INSERT INTO jobs (name) VALUES
+insert into jobs (name) values
 ('Producer'),
 ('Editor'),
 ('Cinematographer'),
@@ -412,7 +412,7 @@ INSERT INTO jobs (name) VALUES
 ('Location Manager');
 
 
-INSERT INTO tech_crews (production_id, person_id, role_id) VALUES
+insert into tech_crews (production_id, person_id, job_id) values
 (1, 1, 1),   -- Frasier, Producer: David Lee
 (1, 2, 2),   -- Frasier, Editor: Leslie Jones
 (1, 3, 3),   -- Frasier, Cinematographer: John Smith

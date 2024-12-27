@@ -11,13 +11,13 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class RevenueService {
 
-  private final RevenueRepository repository;
-  private final RevenueMapper mapper;
+    private final RevenueRepository repository;
+    private final RevenueMapper mapper;
 
-  public RevenueDTO save(RevenueDTO revenueDTO) {
-    Revenue revenue = mapper.toEntity(revenueDTO);
-    return mapper.toDTO(repository.save(revenue));
-  }
+    public RevenueDTO save(RevenueDTO revenueDTO) {
+        Revenue revenue = mapper.toEntity(revenueDTO);
+        return mapper.toDTO(repository.save(revenue));
+    }
 }
 
 // todo specification arc resolver //

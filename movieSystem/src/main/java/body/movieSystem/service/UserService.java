@@ -15,31 +15,28 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class UserService {
 
-  private final UserRepository repository;
-  private final UserMapper mapper;
+    private final UserRepository repository;
+    private final UserMapper mapper;
 
-  public List<UserDTO> findAll() {
-    return repository.findAll()
-            .stream()
-            .map(mapper::toDTO)
-            .collect(Collectors.toList());
-  }
-
-  public UserDTO findById(Long id) {
-    return repository.findById(id)
-            .map(mapper::toDTO)
-            .orElseThrow(() -> new EntityNotFoundException("User not found with id: " + id));
-  }
-
-  public UserDTO save(UserDTO userDTO) {
-    User entity = mapper.toEntity(userDTO);
-    return mapper.toDTO(repository.save(entity));
-  }
-
-  public void delete(Long id) {
-    if (!repository.existsById(id)) {
-      throw new EntityNotFoundException("User not found with id: " + id);
+    public List<UserDTO> findAll() {
+        return repository.findAll()
+                .stream()
+                .map(mapper::toDTO)
+                .collect(Collectors.toList());
     }
-    repository.deleteById(id);
-  }
+    public UserDTO findById(Long id) {
+        return repository.findById(id)
+                .map(mapper::toDTO)
+                .orElseThrow(() -> new EntityNotFoundException("User not found with id: " + id));
+    }
+    public UserDTO save(UserDTO userDTO) {
+        User entity = mapper.toEntity(userDTO);
+        return mapper.toDTO(repository.save(entity));
+    }
+    public void delete(Long id) {
+        if (!repository.existsById(id)) {
+            throw new EntityNotFoundException("User not found with id: " + id);
+        }
+        repository.deleteById(id);
+    }
 }

@@ -9,13 +9,13 @@ import java.util.List;
 
 @Mapper
 public interface StarMapper {
-  @Mapping(target = "person", source = "person")
-  StarDTO toDTO(Star star);
+    @Mapping(target = "person", source = "person")
+    StarDTO toDTO(Star star);
 
-  @Mapping(target = "production", ignore = true)
-  Star toEntity(StarDTO starDTO);
+    @Mapping(target = "production", ignore = true)
+    Star toEntity(StarDTO starDTO);
 
-  List<StarDTO> toDTOList(List<Star> stars);
+    List<StarDTO> toDTOList(List<Star> stars);
 
-  List<Star> toEntityList(List<StarDTO> starDTOS);
+    List<Star> toEntityList(List<StarDTO> starDTOS);
 }

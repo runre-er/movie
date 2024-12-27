@@ -1,6 +1,5 @@
 package body.movieSystem.repository;
 
-import body.movieSystem.entity.Actor;
 import body.movieSystem.entity.Star;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;

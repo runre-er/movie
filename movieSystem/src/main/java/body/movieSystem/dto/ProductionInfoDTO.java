@@ -1,8 +1,8 @@
 package body.movieSystem.dto;
 
-import body.movieSystem.entity.*;
-import java.util.List;
 import lombok.*;
+
+import java.util.List;
 
 @Getter
 @Setter
@@ -10,8 +10,8 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ProductionInfoDTO {
-  private Long id;
-  private LanguageDTO language;
-  private GenreDTO genre;
-  private List<ImdbScoreDTO> imdbScores;
+    private Long id;
+    private LanguageDTO language;
+    private GenreDTO genre;
+    private List<ImdbScoreDTO> imdbScores;
 }

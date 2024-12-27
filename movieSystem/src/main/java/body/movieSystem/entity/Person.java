@@ -1,9 +1,10 @@
 package body.movieSystem.entity;
 
 import jakarta.persistence.*;
-import java.time.LocalDate;
 import lombok.Getter;
 import lombok.Setter;
+
+import java.time.LocalDate;
 
 @Getter
 @Setter
@@ -11,17 +12,17 @@ import lombok.Setter;
 @Table(name = "persons")
 public class Person {
 
-  @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-  private String name;
+    private String name;
 
-  private String surname;
+    private String surname;
 
-  @Column(name = "birth_date")
-  private LocalDate birthDate;
+    @Column(name = "birth_date")
+    private LocalDate birthDate;
 
-  @Column(name = "birth_country")
-  private String birthCountry;
+    @Column(name = "birth_country")
+    private String birthCountry;
 }

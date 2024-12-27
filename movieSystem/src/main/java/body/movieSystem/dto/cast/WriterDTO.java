@@ -9,6 +9,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 public class WriterDTO {
-  @NonNullId private Long id;
-  private PersonDTO person;
+    @NonNullId
+    private Long id;
+    private PersonDTO person;
 }

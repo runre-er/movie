@@ -16,32 +16,29 @@ import org.springframework.transaction.annotation.Transactional;
 @RequiredArgsConstructor
 public class ProductionService {
 
-  private final ProductionMapper mapper;
-  private final ProductionRepository repository;
+    private final ProductionMapper mapper;
+    private final ProductionRepository repository;
 
-  public ProductionDTO save(ProductionDTO productionDTO) {
-    Production production = mapper.toEntity(productionDTO);
-    return mapper.toDTO(repository.save(production));
-  }
-
-  public Page<ProductionDTO> findAllPageable(
-      Pageable pageable) { // todo specification arc resolver //
-    return repository.findAll(pageable).map(mapper::toDTO);
-  }
-
-  @Transactional(readOnly = true)
-  public ProductionDTO findById(Long id) {
-    return mapper.toDTO(
-        repository
-            .findById(id)
-            .orElseThrow(() -> new EntityNotFoundException("Production not found with id: " + id)));
-  }
-
-  @Transactional(readOnly = true)
-  public ProductionCrewDTO findCrewById(Long id) {
-    return mapper.toCrewDTO(
-        repository
-            .findById(id)
-            .orElseThrow(() -> new EntityNotFoundException("Production not found with id: " + id)));
-  }
+    public ProductionDTO save(ProductionDTO productionDTO) {
+        Production production = mapper.toEntity(productionDTO);
+        return mapper.toDTO(repository.save(production));
+    }
+    public Page<ProductionDTO> findAllPageable(
+            Pageable pageable) { // todo specification arc resolver //
+        return repository.findAll(pageable).map(mapper::toDTO);
+    }
+    @Transactional(readOnly = true)
+    public ProductionDTO findById(Long id) {
+        return mapper.toDTO(
+                repository
+                        .findById(id)
+                        .orElseThrow(() -> new EntityNotFoundException("Production not found with id: " + id)));
+    }
+    @Transactional(readOnly = true)
+    public ProductionCrewDTO findCrewById(Long id) {
+        return mapper.toCrewDTO(
+                repository
+                        .findById(id)
+                        .orElseThrow(() -> new EntityNotFoundException("Production not found with id: " + id)));
+    }
 }

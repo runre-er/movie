@@ -11,11 +11,11 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class PersonService {
 
-  private final PersonRepository repository;
-  private final PersonMapper mapper;
+    private final PersonRepository repository;
+    private final PersonMapper mapper;
 
-  public PersonDTO save(PersonDTO personDTO) {
-    Person person = mapper.toEntity(personDTO);
-    return mapper.toDTO(repository.save(person));
-  }
+    public PersonDTO save(PersonDTO personDTO) {
+        Person person = mapper.toEntity(personDTO);
+        return mapper.toDTO(repository.save(person));
+    }
 }

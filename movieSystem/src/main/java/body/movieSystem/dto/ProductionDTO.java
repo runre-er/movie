@@ -1,11 +1,8 @@
 package body.movieSystem.dto;
 
-import body.movieSystem.dto.cast.ActorDTO;
-import body.movieSystem.entity.*;
-import java.time.LocalDate;
-import java.util.List;
-
 import lombok.*;
+
+import java.time.LocalDate;
 
 @Getter
 @Setter
@@ -13,11 +10,11 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ProductionDTO {
-  private Long id;
-  private String title;
-  private String originalTitle;
-  private LocalDate releaseDate;
-  private int playTime;
+    private Long id;
+    private String title;
+    private String originalTitle;
+    private LocalDate releaseDate;
+    private int playTime;
 
-  //private List<ActorDTO> actors;
+    //private List<ActorDTO> actors;
 }

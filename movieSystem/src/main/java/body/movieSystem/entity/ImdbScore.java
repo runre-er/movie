@@ -10,15 +10,15 @@ import lombok.Setter;
 @Table(name = "imdb_scores")
 public class ImdbScore {
 
-  @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-  private Double score;
+    private Double score;
 
-  @Column(name = "votes_count")
-  private Long votesCount;
+    @Column(name = "votes_count")
+    private Long votesCount;
 
-  @Column(name = "production_id")
-  private Long productionId;
+    @Column(name = "production_id")
+    private Long productionId;
 }

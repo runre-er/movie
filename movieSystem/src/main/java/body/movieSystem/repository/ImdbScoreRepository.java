@@ -7,4 +7,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ImdbScoreRepository
-    extends JpaRepository<ImdbScore, Long>, JpaSpecificationExecutor<ImdbScore> {}
+        extends JpaRepository<ImdbScore, Long>, JpaSpecificationExecutor<ImdbScore> {
+}

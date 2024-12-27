@@ -7,4 +7,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface GenreRepository
-    extends JpaRepository<Genre, Long>, JpaSpecificationExecutor<Genre> {}
+        extends JpaRepository<Genre, Long>, JpaSpecificationExecutor<Genre> {
+}

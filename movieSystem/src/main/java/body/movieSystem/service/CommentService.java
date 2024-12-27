@@ -15,31 +15,28 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class CommentService {
 
-  private final CommentRepository repository;
-  private final CommentMapper mapper;
+    private final CommentRepository repository;
+    private final CommentMapper mapper;
 
-  public List<CommentDTO> findAll() {
-    return repository.findAll()
-            .stream()
-            .map(mapper::toDTO)
-            .collect(Collectors.toList());
-  }
-
-  public CommentDTO findById(Long id) {
-    return repository.findById(id)
-            .map(mapper::toDTO)
-            .orElseThrow(() -> new EntityNotFoundException("Comment not found with id: " + id));
-  }
-
-  public CommentDTO save(CommentDTO commentDTO) {
-    Comment entity = mapper.toEntity(commentDTO);
-    return mapper.toDTO(repository.save(entity));
-  }
-
-  public void delete(Long id) {
-    if (!repository.existsById(id)) {
-      throw new EntityNotFoundException("Comment not found with id: " + id);
+    public List<CommentDTO> findAll() {
+        return repository.findAll()
+                .stream()
+                .map(mapper::toDTO)
+                .collect(Collectors.toList());
     }
-    repository.deleteById(id);
-  }
+    public CommentDTO findById(Long id) {
+        return repository.findById(id)
+                .map(mapper::toDTO)
+                .orElseThrow(() -> new EntityNotFoundException("Comment not found with id: " + id));
+    }
+    public CommentDTO save(CommentDTO commentDTO) {
+        Comment entity = mapper.toEntity(commentDTO);
+        return mapper.toDTO(repository.save(entity));
+    }
+    public void delete(Long id) {
+        if (!repository.existsById(id)) {
+            throw new EntityNotFoundException("Comment not found with id: " + id);
+        }
+        repository.deleteById(id);
+    }
 }

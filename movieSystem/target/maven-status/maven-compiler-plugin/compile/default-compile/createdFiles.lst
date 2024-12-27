@@ -41,6 +41,7 @@ body\movieSystem\dto\cast\PersonDTO.class
 body\movieSystem\dto\LanguageDTO$LanguageDTOBuilder.class
 body\movieSystem\dto\ProductionInfoDTO$ProductionInfoDTOBuilder.class
 body\movieSystem\dto\validation\validator\NonNullIdValidator.class
+body\movieSystem\controller\TechCrewController.class
 body\movieSystem\dto\CountryDTO.class
 body\movieSystem\mapper\UserMapper.class
 body\movieSystem\controller\GenreController.class

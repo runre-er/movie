@@ -10,19 +10,19 @@ import lombok.Setter;
 @Table(name = "comments")
 public class Comment {
 
-  @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-  @Column(length = 1000)
-  private String message;
+    @Column(length = 1000)
+    private String message;
 
-  @Column(name = "user_id")
-  private Long userId;
+    @Column(name = "user_id")
+    private Long userId;
 
-  @Column(name = "language_id")
-  private Long languageId;
+    @Column(name = "language_id")
+    private Long languageId;
 
-  @Column(name = "production_id")
-  private Long productionId;
+    @Column(name = "production_id")
+    private Long productionId;
 }

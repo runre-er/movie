@@ -11,9 +11,12 @@ import java.util.List;
 public interface WriterMapper {
     @Mapping(target = "person", source = "person")
     WriterDTO toDTO(Writer writer);
+
     @Mapping(target = "production", ignore = true)
     Writer toEntity(WriterDTO writerDTO);
+
     List<WriterDTO> toDTOList(List<Writer> writers);
+
     List<Writer> toEntityList(List<WriterDTO> writerDTOS);
 
 }

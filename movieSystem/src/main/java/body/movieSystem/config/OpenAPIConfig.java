@@ -8,9 +8,10 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 @OpenAPIDefinition(
-    info =
+        info =
         @Info(
-            contact = @Contact(name = "Ernur Kaya", email = "ernurkaya9b@gmail.com"),
-            description = "OpenApi documentation"),
-    servers = {@Server(description = "Local ENV", url = "http://localhost:8080")})
-public class OpenAPIConfig {}
+                contact = @Contact(name = "Ernur Kaya", email = "ernurkaya9b@gmail.com"),
+                description = "OpenApi documentation"),
+        servers = {@Server(description = "Local ENV", url = "http://localhost:8080")})
+public class OpenAPIConfig {
+}

@@ -9,6 +9,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 public class StarDTO {
-  @NonNullId private Long id;
-  private PersonDTO person;
+    @NonNullId
+    private Long id;
+    private PersonDTO person;
 }

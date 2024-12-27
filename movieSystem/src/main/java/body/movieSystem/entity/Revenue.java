@@ -10,14 +10,14 @@ import lombok.Setter;
 @Table(name = "revenues")
 public class Revenue {
 
-  @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-  @Column(name = "production_id")
-  private Long productionId;
+    @Column(name = "production_id")
+    private Long productionId;
 
-  private Double amount;
+    private Double amount;
 
-  private String source;
+    private String source;
 }

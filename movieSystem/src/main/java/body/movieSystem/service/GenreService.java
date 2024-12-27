@@ -15,31 +15,28 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class GenreService {
 
-  private final GenreRepository repository;
-  private final GenreMapper mapper;
+    private final GenreRepository repository;
+    private final GenreMapper mapper;
 
-  public List<GenreDTO> findAll() {
-    return repository.findAll()
-            .stream()
-            .map(mapper::toDTO)
-            .collect(Collectors.toList());
-  }
-
-  public GenreDTO findById(Long id) {
-    return repository.findById(id)
-            .map(mapper::toDTO)
-            .orElseThrow(() -> new EntityNotFoundException("Genre not found with id: " + id));
-  }
-
-  public GenreDTO save(GenreDTO genreDTO) {
-    Genre entity = mapper.toEntity(genreDTO);
-    return mapper.toDTO(repository.save(entity));
-  }
-
-  public void delete(Long id) {
-    if (!repository.existsById(id)) {
-      throw new EntityNotFoundException("Genre not found with id: " + id);
+    public List<GenreDTO> findAll() {
+        return repository.findAll()
+                .stream()
+                .map(mapper::toDTO)
+                .collect(Collectors.toList());
     }
-    repository.deleteById(id);
-  }
+    public GenreDTO findById(Long id) {
+        return repository.findById(id)
+                .map(mapper::toDTO)
+                .orElseThrow(() -> new EntityNotFoundException("Genre not found with id: " + id));
+    }
+    public GenreDTO save(GenreDTO genreDTO) {
+        Genre entity = mapper.toEntity(genreDTO);
+        return mapper.toDTO(repository.save(entity));
+    }
+    public void delete(Long id) {
+        if (!repository.existsById(id)) {
+            throw new EntityNotFoundException("Genre not found with id: " + id);
+        }
+        repository.deleteById(id);
+    }
 }
