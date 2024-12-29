@@ -1,6 +1,7 @@
 package body.movieSystem.service;
 
-import body.movieSystem.dto.ImdbScoreDTO;
+import body.movieSystem.dto.general.ImdbScoreDTO;
+import body.movieSystem.dto.response.ImdbScoreResponseDTO;
 import body.movieSystem.entity.ImdbScore;
 import body.movieSystem.mapper.ImdbScoreMapper;
 import body.movieSystem.repository.ImdbScoreRepository;
@@ -9,7 +10,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -18,15 +18,12 @@ public class ImdbScoreService {
     private final ImdbScoreRepository repository;
     private final ImdbScoreMapper mapper;
 
-    public List<ImdbScoreDTO> findAll() {
-        return repository.findAll()
-                .stream()
-                .map(mapper::toDTO)
-                .collect(Collectors.toList());
+    public List<ImdbScoreResponseDTO> findAll() {
+        return mapper.toResponseDTOList(repository.findAll());
     }
-    public ImdbScoreDTO findById(Long id) {
+    public ImdbScoreResponseDTO findById(Long id) {
         return repository.findById(id)
-                .map(mapper::toDTO)
+                .map(mapper::toResponseDTO)
                 .orElseThrow(() -> new EntityNotFoundException("ImdbScore not found with id: " + id));
     }
     public ImdbScoreDTO save(ImdbScoreDTO imdbScoreDTO) {

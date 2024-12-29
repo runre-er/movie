@@ -1,6 +1,7 @@
 package body.movieSystem.service;
 
-import body.movieSystem.dto.cast.DirectorDTO;
+import body.movieSystem.dto.general.DirectorDTO;
+import body.movieSystem.dto.response.DirectorResponseDTO;
 import body.movieSystem.entity.Director;
 import body.movieSystem.mapper.DirectorMapper;
 import body.movieSystem.repository.DirectorRepository;
@@ -9,7 +10,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -18,17 +18,16 @@ public class DirectorService {
     private final DirectorRepository repository;
     private final DirectorMapper mapper;
 
-    public List<DirectorDTO> findByProductionId(Long id) {
-        return
-                repository.findByProductionId(id).stream().map(mapper::toDTO).collect(Collectors.toList());
+    public List<DirectorResponseDTO> findByProductionId(Long id) {
+        return mapper.toResponseDTOList(repository.findByProductionId(id));
     }
-    public List<DirectorDTO> findAll() {
-        return repository.findAll().stream().map(mapper::toDTO).collect(Collectors.toList());
+    public List<DirectorResponseDTO> findAll() {
+        return mapper.toResponseDTOList(repository.findAll());
     }
-    public DirectorDTO findById(Long id) {
+    public DirectorResponseDTO findById(Long id) {
         return repository
                 .findById(id)
-                .map(mapper::toDTO)
+                .map(mapper::toResponseDTO)
                 .orElseThrow(() -> new EntityNotFoundException("Director not found with id: " + id));
     }
     public DirectorDTO save(DirectorDTO directorDTO) {

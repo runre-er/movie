@@ -1,4 +1,4 @@
-package body.movieSystem.dto;
+package body.movieSystem.dto.response;
 
 import lombok.*;
 
@@ -7,9 +7,9 @@ import lombok.*;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class RevenueDTO {
+public class ImdbScoreResponseDTO {
     private Long id;
+    private Double score;
+    private Long votesCount;
     private Long productionId;
-    private Double amount;
-    private String source;
 }

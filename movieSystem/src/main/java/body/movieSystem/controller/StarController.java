@@ -1,6 +1,7 @@
 package body.movieSystem.controller;
 
-import body.movieSystem.dto.cast.StarDTO;
+import body.movieSystem.dto.general.StarDTO;
+import body.movieSystem.dto.response.StarResponseDTO;
 import body.movieSystem.service.StarService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -16,11 +17,11 @@ public class StarController {
     private final StarService service;
 
     @GetMapping
-    public ResponseEntity<List<StarDTO>> findAll() {
+    public ResponseEntity<List<StarResponseDTO>> findAll() {
         return ResponseEntity.ok(service.findAll());
     }
     @GetMapping("/{id}")
-    public ResponseEntity<StarDTO> findById(@PathVariable Long id) {
+    public ResponseEntity<StarResponseDTO> findById(@PathVariable Long id) {
         return ResponseEntity.ok(service.findById(id));
     }
     @PostMapping
@@ -33,7 +34,7 @@ public class StarController {
         return ResponseEntity.noContent().build();
     }
     @GetMapping("/{id}/production")
-    public ResponseEntity<List<StarDTO>> findByProductionId(@PathVariable Long id) {
+    public ResponseEntity<List<StarResponseDTO>> findByProductionId(@PathVariable Long id) {
 
         return ResponseEntity.ok(service.findByProductionId(id));
     }

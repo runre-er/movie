@@ -1,6 +1,7 @@
 package body.movieSystem.mapper;
 
-import body.movieSystem.dto.cast.PersonDTO;
+import body.movieSystem.dto.general.PersonDTO;
+import body.movieSystem.dto.response.PersonResponseDTO;
 import body.movieSystem.entity.Person;
 import java.util.ArrayList;
 import java.util.List;
@@ -9,7 +10,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-12-26T21:51:06+0300",
+    date = "2024-12-29T21:34:36+0300",
     comments = "version: 1.6.3, compiler: javac, environment: Java 21.0.1 (Oracle Corporation)"
 )
 @Component
@@ -30,6 +31,22 @@ public class PersonMapperImpl implements PersonMapper {
         personDTO.birthCountry( person.getBirthCountry() );
 
         return personDTO.build();
+    }
+
+    @Override
+    public PersonResponseDTO toResponseDTO(Person person) {
+        if ( person == null ) {
+            return null;
+        }
+
+        PersonResponseDTO.PersonResponseDTOBuilder personResponseDTO = PersonResponseDTO.builder();
+
+        personResponseDTO.id( person.getId() );
+        personResponseDTO.name( person.getName() );
+        personResponseDTO.surname( person.getSurname() );
+        personResponseDTO.birthDate( person.getBirthDate() );
+
+        return personResponseDTO.build();
     }
 
     @Override
@@ -58,6 +75,20 @@ public class PersonMapperImpl implements PersonMapper {
         List<PersonDTO> list = new ArrayList<PersonDTO>( persons.size() );
         for ( Person person : persons ) {
             list.add( toDTO( person ) );
+        }
+
+        return list;
+    }
+
+    @Override
+    public List<PersonResponseDTO> toResponseDTOList(List<Person> persons) {
+        if ( persons == null ) {
+            return null;
+        }
+
+        List<PersonResponseDTO> list = new ArrayList<PersonResponseDTO>( persons.size() );
+        for ( Person person : persons ) {
+            list.add( toResponseDTO( person ) );
         }
 
         return list;

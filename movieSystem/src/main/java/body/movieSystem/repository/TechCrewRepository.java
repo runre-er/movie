@@ -12,6 +12,6 @@ import java.util.List;
 @Repository
 public interface TechCrewRepository
         extends JpaRepository<TechCrew, Long>, JpaSpecificationExecutor<TechCrew> {
-    @Query("SELECT t FROM TechCrew t JOIN FETCH t.person JOIN FETCH t.production WHERE t.production.id = :id")
+    @Query("SELECT t FROM TechCrew t JOIN FETCH t.person WHERE t.production.id = :id")
     List<TechCrew> findByProductionId(@Param("id") Long id);
 }

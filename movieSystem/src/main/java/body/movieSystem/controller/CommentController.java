@@ -1,6 +1,7 @@
 package body.movieSystem.controller;
 
-import body.movieSystem.dto.CommentDTO;
+import body.movieSystem.dto.general.CommentDTO;
+import body.movieSystem.dto.response.CommentResponseDTO;
 import body.movieSystem.service.CommentService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -16,11 +17,11 @@ public class CommentController {
     private final CommentService service;
 
     @GetMapping
-    public ResponseEntity<List<CommentDTO>> findAll() {
+    public ResponseEntity<List<CommentResponseDTO>> findAll() {
         return ResponseEntity.ok(service.findAll());
     }
     @GetMapping("/{id}")
-    public ResponseEntity<CommentDTO> findById(@PathVariable Long id) {
+    public ResponseEntity<CommentResponseDTO> findById(@PathVariable Long id) {
         return ResponseEntity.ok(service.findById(id));
     }
     @PostMapping
@@ -31,5 +32,13 @@ public class CommentController {
     public ResponseEntity<Void> delete(@PathVariable Long id) {
         service.delete(id);
         return ResponseEntity.noContent().build();
+    }
+    @GetMapping("/{id}/production")
+    public ResponseEntity<List<CommentResponseDTO>> findByProductionId(@PathVariable Long id) {
+        return ResponseEntity.ok(service.findByProductionId(id));
+    }
+    @GetMapping("/{id}/user")
+    public ResponseEntity<List<CommentResponseDTO>> findByUserId(@PathVariable Long id) {
+        return ResponseEntity.ok(service.findByUserId(id));
     }
 }

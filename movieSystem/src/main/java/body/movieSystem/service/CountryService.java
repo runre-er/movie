@@ -1,6 +1,6 @@
 package body.movieSystem.service;
 
-import body.movieSystem.dto.CountryDTO;
+import body.movieSystem.dto.general.CountryDTO;
 import body.movieSystem.entity.Country;
 import body.movieSystem.mapper.CountryMapper;
 import body.movieSystem.repository.CountryRepository;
@@ -9,7 +9,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -19,10 +18,7 @@ public class CountryService {
     private final CountryMapper mapper;
 
     public List<CountryDTO> findAll() {
-        return repository.findAll()
-                .stream()
-                .map(mapper::toDTO)
-                .collect(Collectors.toList());
+        return mapper.toDTOList(repository.findAll());
     }
     public CountryDTO findById(Long id) {
         return repository.findById(id)

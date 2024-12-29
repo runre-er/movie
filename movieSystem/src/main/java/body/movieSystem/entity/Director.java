@@ -18,7 +18,7 @@ public class Director {
     @JoinColumn(name = "production_id")
     private Production production;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "person_id")
     private Person person;
 }

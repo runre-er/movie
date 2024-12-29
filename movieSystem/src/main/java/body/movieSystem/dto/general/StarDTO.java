@@ -1,4 +1,4 @@
-package body.movieSystem.dto;
+package body.movieSystem.dto.general;
 
 import body.movieSystem.dto.validation.annotation.NonNullId;
 import lombok.*;
@@ -8,11 +8,11 @@ import lombok.*;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class ImdbScoreDTO {
+public class StarDTO {
     @NonNullId
     private Long id;
-    private Double score;
-    private Long votesCount;
     @NonNullId
-    private Long productionId;
+    private Long production_id;
+    @NonNullId
+    private Long person_id;
 }

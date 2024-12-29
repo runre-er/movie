@@ -1,4 +1,4 @@
-package body.movieSystem.dto;
+package body.movieSystem.dto.general;
 
 import body.movieSystem.dto.validation.annotation.NonNullId;
 import lombok.*;
@@ -8,8 +8,11 @@ import lombok.*;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class LanguageDTO {
+public class TechCrewDTO {
     @NonNullId
     private Long id;
-    private String name;
+    @NonNullId
+    private Long person_id;
+    @NonNullId
+    private Long job_id;
 }

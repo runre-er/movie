@@ -1,6 +1,6 @@
 package body.movieSystem.controller;
 
-import body.movieSystem.dto.LanguageDTO;
+import body.movieSystem.dto.general.LanguageDTO;
 import body.movieSystem.service.LanguageService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

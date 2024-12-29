@@ -11,6 +11,6 @@ import java.util.List;
 
 @Repository
 public interface StarRepository extends JpaRepository<Star, Long>, JpaSpecificationExecutor<Star> {
-    @Query("SELECT s FROM Star s JOIN FETCH s.person JOIN FETCH s.production WHERE s.production.id = :id")
+    @Query("SELECT s FROM Star s JOIN FETCH s.person WHERE s.production.id = :id")
     List<Star> findByProductionId(@Param("id") Long id);
 }

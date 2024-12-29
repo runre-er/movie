@@ -1,6 +1,6 @@
 package body.movieSystem.mapper;
 
-import body.movieSystem.dto.CountryDTO;
+import body.movieSystem.dto.general.CountryDTO;
 import body.movieSystem.entity.Country;
 import org.mapstruct.Mapper;
 

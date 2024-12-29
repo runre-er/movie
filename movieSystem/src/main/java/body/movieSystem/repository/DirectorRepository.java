@@ -13,6 +13,6 @@ import java.util.List;
 public interface DirectorRepository
         extends JpaRepository<Director, Long>, JpaSpecificationExecutor<Director> {
 
-    @Query("SELECT d FROM Director d JOIN FETCH d.person JOIN FETCH d.production WHERE d.production.id = :id")
+    @Query("SELECT d FROM Director d JOIN FETCH d.person WHERE d.production.id = :id")
     List<Director> findByProductionId(@Param("id") Long id);
 }

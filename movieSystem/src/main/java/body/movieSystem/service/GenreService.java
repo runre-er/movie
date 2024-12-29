@@ -1,6 +1,6 @@
 package body.movieSystem.service;
 
-import body.movieSystem.dto.GenreDTO;
+import body.movieSystem.dto.general.GenreDTO;
 import body.movieSystem.entity.Genre;
 import body.movieSystem.mapper.GenreMapper;
 import body.movieSystem.repository.GenreRepository;
@@ -9,7 +9,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -19,10 +18,7 @@ public class GenreService {
     private final GenreMapper mapper;
 
     public List<GenreDTO> findAll() {
-        return repository.findAll()
-                .stream()
-                .map(mapper::toDTO)
-                .collect(Collectors.toList());
+        return mapper.toDTOList(repository.findAll());
     }
     public GenreDTO findById(Long id) {
         return repository.findById(id)

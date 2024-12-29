@@ -22,7 +22,7 @@ public class TechCrew {
     @JoinColumn(name = "person_id")
     private Person person;  // todo person lıstelerı olabılır
 
-    @ManyToOne(fetch = FetchType.EAGER) // todo dene bı yapmıcak bu
+    @ManyToOne(fetch = FetchType.LAZY) // todo dene bı yapmıcak bu
     @JoinColumn(name = "job_id", nullable = false)
     private Job job;
 }

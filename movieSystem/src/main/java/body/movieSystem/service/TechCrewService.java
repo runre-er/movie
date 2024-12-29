@@ -1,6 +1,7 @@
 package body.movieSystem.service;
 
-import body.movieSystem.dto.cast.TechCrewDTO;
+import body.movieSystem.dto.general.TechCrewDTO;
+import body.movieSystem.dto.response.TechCrewResponseDTO;
 import body.movieSystem.entity.TechCrew;
 import body.movieSystem.mapper.TechCrewMapper;
 import body.movieSystem.repository.TechCrewRepository;
@@ -9,7 +10,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -18,19 +18,16 @@ public class TechCrewService {
     private final TechCrewRepository repository;
     private final TechCrewMapper mapper;
 
-    public List<TechCrewDTO> findByProductionId(Long id) {
-        return
-                repository.findByProductionId(id).stream().map(mapper::toDTO).collect(Collectors.toList());
+    public List<TechCrewResponseDTO> findByProductionId(Long id) {
+        return mapper.toResponseDTOList(repository.findByProductionId(id));
     }
-    public List<TechCrewDTO> findAll() {
-        return repository.findAll().stream()
-                .map(mapper::toDTO)
-                .collect(Collectors.toList());
+    public List<TechCrewResponseDTO> findAll() {
+        return mapper.toResponseDTOList(repository.findAll());
     }
-    public TechCrewDTO findById(Long id) {
+    public TechCrewResponseDTO findById(Long id) {
         return repository
                 .findById(id)
-                .map(mapper::toDTO)
+                .map(mapper::toResponseDTO)
                 .orElseThrow(() -> new EntityNotFoundException("Actor not found with id: " + id));
     }
     public TechCrewDTO save(TechCrewDTO techCrewDTO) {

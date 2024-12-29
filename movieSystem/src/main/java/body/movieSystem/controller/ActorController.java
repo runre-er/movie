@@ -1,6 +1,7 @@
 package body.movieSystem.controller;
 
-import body.movieSystem.dto.cast.ActorDTO;
+import body.movieSystem.dto.general.ActorDTO;
+import body.movieSystem.dto.response.ActorResponseDTO;
 import body.movieSystem.service.ActorService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -16,11 +17,11 @@ public class ActorController {
     private final ActorService service;
 
     @GetMapping
-    public ResponseEntity<List<ActorDTO>> findAll() {
+    public ResponseEntity<List<ActorResponseDTO>> findAll() {
         return ResponseEntity.ok(service.findAll());
     }
     @GetMapping("/{id}")
-    public ResponseEntity<ActorDTO> findById(@PathVariable Long id) {
+    public ResponseEntity<ActorResponseDTO> findById(@PathVariable Long id) {
         return ResponseEntity.ok(service.findById(id));
     }
     @PostMapping
@@ -33,7 +34,7 @@ public class ActorController {
         return ResponseEntity.noContent().build();
     }
     @GetMapping("/{id}/production")
-    public ResponseEntity<List<ActorDTO>> findByProductionId(@PathVariable Long id) {
+    public ResponseEntity<List<ActorResponseDTO>> findByProductionId(@PathVariable Long id) {
         return ResponseEntity.ok(service.findByProductionId(id));
     }
 }

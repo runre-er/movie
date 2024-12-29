@@ -1,6 +1,6 @@
 package body.movieSystem.mapper;
 
-import body.movieSystem.dto.GenreDTO;
+import body.movieSystem.dto.general.GenreDTO;
 import body.movieSystem.entity.Genre;
 import org.mapstruct.Mapper;
 

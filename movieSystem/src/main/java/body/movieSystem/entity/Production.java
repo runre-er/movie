@@ -29,15 +29,15 @@ public class Production {
     @Column(name = "play_time")
     private int playTime;
 
-    @ManyToOne(fetch = FetchType.EAGER) // todo dene bı yapmıcak bu
+    @ManyToOne(fetch = FetchType.LAZY) // todo dene bı yapmıcak bu
     @JoinColumn(name = "language_id", nullable = false)
     private Language language;
 
-    @ManyToOne(fetch = FetchType.EAGER) // todo dene bı yapmıcak bu
+    @ManyToOne(fetch = FetchType.LAZY) // todo dene bı yapmıcak bu
     @JoinColumn(name = "genre_id", nullable = false)
     private Genre genre;
 
-    @ManyToOne(fetch = FetchType.EAGER) // todo dene bı yapmıcak bu
+    @ManyToOne(fetch = FetchType.LAZY) // todo dene bı yapmıcak bu
     @JoinColumn(name = "country_id", nullable = false)
     private Country country;
 
@@ -49,8 +49,7 @@ public class Production {
     @JoinColumn(name = "production_id", insertable = false, updatable = false)
     private List<ImdbScore> imdbScores;
 
-    @OneToMany(cascade = CascadeType.REMOVE) // todo dene bı yapmıcak bu
-    @JoinColumn(name = "production_id", insertable = false, updatable = false)
+    @OneToMany(mappedBy = "production")
     private List<Comment> comments;
 
     @OneToMany(mappedBy = "production", fetch = FetchType.LAZY)

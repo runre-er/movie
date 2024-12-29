@@ -1,12 +1,14 @@
 package body.movieSystem.mapper;
 
-import body.movieSystem.dto.ProductionCrewDTO;
-import body.movieSystem.dto.ProductionDTO;
-import body.movieSystem.dto.cast.ActorDTO;
-import body.movieSystem.dto.cast.DirectorDTO;
-import body.movieSystem.dto.cast.PersonDTO;
-import body.movieSystem.dto.cast.StarDTO;
-import body.movieSystem.dto.cast.WriterDTO;
+import body.movieSystem.dto.general.PersonDTO;
+import body.movieSystem.dto.general.ProductionDTO;
+import body.movieSystem.dto.response.ActorResponseDTO;
+import body.movieSystem.dto.response.DirectorResponseDTO;
+import body.movieSystem.dto.response.PersonResponseDTO;
+import body.movieSystem.dto.response.ProductionCrewDTO;
+import body.movieSystem.dto.response.ProductionResponseDTO;
+import body.movieSystem.dto.response.StarResponseDTO;
+import body.movieSystem.dto.response.WriterResponseDTO;
 import body.movieSystem.entity.Actor;
 import body.movieSystem.entity.Director;
 import body.movieSystem.entity.Person;
@@ -14,15 +16,13 @@ import body.movieSystem.entity.Production;
 import body.movieSystem.entity.Star;
 import body.movieSystem.entity.Writer;
 import java.util.ArrayList;
-import java.util.LinkedHashSet;
 import java.util.List;
-import java.util.Set;
 import javax.annotation.processing.Generated;
 import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-12-26T21:51:06+0300",
+    date = "2024-12-29T21:34:36+0300",
     comments = "version: 1.6.3, compiler: javac, environment: Java 21.0.1 (Oracle Corporation)"
 )
 @Component
@@ -46,6 +46,23 @@ public class ProductionMapperImpl implements ProductionMapper {
     }
 
     @Override
+    public ProductionResponseDTO toResponseDTO(Production production) {
+        if ( production == null ) {
+            return null;
+        }
+
+        ProductionResponseDTO.ProductionResponseDTOBuilder productionResponseDTO = ProductionResponseDTO.builder();
+
+        productionResponseDTO.id( production.getId() );
+        productionResponseDTO.title( production.getTitle() );
+        productionResponseDTO.originalTitle( production.getOriginalTitle() );
+        productionResponseDTO.releaseDate( production.getReleaseDate() );
+        productionResponseDTO.playTime( production.getPlayTime() );
+
+        return productionResponseDTO.build();
+    }
+
+    @Override
     public Production toEntity(ProductionDTO productionDTO) {
         if ( productionDTO == null ) {
             return null;
@@ -63,31 +80,31 @@ public class ProductionMapperImpl implements ProductionMapper {
     }
 
     @Override
-    public Set<ProductionDTO> toDTOSet(Set<Production> productions) {
-        if ( productions == null ) {
+    public List<ProductionDTO> toDTOList(List<ProductionDTO> productionDTO) {
+        if ( productionDTO == null ) {
             return null;
         }
 
-        Set<ProductionDTO> set = new LinkedHashSet<ProductionDTO>( Math.max( (int) ( productions.size() / .75f ) + 1, 16 ) );
-        for ( Production production : productions ) {
-            set.add( toDTO( production ) );
+        List<ProductionDTO> list = new ArrayList<ProductionDTO>( productionDTO.size() );
+        for ( ProductionDTO productionDTO1 : productionDTO ) {
+            list.add( productionDTO1 );
         }
 
-        return set;
+        return list;
     }
 
     @Override
-    public Set<Production> toEntitySet(Set<ProductionDTO> productionDTOS) {
-        if ( productionDTOS == null ) {
+    public List<ProductionResponseDTO> toResponseDTOList(List<ProductionDTO> productionDTO) {
+        if ( productionDTO == null ) {
             return null;
         }
 
-        Set<Production> set = new LinkedHashSet<Production>( Math.max( (int) ( productionDTOS.size() / .75f ) + 1, 16 ) );
-        for ( ProductionDTO productionDTO : productionDTOS ) {
-            set.add( toEntity( productionDTO ) );
+        List<ProductionResponseDTO> list = new ArrayList<ProductionResponseDTO>( productionDTO.size() );
+        for ( ProductionDTO productionDTO1 : productionDTO ) {
+            list.add( toResponseDTO( toEntity( productionDTO1 ) ) );
         }
 
-        return set;
+        return list;
     }
 
     @Override
@@ -98,10 +115,10 @@ public class ProductionMapperImpl implements ProductionMapper {
 
         ProductionCrewDTO.ProductionCrewDTOBuilder productionCrewDTO = ProductionCrewDTO.builder();
 
-        productionCrewDTO.actors( actorListToActorDTOList( production.getActors() ) );
-        productionCrewDTO.writers( writerListToWriterDTOList( production.getWriters() ) );
-        productionCrewDTO.directors( directorListToDirectorDTOList( production.getDirectors() ) );
-        productionCrewDTO.stars( starListToStarDTOList( production.getStars() ) );
+        productionCrewDTO.actors( actorListToActorResponseDTOList( production.getActors() ) );
+        productionCrewDTO.writers( writerListToWriterResponseDTOList( production.getWriters() ) );
+        productionCrewDTO.directors( directorListToDirectorResponseDTOList( production.getDirectors() ) );
+        productionCrewDTO.stars( starListToStarResponseDTOList( production.getStars() ) );
 
         return productionCrewDTO.build();
     }
@@ -122,105 +139,120 @@ public class ProductionMapperImpl implements ProductionMapper {
         return personDTO.build();
     }
 
-    protected ActorDTO actorToActorDTO(Actor actor) {
+    protected ActorResponseDTO actorToActorResponseDTO(Actor actor) {
         if ( actor == null ) {
             return null;
         }
 
-        ActorDTO.ActorDTOBuilder actorDTO = ActorDTO.builder();
+        ActorResponseDTO.ActorResponseDTOBuilder actorResponseDTO = ActorResponseDTO.builder();
 
-        actorDTO.id( actor.getId() );
-        actorDTO.person( personToPersonDTO( actor.getPerson() ) );
+        actorResponseDTO.id( actor.getId() );
+        actorResponseDTO.person( personToPersonDTO( actor.getPerson() ) );
 
-        return actorDTO.build();
+        return actorResponseDTO.build();
     }
 
-    protected List<ActorDTO> actorListToActorDTOList(List<Actor> list) {
+    protected List<ActorResponseDTO> actorListToActorResponseDTOList(List<Actor> list) {
         if ( list == null ) {
             return null;
         }
 
-        List<ActorDTO> list1 = new ArrayList<ActorDTO>( list.size() );
+        List<ActorResponseDTO> list1 = new ArrayList<ActorResponseDTO>( list.size() );
         for ( Actor actor : list ) {
-            list1.add( actorToActorDTO( actor ) );
+            list1.add( actorToActorResponseDTO( actor ) );
         }
 
         return list1;
     }
 
-    protected WriterDTO writerToWriterDTO(Writer writer) {
+    protected PersonResponseDTO personToPersonResponseDTO(Person person) {
+        if ( person == null ) {
+            return null;
+        }
+
+        PersonResponseDTO.PersonResponseDTOBuilder personResponseDTO = PersonResponseDTO.builder();
+
+        personResponseDTO.id( person.getId() );
+        personResponseDTO.name( person.getName() );
+        personResponseDTO.surname( person.getSurname() );
+        personResponseDTO.birthDate( person.getBirthDate() );
+
+        return personResponseDTO.build();
+    }
+
+    protected WriterResponseDTO writerToWriterResponseDTO(Writer writer) {
         if ( writer == null ) {
             return null;
         }
 
-        WriterDTO.WriterDTOBuilder writerDTO = WriterDTO.builder();
+        WriterResponseDTO.WriterResponseDTOBuilder writerResponseDTO = WriterResponseDTO.builder();
 
-        writerDTO.id( writer.getId() );
-        writerDTO.person( personToPersonDTO( writer.getPerson() ) );
+        writerResponseDTO.id( writer.getId() );
+        writerResponseDTO.person( personToPersonResponseDTO( writer.getPerson() ) );
 
-        return writerDTO.build();
+        return writerResponseDTO.build();
     }
 
-    protected List<WriterDTO> writerListToWriterDTOList(List<Writer> list) {
+    protected List<WriterResponseDTO> writerListToWriterResponseDTOList(List<Writer> list) {
         if ( list == null ) {
             return null;
         }
 
-        List<WriterDTO> list1 = new ArrayList<WriterDTO>( list.size() );
+        List<WriterResponseDTO> list1 = new ArrayList<WriterResponseDTO>( list.size() );
         for ( Writer writer : list ) {
-            list1.add( writerToWriterDTO( writer ) );
+            list1.add( writerToWriterResponseDTO( writer ) );
         }
 
         return list1;
     }
 
-    protected DirectorDTO directorToDirectorDTO(Director director) {
+    protected DirectorResponseDTO directorToDirectorResponseDTO(Director director) {
         if ( director == null ) {
             return null;
         }
 
-        DirectorDTO.DirectorDTOBuilder directorDTO = DirectorDTO.builder();
+        DirectorResponseDTO.DirectorResponseDTOBuilder directorResponseDTO = DirectorResponseDTO.builder();
 
-        directorDTO.id( director.getId() );
-        directorDTO.person( personToPersonDTO( director.getPerson() ) );
+        directorResponseDTO.id( director.getId() );
+        directorResponseDTO.person( personToPersonResponseDTO( director.getPerson() ) );
 
-        return directorDTO.build();
+        return directorResponseDTO.build();
     }
 
-    protected List<DirectorDTO> directorListToDirectorDTOList(List<Director> list) {
+    protected List<DirectorResponseDTO> directorListToDirectorResponseDTOList(List<Director> list) {
         if ( list == null ) {
             return null;
         }
 
-        List<DirectorDTO> list1 = new ArrayList<DirectorDTO>( list.size() );
+        List<DirectorResponseDTO> list1 = new ArrayList<DirectorResponseDTO>( list.size() );
         for ( Director director : list ) {
-            list1.add( directorToDirectorDTO( director ) );
+            list1.add( directorToDirectorResponseDTO( director ) );
         }
 
         return list1;
     }
 
-    protected StarDTO starToStarDTO(Star star) {
+    protected StarResponseDTO starToStarResponseDTO(Star star) {
         if ( star == null ) {
             return null;
         }
 
-        StarDTO.StarDTOBuilder starDTO = StarDTO.builder();
+        StarResponseDTO.StarResponseDTOBuilder starResponseDTO = StarResponseDTO.builder();
 
-        starDTO.id( star.getId() );
-        starDTO.person( personToPersonDTO( star.getPerson() ) );
+        starResponseDTO.id( star.getId() );
+        starResponseDTO.person( personToPersonResponseDTO( star.getPerson() ) );
 
-        return starDTO.build();
+        return starResponseDTO.build();
     }
 
-    protected List<StarDTO> starListToStarDTOList(List<Star> list) {
+    protected List<StarResponseDTO> starListToStarResponseDTOList(List<Star> list) {
         if ( list == null ) {
             return null;
         }
 
-        List<StarDTO> list1 = new ArrayList<StarDTO>( list.size() );
+        List<StarResponseDTO> list1 = new ArrayList<StarResponseDTO>( list.size() );
         for ( Star star : list ) {
-            list1.add( starToStarDTO( star ) );
+            list1.add( starToStarResponseDTO( star ) );
         }
 
         return list1;

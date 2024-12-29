@@ -1,6 +1,7 @@
 package body.movieSystem.service;
 
-import body.movieSystem.dto.CommentDTO;
+import body.movieSystem.dto.general.CommentDTO;
+import body.movieSystem.dto.response.CommentResponseDTO;
 import body.movieSystem.entity.Comment;
 import body.movieSystem.mapper.CommentMapper;
 import body.movieSystem.repository.CommentRepository;
@@ -9,7 +10,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -18,15 +18,18 @@ public class CommentService {
     private final CommentRepository repository;
     private final CommentMapper mapper;
 
-    public List<CommentDTO> findAll() {
-        return repository.findAll()
-                .stream()
-                .map(mapper::toDTO)
-                .collect(Collectors.toList());
+    public List<CommentResponseDTO> findByProductionId(Long id) {
+        return mapper.toResponseDTOList(repository.findByProductionId(id));
     }
-    public CommentDTO findById(Long id) {
+    public List<CommentResponseDTO> findByUserId(Long id) {
+        return mapper.toResponseDTOList(repository.findByUserId(id));
+    }
+    public List<CommentResponseDTO> findAll() {
+        return mapper.toResponseDTOList(repository.findAll());
+    }
+    public CommentResponseDTO findById(Long id) {
         return repository.findById(id)
-                .map(mapper::toDTO)
+                .map(mapper::toResponseDTO)
                 .orElseThrow(() -> new EntityNotFoundException("Comment not found with id: " + id));
     }
     public CommentDTO save(CommentDTO commentDTO) {

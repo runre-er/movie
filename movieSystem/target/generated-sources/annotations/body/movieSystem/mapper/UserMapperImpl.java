@@ -1,6 +1,7 @@
 package body.movieSystem.mapper;
 
-import body.movieSystem.dto.UserDTO;
+import body.movieSystem.dto.general.UserDTO;
+import body.movieSystem.dto.response.UserResponseDTO;
 import body.movieSystem.entity.User;
 import java.util.ArrayList;
 import java.util.List;
@@ -9,7 +10,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-12-26T21:51:06+0300",
+    date = "2024-12-29T21:34:36+0300",
     comments = "version: 1.6.3, compiler: javac, environment: Java 21.0.1 (Oracle Corporation)"
 )
 @Component
@@ -31,6 +32,20 @@ public class UserMapperImpl implements UserMapper {
         userDTO.registrationTime( user.getRegistrationTime() );
 
         return userDTO.build();
+    }
+
+    @Override
+    public UserResponseDTO toResponseDTO(User user) {
+        if ( user == null ) {
+            return null;
+        }
+
+        UserResponseDTO.UserResponseDTOBuilder userResponseDTO = UserResponseDTO.builder();
+
+        userResponseDTO.id( user.getId() );
+        userResponseDTO.nick( user.getNick() );
+
+        return userResponseDTO.build();
     }
 
     @Override
@@ -60,6 +75,20 @@ public class UserMapperImpl implements UserMapper {
         List<UserDTO> list = new ArrayList<UserDTO>( users.size() );
         for ( User user : users ) {
             list.add( toDTO( user ) );
+        }
+
+        return list;
+    }
+
+    @Override
+    public List<UserResponseDTO> toResponseDTOList(List<User> users) {
+        if ( users == null ) {
+            return null;
+        }
+
+        List<UserResponseDTO> list = new ArrayList<UserResponseDTO>( users.size() );
+        for ( User user : users ) {
+            list.add( toResponseDTO( user ) );
         }
 
         return list;

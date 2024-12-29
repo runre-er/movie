@@ -1,6 +1,6 @@
 package body.movieSystem.mapper;
 
-import body.movieSystem.dto.cast.JobDTO;
+import body.movieSystem.dto.general.JobDTO;
 import body.movieSystem.entity.Job;
 import org.mapstruct.Mapper;
 
@@ -14,5 +14,5 @@ public interface JobMapper {
 
     List<JobDTO> toDTOList(List<Job> jobs);
 
-    List<Job> toEntityList(List<JobDTO> jobDTOS);
+    List<Job> toEntityList(List<JobDTO> jobDTO);
 }

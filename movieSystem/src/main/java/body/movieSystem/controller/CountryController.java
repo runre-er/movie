@@ -1,6 +1,6 @@
 package body.movieSystem.controller;
 
-import body.movieSystem.dto.CountryDTO;
+import body.movieSystem.dto.general.CountryDTO;
 import body.movieSystem.service.CountryService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

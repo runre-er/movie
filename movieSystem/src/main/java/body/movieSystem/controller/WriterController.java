@@ -1,6 +1,7 @@
 package body.movieSystem.controller;
 
-import body.movieSystem.dto.cast.WriterDTO;
+import body.movieSystem.dto.general.WriterDTO;
+import body.movieSystem.dto.response.WriterResponseDTO;
 import body.movieSystem.service.WriterService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -16,11 +17,11 @@ public class WriterController {
     private final WriterService service;
 
     @GetMapping
-    public ResponseEntity<List<WriterDTO>> findAll() {
+    public ResponseEntity<List<WriterResponseDTO>> findAll() {
         return ResponseEntity.ok(service.findAll());
     }
     @GetMapping("/{id}")
-    public ResponseEntity<WriterDTO> findById(@PathVariable Long id) {
+    public ResponseEntity<WriterResponseDTO> findById(@PathVariable Long id) {
         return ResponseEntity.ok(service.findById(id));
     }
     @PostMapping
@@ -33,7 +34,7 @@ public class WriterController {
         return ResponseEntity.noContent().build();
     }
     @GetMapping("/{id}/production")
-    public ResponseEntity<List<WriterDTO>> findByProductionId(@PathVariable Long id) {
+    public ResponseEntity<List<WriterResponseDTO>> findByProductionId(@PathVariable Long id) {
         return ResponseEntity.ok(service.findByProductionId(id));
     }
 }

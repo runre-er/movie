@@ -1,4 +1,4 @@
-package body.movieSystem.dto.cast;
+package body.movieSystem.dto.general;
 
 import body.movieSystem.dto.validation.annotation.NonNullId;
 import lombok.*;
@@ -8,8 +8,11 @@ import lombok.*;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class ActorDTO {
+public class WriterDTO {
     @NonNullId
     private Long id;
-    private PersonDTO person;
+    @NonNullId
+    private Long production_id;
+    @NonNullId
+    private Long person_id;
 }

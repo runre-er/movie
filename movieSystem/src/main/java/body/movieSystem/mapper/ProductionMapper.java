@@ -1,17 +1,23 @@
 package body.movieSystem.mapper;
 
-import body.movieSystem.dto.ProductionCrewDTO;
-import body.movieSystem.dto.ProductionDTO;
+import body.movieSystem.dto.general.ProductionDTO;
+import body.movieSystem.dto.response.ProductionCrewDTO;
+import body.movieSystem.dto.response.ProductionResponseDTO;
 import body.movieSystem.entity.Production;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
-import java.util.Set;
+import java.util.List;
 
 @Mapper
 public interface ProductionMapper {
 
+    @Mapping(target = "language_id", ignore = true)
+    @Mapping(target = "genre_id", ignore = true)
+    @Mapping(target = "country_id", ignore = true)
     ProductionDTO toDTO(Production production);
+
+    ProductionResponseDTO toResponseDTO(Production production);
 
     @Mapping(target = "writers", ignore = true)
     @Mapping(target = "stars", ignore = true)
@@ -25,9 +31,9 @@ public interface ProductionMapper {
     @Mapping(target = "actors", ignore = true)
     Production toEntity(ProductionDTO productionDTO);
 
-    Set<ProductionDTO> toDTOSet(Set<Production> productions);
+    List<ProductionDTO> toDTOList(List<ProductionDTO> productionDTO);
 
-    Set<Production> toEntitySet(Set<ProductionDTO> productionDTOS);
+    List<ProductionResponseDTO> toResponseDTOList(List<ProductionDTO> productionDTO);
 
     ProductionCrewDTO toCrewDTO(Production production);
 }

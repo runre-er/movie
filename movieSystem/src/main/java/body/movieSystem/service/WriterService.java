@@ -1,6 +1,7 @@
 package body.movieSystem.service;
 
-import body.movieSystem.dto.cast.WriterDTO;
+import body.movieSystem.dto.general.WriterDTO;
+import body.movieSystem.dto.response.WriterResponseDTO;
 import body.movieSystem.entity.Writer;
 import body.movieSystem.mapper.WriterMapper;
 import body.movieSystem.repository.WriterRepository;
@@ -9,7 +10,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -18,19 +18,15 @@ public class WriterService {
     private final WriterRepository repository;
     private final WriterMapper mapper;
 
-    public List<WriterDTO> findByProductionId(Long id) {
-        return
-                repository.findByProductionId(id).stream().map(mapper::toDTO).collect(Collectors.toList());
+    public List<WriterResponseDTO> findByProductionId(Long id) {
+        return mapper.toResponseDTOList(repository.findByProductionId(id));
     }
-    public List<WriterDTO> findAll() {
-        return repository.findAll()
-                .stream()
-                .map(mapper::toDTO)
-                .collect(Collectors.toList());
+    public List<WriterResponseDTO> findAll() {
+        return mapper.toResponseDTOList(repository.findAll());
     }
-    public WriterDTO findById(Long id) {
+    public WriterResponseDTO findById(Long id) {
         return repository.findById(id)
-                .map(mapper::toDTO)
+                .map(mapper::toResponseDTO)
                 .orElseThrow(() -> new EntityNotFoundException("Writer not found with id: " + id));
     }
     public WriterDTO save(WriterDTO writerDTO) {

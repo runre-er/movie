@@ -17,12 +17,11 @@ public class Comment {
     @Column(length = 1000)
     private String message;
 
-    @Column(name = "user_id")
-    private Long userId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
+    private User user;
 
-    @Column(name = "language_id")
-    private Long languageId;
-
-    @Column(name = "production_id")
-    private Long productionId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "production_id")
+    private Production production;
 }

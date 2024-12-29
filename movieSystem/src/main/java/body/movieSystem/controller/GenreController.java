@@ -1,6 +1,6 @@
 package body.movieSystem.controller;
 
-import body.movieSystem.dto.GenreDTO;
+import body.movieSystem.dto.general.GenreDTO;
 import body.movieSystem.service.GenreService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

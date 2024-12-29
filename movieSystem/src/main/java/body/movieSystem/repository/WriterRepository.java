@@ -12,6 +12,6 @@ import java.util.List;
 @Repository
 public interface WriterRepository
         extends JpaRepository<Writer, Long>, JpaSpecificationExecutor<Writer> {
-    @Query("SELECT w FROM Writer w JOIN FETCH w.person JOIN FETCH w.production WHERE w.production.id = :id")
+    @Query("SELECT w FROM Writer w JOIN FETCH w.person WHERE w.production.id = :id")
     List<Writer> findByProductionId(@Param("id") Long id);
 }

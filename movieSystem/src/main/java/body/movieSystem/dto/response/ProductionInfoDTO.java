@@ -1,5 +1,7 @@
-package body.movieSystem.dto;
+package body.movieSystem.dto.response;
 
+import body.movieSystem.dto.general.GenreDTO;
+import body.movieSystem.dto.general.LanguageDTO;
 import lombok.*;
 
 import java.util.List;
@@ -13,5 +15,5 @@ public class ProductionInfoDTO {
     private Long id;
     private LanguageDTO language;
     private GenreDTO genre;
-    private List<ImdbScoreDTO> imdbScores;
+    private List<ImdbScoreResponseDTO> imdbScores;
 }

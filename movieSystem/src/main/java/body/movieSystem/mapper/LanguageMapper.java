@@ -1,6 +1,6 @@
 package body.movieSystem.mapper;
 
-import body.movieSystem.dto.LanguageDTO;
+import body.movieSystem.dto.general.LanguageDTO;
 import body.movieSystem.entity.Language;
 import org.mapstruct.Mapper;
 

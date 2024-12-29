@@ -1,6 +1,7 @@
 package body.movieSystem.controller;
 
-import body.movieSystem.dto.cast.TechCrewDTO;
+import body.movieSystem.dto.general.TechCrewDTO;
+import body.movieSystem.dto.response.TechCrewResponseDTO;
 import body.movieSystem.service.TechCrewService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -10,17 +11,17 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api/techCrews")
+@RequestMapping("/api/tech-crews")
 public class TechCrewController {
 
     private final TechCrewService service;
 
     @GetMapping
-    public ResponseEntity<List<TechCrewDTO>> findAll() {
+    public ResponseEntity<List<TechCrewResponseDTO>> findAll() {
         return ResponseEntity.ok(service.findAll());
     }
     @GetMapping("/{id}")
-    public ResponseEntity<TechCrewDTO> findById(@PathVariable Long id) {
+    public ResponseEntity<TechCrewResponseDTO> findById(@PathVariable Long id) {
         return ResponseEntity.ok(service.findById(id));
     }
     @PostMapping
@@ -33,7 +34,7 @@ public class TechCrewController {
         return ResponseEntity.noContent().build();
     }
     @GetMapping("/{id}/production")
-    public ResponseEntity<List<TechCrewDTO>> findByProductionId(@PathVariable Long id) {
+    public ResponseEntity<List<TechCrewResponseDTO>> findByProductionId(@PathVariable Long id) {
         return ResponseEntity.ok(service.findByProductionId(id));
     }
 }

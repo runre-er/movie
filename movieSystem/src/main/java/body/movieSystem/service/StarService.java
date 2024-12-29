@@ -1,6 +1,7 @@
 package body.movieSystem.service;
 
-import body.movieSystem.dto.cast.StarDTO;
+import body.movieSystem.dto.general.StarDTO;
+import body.movieSystem.dto.response.StarResponseDTO;
 import body.movieSystem.entity.Star;
 import body.movieSystem.mapper.StarMapper;
 import body.movieSystem.repository.StarRepository;
@@ -9,7 +10,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -18,19 +18,15 @@ public class StarService {
     private final StarRepository repository;
     private final StarMapper mapper;
 
-    public List<StarDTO> findByProductionId(Long id) {
-        return
-                repository.findByProductionId(id).stream().map(mapper::toDTO).collect(Collectors.toList());
+    public List<StarResponseDTO> findByProductionId(Long id) {
+        return mapper.toResponseDTOList(repository.findByProductionId(id));
     }
-    public List<StarDTO> findAll() {
-        return repository.findAll()
-                .stream()
-                .map(mapper::toDTO)
-                .collect(Collectors.toList());
+    public List<StarResponseDTO> findAll() {
+        return mapper.toResponseDTOList(repository.findAll());
     }
-    public StarDTO findById(Long id) {
+    public StarResponseDTO findById(Long id) {
         return repository.findById(id)
-                .map(mapper::toDTO)
+                .map(mapper::toResponseDTO)
                 .orElseThrow(() -> new EntityNotFoundException("Star not found with id: " + id));
     }
     public StarDTO save(StarDTO starDTO) {

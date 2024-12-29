@@ -311,37 +311,37 @@ insert into users (name, sur_name, nick, email, password, registration_time) val
 ('ella_roy', 'Roy', 'ella_roy', 'ellaroy@example.com', 'hashed_password_29', '2023-09-15'),
 ('grace_walker', 'Walker', 'grace_walker', 'gracewalker@example.com', 'hashed_password_30', '2023-08-25');
 
-insert into comments (message, user_id, language_id, production_id) values
-('Great show, I loved it!', 1, 1, 1),  -- John Doe, English, Frasier
-('Exciting movie with great plot!', 2, 1, 2),  -- Jane Smith, English, Teen Wolf: The Movie
-('A wonderful tribute!', 3, 1, 3),  -- Alice Johnson, English, The Price Is Right
-('Nostalgic and fun!', 4, 1, 4),  -- Michael Brown, English, Mighty Morphin Power Rangers
-('Pamela’s story is so touching!', 5, 1, 5),  -- Susan White, English, Pamela, A Love Story
-('Zoey’s adventure was amazing!', 6, 1, 6),  -- David Wilson, English, Zoey 102
-('Scavengers Reign is intriguing!', 7, 1, 7),  -- Emma Jones, English, Scavengers Reign
-('Unicorn Academy is magical!', 8, 1, 8),  -- Jacob Miller, English, Unicorn Academy
-('Beacon 23 is thrilling!', 9, 1, 9),  -- Olivia Davis, English, Beacon 23
-('The Curse was unexpected!', 10, 1, 10),  -- Daniel Martin, English, The Curse
-('Goosebumps gave me chills!', 11, 1, 11),  -- Mary Garcia, English, Goosebumps
-('Blue Eye Samurai is breathtaking!', 12, 1, 12),  -- Ethan Rodriquez, English, Blue Eye Samurai
-('Captain Laserhawk had great action!', 13, 1, 13),  -- Lucas Lopez, English, Captain Laserhawk
-('Percy Jackson is magical!', 14, 1, 14),  -- Mia Taylor, English, Percy Jackson
-('King Charles is regal!', 15, 1, 15),  -- Benjamin Lee, English, King Charles
-('Monarch is a monster hit!', 16, 1, 16),  -- Chloe Harris, English, Monarch
-('The Heroic Quest was a great adventure!', 17, 1, 17),  -- Nathan Clark, English, The Heroic Quest
-('Office Race is hilarious!', 18, 1, 18),  -- Isabella Wright, English, Office Race
-('Lego Jurassic Park was entertaining!', 19, 1, 19),  -- Joseph Scott, English, Lego Jurassic Park
-('South Park was wild!', 20, 1, 20),  -- Michael Adams, English, South Park
-('The plot of Frasier is amazing!', 21, 1, 1),  -- Charlotte Martinez, English, Frasier
-('The movie was incredible!', 22, 1, 2),  -- William Hernandez, English, Teen Wolf: The Movie
-('Amazing special effects in this one!', 23, 1, 3),  -- Hannah Young, English, The Price Is Right
-('Power Rangers will always be my favorite!', 24, 1, 4),  -- James King, English, Mighty Morphin Power Rangers
-('Pamela’s life is so inspiring!', 25, 1, 5),  -- Sophia Russell, English, Pamela, A Love Story
-('Zoey’s journey is incredible!', 26, 1, 6),  -- Liam Green, English, Zoey 102
-('Scavengers Reign is a masterpiece!', 27, 1, 7),  -- Avery Hall, English, Scavengers Reign
-('Unicorn Academy is full of charm!', 28, 1, 8),  -- Mason Lee, English, Unicorn Academy
-('Beacon 23 kept me on the edge of my seat!', 29, 1, 9),  -- Ella Roy, English, Beacon 23
-('I couldn’t stop watching The Curse!', 30, 1, 10);  -- Grace Walker, English, The Curse
+insert into comments (message, user_id, production_id) values
+('Great show, I loved it!', 1, 1),  -- John Doe, English, Frasier
+('Exciting movie with great plot!', 2, 2),  -- Jane Smith, English, Teen Wolf: The Movie
+('A wonderful tribute!', 3,  3),  -- Alice Johnson, English, The Price Is Right
+('Nostalgic and fun!', 4,  4),  -- Michael Brown, English, Mighty Morphin Power Rangers
+('Pamela’s story is so touching!', 5,  5),  -- Susan White, English, Pamela, A Love Story
+('Zoey’s adventure was amazing!', 6,  6),  -- David Wilson, English, Zoey 102
+('Scavengers Reign is intriguing!', 7,  7),  -- Emma Jones, English, Scavengers Reign
+('Unicorn Academy is magical!', 8,  8),  -- Jacob Miller, English, Unicorn Academy
+('Beacon 23 is thrilling!', 9,  9),  -- Olivia Davis, English, Beacon 23
+('The Curse was unexpected!', 10,  10),  -- Daniel Martin, English, The Curse
+('Goosebumps gave me chills!', 11,  11),  -- Mary Garcia, English, Goosebumps
+('Blue Eye Samurai is breathtaking!', 12, 12),  -- Ethan Rodriquez, English, Blue Eye Samurai
+('Captain Laserhawk had great action!', 13,  13),  -- Lucas Lopez, English, Captain Laserhawk
+('Percy Jackson is magical!', 14, 14),  -- Mia Taylor, English, Percy Jackson
+('King Charles is regal!', 15,  15),  -- Benjamin Lee, English, King Charles
+('Monarch is a monster hit!', 16,  16),  -- Chloe Harris, English, Monarch
+('The Heroic Quest was a great adventure!', 17,  17),  -- Nathan Clark, English, The Heroic Quest
+('Office Race is hilarious!', 18,  18),  -- Isabella Wright, English, Office Race
+('Lego Jurassic Park was entertaining!', 19,  19),  -- Joseph Scott, English, Lego Jurassic Park
+('South Park was wild!', 20,  20),  -- Michael Adams, English, South Park
+('The plot of Frasier is amazing!', 21,  1),  -- Charlotte Martinez, English, Frasier
+('The movie was incredible!', 22,  2),  -- William Hernandez, English, Teen Wolf: The Movie
+('Amazing special effects in this one!', 23,  3),  -- Hannah Young, English, The Price Is Right
+('Power Rangers will always be my favorite!', 24, 4),  -- James King, English, Mighty Morphin Power Rangers
+('Pamela’s life is so inspiring!', 25,  5),  -- Sophia Russell, English, Pamela, A Love Story
+('Zoey’s journey is incredible!', 26,  6),  -- Liam Green, English, Zoey 102
+('Scavengers Reign is a masterpiece!', 27,  7),  -- Avery Hall, English, Scavengers Reign
+('Unicorn Academy is full of charm!', 28,  8),  -- Mason Lee, English, Unicorn Academy
+('Beacon 23 kept me on the edge of my seat!', 29,  9),  -- Ella Roy, English, Beacon 23
+('I couldn’t stop watching The Curse!', 30,  10);  -- Grace Walker, English, The Curse
 
 -- Revenue Tablosu
 insert into revenues (production_id, amount, source) values

@@ -37,7 +37,6 @@ public class User {
     @Column(name = "registration_time", columnDefinition = "TIMESTAMP", nullable = false)
     private LocalDate registrationTime;
 
-    @OneToMany(cascade = CascadeType.REMOVE) // todo dene bı yapmıcak bu
-    @JoinColumn(name = "user_id", insertable = false, updatable = false)
+    @OneToMany(mappedBy = "user")
     private List<Comment> comments;
 }

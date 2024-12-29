@@ -1,6 +1,7 @@
-package body.movieSystem.dto;
+package body.movieSystem.dto.general;
 
 import body.movieSystem.dto.validation.annotation.NonNullId;
+import jakarta.validation.constraints.NotBlank;
 import lombok.*;
 
 @Getter
@@ -8,8 +9,9 @@ import lombok.*;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class CountryDTO {
+public class GenreDTO {
     @NonNullId
     private Long id;
+    @NotBlank
     private String name;
 }
