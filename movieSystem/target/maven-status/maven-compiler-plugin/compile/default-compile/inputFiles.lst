@@ -37,6 +37,7 @@ C:\Users\ernur\Desktop\project\imdb-db\movie\movieSystem\src\main\java\body\movi
 C:\Users\ernur\Desktop\project\imdb-db\movie\movieSystem\src\main\java\body\movieSystem\dto\response\CommentResponseDTO.java
 C:\Users\ernur\Desktop\project\imdb-db\movie\movieSystem\src\main\java\body\movieSystem\repository\PersonRepository.java
 C:\Users\ernur\Desktop\project\imdb-db\movie\movieSystem\src\main\java\body\movieSystem\dto\validation\validator\NonNullIdValidator.java
+C:\Users\ernur\Desktop\project\imdb-db\movie\movieSystem\src\main\java\body\movieSystem\spec\ProductionSpec.java
 C:\Users\ernur\Desktop\project\imdb-db\movie\movieSystem\src\main\java\body\movieSystem\controller\ImdbScoreController.java
 C:\Users\ernur\Desktop\project\imdb-db\movie\movieSystem\src\main\java\body\movieSystem\controller\PersonController.java
 C:\Users\ernur\Desktop\project\imdb-db\movie\movieSystem\src\main\java\body\movieSystem\dto\response\PersonResponseDTO.java
@@ -73,6 +74,7 @@ C:\Users\ernur\Desktop\project\imdb-db\movie\movieSystem\src\main\java\body\movi
 C:\Users\ernur\Desktop\project\imdb-db\movie\movieSystem\src\main\java\body\movieSystem\dto\response\ImdbScoreResponseDTO.java
 C:\Users\ernur\Desktop\project\imdb-db\movie\movieSystem\src\main\java\body\movieSystem\dto\response\ActorResponseDTO.java
 C:\Users\ernur\Desktop\project\imdb-db\movie\movieSystem\src\main\java\body\movieSystem\controller\ActorController.java
+C:\Users\ernur\Desktop\project\imdb-db\movie\movieSystem\src\main\java\body\movieSystem\config\SpecificationConfig.java
 C:\Users\ernur\Desktop\project\imdb-db\movie\movieSystem\src\main\java\body\movieSystem\controller\GenreController.java
 C:\Users\ernur\Desktop\project\imdb-db\movie\movieSystem\src\main\java\body\movieSystem\controller\LanguageController.java
 C:\Users\ernur\Desktop\project\imdb-db\movie\movieSystem\src\main\java\body\movieSystem\repository\JobRepository.java

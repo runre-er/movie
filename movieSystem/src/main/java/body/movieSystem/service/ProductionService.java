@@ -10,6 +10,7 @@ import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -19,9 +20,11 @@ public class ProductionService {
     private final ProductionMapper mapper;
     private final ProductionRepository repository;
 
-    public Page<ProductionResponseDTO> findAllPageable(
-            Pageable pageable) { // todo specification arc resolver //
+    public Page<ProductionResponseDTO> findAll(Pageable pageable) { // todo specification arc resolver //
         return repository.findAll(pageable).map(mapper::toResponseDTO);
+    }
+    public Page<ProductionResponseDTO> filter(Specification<Production> spec, Pageable pageable) {
+        return repository.findAll(spec, pageable).map(mapper::toResponseDTO);
     }
     public ProductionResponseDTO findById(Long id) {
         return mapper.toResponseDTO(

@@ -12,6 +12,7 @@ body\movieSystem\controller\UserController.class
 body\movieSystem\repository\JobRepository.class
 body\movieSystem\service\JobService.class
 body\movieSystem\mapper\LanguageMapperImpl.class
+body\movieSystem\spec\ProductionSpec.class
 body\movieSystem\mapper\CountryMapper.class
 body\movieSystem\service\GenreService.class
 body\movieSystem\entity\Genre.class
@@ -67,6 +68,7 @@ body\movieSystem\dto\response\TechCrewResponseDTO.class
 body\movieSystem\mapper\WriterMapperImpl.class
 body\movieSystem\dto\response\WriterResponseDTO.class
 body\movieSystem\repository\WriterRepository.class
+body\movieSystem\config\SpecificationConfig.class
 body\movieSystem\mapper\TechCrewMapperImpl.class
 body\movieSystem\service\ActorService.class
 body\movieSystem\controller\PersonController.class
