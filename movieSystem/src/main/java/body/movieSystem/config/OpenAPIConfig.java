@@ -9,7 +9,8 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @OpenAPIDefinition(
         info =
-        @Info(
+        @Info(title = "Movie System API",
+                version = "1.0.0",
                 contact = @Contact(name = "Ernur Kaya", email = "ernurkaya9b@gmail.com"),
                 description = "OpenApi documentation"),
         servers = {@Server(description = "Local ENV", url = "http://localhost:8080")})
