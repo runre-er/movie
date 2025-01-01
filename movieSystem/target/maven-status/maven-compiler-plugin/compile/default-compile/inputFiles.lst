@@ -2,6 +2,7 @@ C:\Users\ernur\Desktop\project\imdb-db\movie\movieSystem\src\main\java\body\movi
 C:\Users\ernur\Desktop\project\imdb-db\movie\movieSystem\src\main\java\body\movieSystem\service\RevenueService.java
 C:\Users\ernur\Desktop\project\imdb-db\movie\movieSystem\src\main\java\body\movieSystem\repository\ProductionRepository.java
 C:\Users\ernur\Desktop\project\imdb-db\movie\movieSystem\src\main\java\body\movieSystem\controller\RevenueController.java
+C:\Users\ernur\Desktop\project\imdb-db\movie\movieSystem\src\main\java\body\movieSystem\spec\TechCrewSpec.java
 C:\Users\ernur\Desktop\project\imdb-db\movie\movieSystem\src\main\java\body\movieSystem\entity\Country.java
 C:\Users\ernur\Desktop\project\imdb-db\movie\movieSystem\src\main\java\body\movieSystem\dto\general\ProductionDTO.java
 C:\Users\ernur\Desktop\project\imdb-db\movie\movieSystem\src\main\java\body\movieSystem\dto\general\RevenueDTO.java
@@ -11,6 +12,8 @@ C:\Users\ernur\Desktop\project\imdb-db\movie\movieSystem\src\main\java\body\movi
 C:\Users\ernur\Desktop\project\imdb-db\movie\movieSystem\src\main\java\body\movieSystem\mapper\JobMapper.java
 C:\Users\ernur\Desktop\project\imdb-db\movie\movieSystem\src\main\java\body\movieSystem\service\ActorService.java
 C:\Users\ernur\Desktop\project\imdb-db\movie\movieSystem\src\main\java\body\movieSystem\mapper\LanguageMapper.java
+C:\Users\ernur\Desktop\project\imdb-db\movie\movieSystem\src\main\java\body\movieSystem\spec\CommentSpec.java
+C:\Users\ernur\Desktop\project\imdb-db\movie\movieSystem\src\main\java\body\movieSystem\spec\StarSpec.java
 C:\Users\ernur\Desktop\project\imdb-db\movie\movieSystem\src\main\java\body\movieSystem\service\StarService.java
 C:\Users\ernur\Desktop\project\imdb-db\movie\movieSystem\src\main\java\body\movieSystem\entity\User.java
 C:\Users\ernur\Desktop\project\imdb-db\movie\movieSystem\src\main\java\body\movieSystem\mapper\PersonMapper.java
@@ -33,7 +36,9 @@ C:\Users\ernur\Desktop\project\imdb-db\movie\movieSystem\src\main\java\body\movi
 C:\Users\ernur\Desktop\project\imdb-db\movie\movieSystem\src\main\java\body\movieSystem\controller\DirectorController.java
 C:\Users\ernur\Desktop\project\imdb-db\movie\movieSystem\src\main\java\body\movieSystem\mapper\GenreMapper.java
 C:\Users\ernur\Desktop\project\imdb-db\movie\movieSystem\src\main\java\body\movieSystem\controller\ProductionController.java
+C:\Users\ernur\Desktop\project\imdb-db\movie\movieSystem\src\main\java\body\movieSystem\spec\ImdbScoreSpec.java
 C:\Users\ernur\Desktop\project\imdb-db\movie\movieSystem\src\main\java\body\movieSystem\entity\Star.java
+C:\Users\ernur\Desktop\project\imdb-db\movie\movieSystem\src\main\java\body\movieSystem\spec\DirectorSpec.java
 C:\Users\ernur\Desktop\project\imdb-db\movie\movieSystem\src\main\java\body\movieSystem\dto\response\CommentResponseDTO.java
 C:\Users\ernur\Desktop\project\imdb-db\movie\movieSystem\src\main\java\body\movieSystem\repository\PersonRepository.java
 C:\Users\ernur\Desktop\project\imdb-db\movie\movieSystem\src\main\java\body\movieSystem\dto\validation\validator\NonNullIdValidator.java
@@ -85,6 +90,7 @@ C:\Users\ernur\Desktop\project\imdb-db\movie\movieSystem\src\main\java\body\movi
 C:\Users\ernur\Desktop\project\imdb-db\movie\movieSystem\src\main\java\body\movieSystem\entity\Language.java
 C:\Users\ernur\Desktop\project\imdb-db\movie\movieSystem\src\main\java\body\movieSystem\service\DirectorService.java
 C:\Users\ernur\Desktop\project\imdb-db\movie\movieSystem\src\main\java\body\movieSystem\service\GenreService.java
+C:\Users\ernur\Desktop\project\imdb-db\movie\movieSystem\src\main\java\body\movieSystem\spec\UserSpec.java
 C:\Users\ernur\Desktop\project\imdb-db\movie\movieSystem\src\main\java\body\movieSystem\repository\GenreRepository.java
 C:\Users\ernur\Desktop\project\imdb-db\movie\movieSystem\src\main\java\body\movieSystem\repository\ActorRepository.java
 C:\Users\ernur\Desktop\project\imdb-db\movie\movieSystem\src\main\java\body\movieSystem\service\ImdbScoreService.java
@@ -101,6 +107,8 @@ C:\Users\ernur\Desktop\project\imdb-db\movie\movieSystem\src\main\java\body\movi
 C:\Users\ernur\Desktop\project\imdb-db\movie\movieSystem\src\main\java\body\movieSystem\entity\TechCrew.java
 C:\Users\ernur\Desktop\project\imdb-db\movie\movieSystem\src\main\java\body\movieSystem\dto\response\ProductionResponseDTO.java
 C:\Users\ernur\Desktop\project\imdb-db\movie\movieSystem\src\main\java\body\movieSystem\repository\ImdbScoreRepository.java
+C:\Users\ernur\Desktop\project\imdb-db\movie\movieSystem\src\main\java\body\movieSystem\spec\ActorSpec.java
+C:\Users\ernur\Desktop\project\imdb-db\movie\movieSystem\src\main\java\body\movieSystem\spec\WriterSpec.java
 C:\Users\ernur\Desktop\project\imdb-db\movie\movieSystem\src\main\java\body\movieSystem\service\TechCrewService.java
 C:\Users\ernur\Desktop\project\imdb-db\movie\movieSystem\src\main\java\body\movieSystem\controller\UserController.java
 C:\Users\ernur\Desktop\project\imdb-db\movie\movieSystem\src\main\java\body\movieSystem\dto\general\LanguageDTO.java

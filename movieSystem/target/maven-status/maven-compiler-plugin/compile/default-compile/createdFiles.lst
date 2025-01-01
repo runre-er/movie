@@ -4,12 +4,14 @@ body\movieSystem\mapper\PersonMapperImpl.class
 body\movieSystem\dto\response\RevenueResponseDTO$RevenueResponseDTOBuilder.class
 body\movieSystem\mapper\UserMapperImpl.class
 body\movieSystem\repository\ActorRepository.class
+body\movieSystem\spec\StarSpec.class
 body\movieSystem\mapper\TechCrewMapper.class
 body\movieSystem\dto\response\ActorResponseDTO.class
 body\movieSystem\mapper\ActorMapper.class
 body\movieSystem\service\ProductionService.class
 body\movieSystem\controller\UserController.class
 body\movieSystem\repository\JobRepository.class
+body\movieSystem\spec\CommentSpec.class
 body\movieSystem\service\JobService.class
 body\movieSystem\mapper\LanguageMapperImpl.class
 body\movieSystem\spec\ProductionSpec.class
@@ -21,14 +23,17 @@ body\movieSystem\mapper\WriterMapper.class
 body\movieSystem\dto\response\ProductionInfoDTO.class
 body\movieSystem\entity\Job.class
 body\movieSystem\entity\Revenue.class
+body\movieSystem\spec\ActorSpec.class
 body\movieSystem\dto\response\ImdbScoreResponseDTO.class
 body\movieSystem\dto\general\DirectorDTO.class
 body\movieSystem\mapper\ProductionMapperImpl.class
 body\movieSystem\dto\general\ImdbScoreDTO$ImdbScoreDTOBuilder.class
 body\movieSystem\mapper\ProductionMapper.class
+body\movieSystem\spec\UserSpec.class
 body\movieSystem\controller\CountryController.class
 body\movieSystem\dto\general\UserDTO$UserDTOBuilder.class
 body\movieSystem\service\DirectorService.class
+body\movieSystem\spec\DirectorSpec.class
 body\movieSystem\mapper\JobMapperImpl.class
 body\movieSystem\entity\Writer.class
 body\movieSystem\entity\User.class
@@ -47,6 +52,7 @@ body\movieSystem\dto\general\ActorDTO.class
 body\movieSystem\dto\response\UserResponseDTO$UserResponseDTOBuilder.class
 body\movieSystem\dto\response\WriterResponseDTO$WriterResponseDTOBuilder.class
 body\movieSystem\dto\general\CountryDTO$CountryDTOBuilder.class
+body\movieSystem\spec\WriterSpec.class
 body\movieSystem\dto\general\TechCrewDTO.class
 body\movieSystem\dto\validation\validator\NonNullIdValidator.class
 body\movieSystem\controller\TechCrewController.class
@@ -56,6 +62,7 @@ body\movieSystem\mapper\CommentMapper.class
 body\movieSystem\mapper\CommentMapperImpl.class
 body\movieSystem\controller\DirectorController.class
 body\movieSystem\dto\general\ProductionDTO$ProductionDTOBuilder.class
+body\movieSystem\spec\ImdbScoreSpec.class
 body\movieSystem\controller\CommentController.class
 body\movieSystem\mapper\JobMapper.class
 body\movieSystem\controller\LanguageController.class
@@ -111,6 +118,7 @@ body\movieSystem\dto\response\DirectorResponseDTO$DirectorResponseDTOBuilder.cla
 body\movieSystem\dto\response\ProductionResponseDTO$ProductionResponseDTOBuilder.class
 body\movieSystem\service\ImdbScoreService.class
 body\movieSystem\dto\general\StarDTO.class
+body\movieSystem\spec\TechCrewSpec.class
 body\movieSystem\entity\ImdbScore.class
 body\movieSystem\repository\PersonRepository.class
 body\movieSystem\repository\TechCrewRepository.class

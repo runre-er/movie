@@ -3,7 +3,10 @@ package body.movieSystem.controller;
 import body.movieSystem.dto.general.WriterDTO;
 import body.movieSystem.dto.response.WriterResponseDTO;
 import body.movieSystem.service.WriterService;
+import body.movieSystem.spec.WriterSpec;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -36,5 +39,10 @@ public class WriterController {
     @GetMapping("/{id}/production")
     public ResponseEntity<List<WriterResponseDTO>> findByProductionId(@PathVariable Long id) {
         return ResponseEntity.ok(service.findByProductionId(id));
+    }
+    @GetMapping("/filter")
+    public ResponseEntity<Page<WriterResponseDTO>> filter(WriterSpec spec,
+                                                          Pageable pageable) {
+        return ResponseEntity.ok(service.filter(spec, pageable));
     }
 }

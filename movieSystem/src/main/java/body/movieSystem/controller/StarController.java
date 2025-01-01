@@ -3,7 +3,10 @@ package body.movieSystem.controller;
 import body.movieSystem.dto.general.StarDTO;
 import body.movieSystem.dto.response.StarResponseDTO;
 import body.movieSystem.service.StarService;
+import body.movieSystem.spec.StarSpec;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -37,5 +40,10 @@ public class StarController {
     public ResponseEntity<List<StarResponseDTO>> findByProductionId(@PathVariable Long id) {
 
         return ResponseEntity.ok(service.findByProductionId(id));
+    }
+    @GetMapping("/filter")
+    public ResponseEntity<Page<StarResponseDTO>> filter(StarSpec spec,
+                                                        Pageable pageable) {
+        return ResponseEntity.ok(service.filter(spec, pageable));
     }
 }

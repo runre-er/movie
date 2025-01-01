@@ -7,6 +7,9 @@ import body.movieSystem.mapper.WriterMapper;
 import body.movieSystem.repository.WriterRepository;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -39,6 +42,8 @@ public class WriterService {
         }
         repository.deleteById(id);
     }
+    public Page<WriterResponseDTO> filter(Specification<Writer> spec, Pageable pageable) {
+        return repository.findAll(spec, pageable).map(mapper::toResponseDTO);
+    }
 }
 
-// todo specification arc resolver //

@@ -3,7 +3,10 @@ package body.movieSystem.controller;
 import body.movieSystem.dto.general.ImdbScoreDTO;
 import body.movieSystem.dto.response.ImdbScoreResponseDTO;
 import body.movieSystem.service.ImdbScoreService;
+import body.movieSystem.spec.ImdbScoreSpec;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -32,5 +35,10 @@ public class ImdbScoreController {
     public ResponseEntity<Void> delete(@PathVariable Long id) {
         service.delete(id);
         return ResponseEntity.noContent().build();
+    }
+    @GetMapping("/filter")
+    public ResponseEntity<Page<ImdbScoreResponseDTO>> filter(ImdbScoreSpec spec,
+                                                             Pageable pageable) {
+        return ResponseEntity.ok(service.filter(spec, pageable));
     }
 }

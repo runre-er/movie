@@ -3,7 +3,10 @@ package body.movieSystem.controller;
 import body.movieSystem.dto.general.ActorDTO;
 import body.movieSystem.dto.response.ActorResponseDTO;
 import body.movieSystem.service.ActorService;
+import body.movieSystem.spec.ActorSpec;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -36,5 +39,10 @@ public class ActorController {
     @GetMapping("/{id}/production")
     public ResponseEntity<List<ActorResponseDTO>> findByProductionId(@PathVariable Long id) {
         return ResponseEntity.ok(service.findByProductionId(id));
+    }
+    @GetMapping("/filter")
+    public ResponseEntity<Page<ActorResponseDTO>> filter(ActorSpec spec,
+                                                         Pageable pageable) {
+        return ResponseEntity.ok(service.filter(spec, pageable));
     }
 }

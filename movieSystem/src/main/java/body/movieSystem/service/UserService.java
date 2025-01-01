@@ -7,6 +7,9 @@ import body.movieSystem.mapper.UserMapper;
 import body.movieSystem.repository.UserRepository;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -35,5 +38,8 @@ public class UserService {
             throw new EntityNotFoundException("User not found with id: " + id);
         }
         repository.deleteById(id);
+    }
+    public Page<UserResponseDTO> filter(Specification<User> spec, Pageable pageable) {
+        return repository.findAll(spec, pageable).map(mapper::toResponseDTO);
     }
 }

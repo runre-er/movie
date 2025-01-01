@@ -23,9 +23,6 @@ public class ProductionService {
     public Page<ProductionResponseDTO> findAll(Pageable pageable) { // todo specification arc resolver //
         return repository.findAll(pageable).map(mapper::toResponseDTO);
     }
-    public Page<ProductionResponseDTO> filter(Specification<Production> spec, Pageable pageable) {
-        return repository.findAll(spec, pageable).map(mapper::toResponseDTO);
-    }
     public ProductionResponseDTO findById(Long id) {
         return mapper.toResponseDTO(
                 repository
@@ -38,9 +35,11 @@ public class ProductionService {
                         .findById(id)
                         .orElseThrow(() -> new EntityNotFoundException("Production not found with id: " + id)));
     }
-
     public ProductionDTO save(ProductionDTO productionDTO) {
         Production production = mapper.toEntity(productionDTO);
         return mapper.toDTO(repository.save(production));
+    }
+    public Page<ProductionResponseDTO> filter(Specification<Production> spec, Pageable pageable) {
+        return repository.findAll(spec, pageable).map(mapper::toResponseDTO);
     }
 }

@@ -3,7 +3,10 @@ package body.movieSystem.controller;
 import body.movieSystem.dto.general.CommentDTO;
 import body.movieSystem.dto.response.CommentResponseDTO;
 import body.movieSystem.service.CommentService;
+import body.movieSystem.spec.CommentSpec;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -40,5 +43,10 @@ public class CommentController {
     @GetMapping("/{id}/user")
     public ResponseEntity<List<CommentResponseDTO>> findByUserId(@PathVariable Long id) {
         return ResponseEntity.ok(service.findByUserId(id));
+    }
+    @GetMapping("/filter")
+    public ResponseEntity<Page<CommentResponseDTO>> filter(CommentSpec spec,
+                                                           Pageable pageable) {
+        return ResponseEntity.ok(service.filter(spec, pageable));
     }
 }

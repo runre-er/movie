@@ -7,6 +7,9 @@ import body.movieSystem.mapper.ImdbScoreMapper;
 import body.movieSystem.repository.ImdbScoreRepository;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -35,5 +38,8 @@ public class ImdbScoreService {
             throw new EntityNotFoundException("ImdbScore not found with id: " + id);
         }
         repository.deleteById(id);
+    }
+    public Page<ImdbScoreResponseDTO> filter(Specification<ImdbScore> spec, Pageable pageable) {
+        return repository.findAll(spec, pageable).map(mapper::toResponseDTO);
     }
 }

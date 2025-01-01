@@ -7,6 +7,9 @@ import body.movieSystem.mapper.TechCrewMapper;
 import body.movieSystem.repository.TechCrewRepository;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -39,5 +42,8 @@ public class TechCrewService {
             throw new EntityNotFoundException("Actor not found with id: " + id);
         }
         repository.deleteById(id);
+    }
+    public Page<TechCrewResponseDTO> filter(Specification<TechCrew> spec, Pageable pageable) {
+        return repository.findAll(spec, pageable).map(mapper::toResponseDTO);
     }
 }

@@ -7,6 +7,9 @@ import body.movieSystem.mapper.CommentMapper;
 import body.movieSystem.repository.CommentRepository;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -41,5 +44,8 @@ public class CommentService {
             throw new EntityNotFoundException("Comment not found with id: " + id);
         }
         repository.deleteById(id);
+    }
+    public Page<CommentResponseDTO> filter(Specification<Comment> spec, Pageable pageable) {
+        return repository.findAll(spec, pageable).map(mapper::toResponseDTO);
     }
 }

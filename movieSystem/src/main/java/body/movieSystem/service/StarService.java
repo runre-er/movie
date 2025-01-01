@@ -7,6 +7,9 @@ import body.movieSystem.mapper.StarMapper;
 import body.movieSystem.repository.StarRepository;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -39,6 +42,8 @@ public class StarService {
         }
         repository.deleteById(id);
     }
+    public Page<StarResponseDTO> filter(Specification<Star> spec, Pageable pageable) {
+        return repository.findAll(spec, pageable).map(mapper::toResponseDTO);
+    }
 }
 
-// todo specification arc resolver //

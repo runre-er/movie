@@ -22,11 +22,6 @@ public class ProductionController {
     public ResponseEntity<Page<ProductionResponseDTO>> findAll(Pageable pageable) {
         return ResponseEntity.ok(service.findAll(pageable));
     }
-    @GetMapping("/filter")
-    public ResponseEntity<Page<ProductionResponseDTO>> filter(ProductionSpec spec,
-                                                              Pageable pageable) {
-        return ResponseEntity.ok(service.filter(spec, pageable));
-    }
     @GetMapping("/{id}")
     public ProductionResponseDTO findById(@PathVariable Long id) {
         return ResponseEntity.ok(service.findById(id)).getBody();
@@ -39,7 +34,9 @@ public class ProductionController {
     public ResponseEntity<ProductionDTO> save(@RequestBody ProductionDTO productionDTO) {
         return ResponseEntity.ok(service.save(productionDTO));
     }
-
-    // todo  specification arg resolver  ---- pageable için
-
+    @GetMapping("/filter")
+    public ResponseEntity<Page<ProductionResponseDTO>> filter(ProductionSpec spec,
+                                                              Pageable pageable) {
+        return ResponseEntity.ok(service.filter(spec, pageable));
+    }
 }
