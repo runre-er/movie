@@ -1,9 +1,10 @@
-package body.movieSystem.controller;
+package body.movieSystem.api.controller;
 
-import body.movieSystem.dto.general.UserDTO;
-import body.movieSystem.dto.response.UserResponseDTO;
-import body.movieSystem.service.UserService;
-import body.movieSystem.spec.UserSpec;
+import body.movieSystem.api.dto.general.UserDTO;
+import body.movieSystem.api.dto.response.UserResponseDTO;
+import body.movieSystem.application.service.UserService;
+import body.movieSystem.application.spec.UserSpec;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -33,7 +34,7 @@ public class UserController {
         return ResponseEntity.noContent().build();
     }
     @PostMapping
-    public ResponseEntity<UserDTO> save(@RequestBody UserDTO userDTO) {
+    public ResponseEntity<UserDTO> save(@Valid @RequestBody UserDTO userDTO) {
         return ResponseEntity.ok(service.save(userDTO));
     }
     @GetMapping("/filter")
