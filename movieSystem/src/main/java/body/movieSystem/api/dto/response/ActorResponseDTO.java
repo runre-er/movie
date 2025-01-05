@@ -1,6 +1,5 @@
 package body.movieSystem.api.dto.response;
 
-import body.movieSystem.api.dto.general.PersonDTO;
 import lombok.*;
 
 @Getter
@@ -10,5 +9,5 @@ import lombok.*;
 @AllArgsConstructor
 public class ActorResponseDTO {
     private Long id;
-    private PersonDTO person;
+    private PersonResponseDTO person;
 }

@@ -1,6 +1,7 @@
 package body.movieSystem.api.dto.general;
 
 import body.movieSystem.api.dto.validation.annotation.NonNullId;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.*;
 
 @Getter
@@ -10,6 +11,7 @@ import lombok.*;
 @AllArgsConstructor
 public class WriterDTO {
     @NonNullId
+    @Schema(hidden = true)
     private Long id;
     @NonNullId
     private Long production_id;
