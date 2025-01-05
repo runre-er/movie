@@ -1,0 +1,81 @@
+{
+  "person": {
+    "id": 1,
+    "name": "John",
+    "surname": "Doe",
+    "birthDate": "1990-01-01",
+    "birthCountry": "USA"
+  },
+  "production": {
+    "id": 1,
+    "title": "Sample Movie",
+    "originalTitle": "Original Sample Movie",
+    "releaseDate": "2023-01-01",
+    "playTime": 120,
+    "country_id": 1,
+    "genre_id": 1,
+    "language_id": 1
+  },
+  "comment": {
+    "id": 1,
+    "message": "Great movie! Really enjoyed the storyline.",
+    "production_id": 1,
+    "person_id": 1
+  },
+  "imdbScore": {
+    "id": 1,
+    "score": 8.5,
+    "votesCount": 10000,
+    "productionId": 1
+  },
+  "revenue": {
+    "id": 1,
+    "productionId": 1,
+    "amount": 1000000.50,
+    "source": "Box Office"
+  },
+  "user": {
+    "id": 1,
+    "name": "Jane",
+    "surName": "Doe",
+    "nick": "janedoe",
+    "email": "jane.doe@example.com",
+    "registrationTime": "2024-01-01"
+  },
+  "actor": {
+    "id": 1,
+    "production_id": 1,
+    "person_id": 1
+  },
+  "director": {
+    "id": 1,
+    "production_id": 1,
+    "person_id": 1
+  },
+  "writer": {
+    "id": 1,
+    "production_id": 1,
+    "person_id": 1
+  },
+  "country": {
+    "id": 1,
+    "name": "United States"
+  },
+  "genre": {
+    "id": 1,
+    "name": "Action"
+  },
+  "language": {
+    "id": 1,
+    "name": "English"
+  },
+  "job": {
+    "id": 1,
+    "name": "Cinematographer"
+  },
+  "techCrew": {
+    "id": 1,
+    "person_id": 1,
+    "job_id": 1
+  }
+}
