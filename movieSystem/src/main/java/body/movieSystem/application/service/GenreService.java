@@ -1,8 +1,8 @@
 package body.movieSystem.application.service;
 
 import body.movieSystem.api.dto.general.GenreDTO;
+import body.movieSystem.application.mapper.entityMapping.GenreMapper;
 import body.movieSystem.domain.entity.Genre;
-import body.movieSystem.application.mapper.GenreMapper;
 import body.movieSystem.domain.repository.GenreRepository;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;

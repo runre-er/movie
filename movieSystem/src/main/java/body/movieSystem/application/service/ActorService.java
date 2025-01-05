@@ -1,8 +1,9 @@
 package body.movieSystem.application.service;
 
-import body.movieSystem.application.mapper.ActorMapper;
 import body.movieSystem.api.dto.general.ActorDTO;
 import body.movieSystem.api.dto.response.ActorResponseDTO;
+import body.movieSystem.application.mapper.entityMapping.ActorMapper;
+import body.movieSystem.application.mapper.relational.ActorRelationalMapper;
 import body.movieSystem.domain.entity.Actor;
 import body.movieSystem.domain.repository.ActorRepository;
 import jakarta.persistence.EntityNotFoundException;
@@ -20,16 +21,17 @@ public class ActorService {
 
     private final ActorRepository repository;
     private final ActorMapper mapper;
+    private final ActorRelationalMapper relationalMapper;
 
     public List<ActorResponseDTO> findByProductionId(Long id) {
-        return mapper.toResponseDTOList(repository.findByProductionId(id));
+        return relationalMapper.toDTOList(repository.findByProductionId(id));
     }
     public List<ActorResponseDTO> findAll() {
-        return mapper.toResponseDTOList(repository.findAll());
+        return relationalMapper.toDTOList(repository.findAll());
     }
     public ActorResponseDTO findById(Long id) {
         return repository.findById(id)
-                .map(mapper::toResponseDTO)
+                .map(relationalMapper::toDTO)
                 .orElseThrow(() -> new EntityNotFoundException("Actor not found with id: " + id));
     }
     public ActorDTO save(ActorDTO actorDTO) {
@@ -43,7 +45,7 @@ public class ActorService {
         repository.deleteById(id);
     }
     public Page<ActorResponseDTO> filter(Specification<Actor> spec, Pageable pageable) {
-        return repository.findAll(spec, pageable).map(mapper::toResponseDTO);
+        return repository.findAll(spec, pageable).map(relationalMapper::toDTO);
     }
 }
 

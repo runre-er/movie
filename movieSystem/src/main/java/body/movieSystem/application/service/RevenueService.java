@@ -2,8 +2,9 @@ package body.movieSystem.application.service;
 
 import body.movieSystem.api.dto.general.RevenueDTO;
 import body.movieSystem.api.dto.response.RevenueResponseDTO;
+import body.movieSystem.application.mapper.entityMapping.RevenueMapper;
+import body.movieSystem.application.mapper.relational.RevenueRelationalMapper;
 import body.movieSystem.domain.entity.Revenue;
-import body.movieSystem.application.mapper.RevenueMapper;
 import body.movieSystem.domain.repository.RevenueRepository;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
@@ -17,16 +18,17 @@ public class RevenueService {
 
     private final RevenueRepository repository;
     private final RevenueMapper mapper;
+    private final RevenueRelationalMapper relationalMapper;
 
     public List<RevenueResponseDTO> findByProductionId(Long id) {
-        return mapper.toResponseDTOList(repository.findByProductionId(id));
+        return relationalMapper.toDTOList(repository.findByProductionId(id));
     }
     public List<RevenueResponseDTO> findAll() {
-        return mapper.toResponseDTOList(repository.findAll());
+        return relationalMapper.toDTOList(repository.findAll());
     }
     public RevenueResponseDTO findById(Long id) {
         return repository.findById(id)
-                .map(mapper::toResponseDTO)
+                .map(relationalMapper::toDTO)
                 .orElseThrow(() -> new EntityNotFoundException("Star not found with id: " + id));
     }
     public RevenueDTO save(RevenueDTO revenueDTO) {

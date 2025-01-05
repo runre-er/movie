@@ -2,7 +2,8 @@ package body.movieSystem.application.service;
 
 import body.movieSystem.api.dto.general.UserDTO;
 import body.movieSystem.api.dto.response.UserResponseDTO;
-import body.movieSystem.application.mapper.UserMapper;
+import body.movieSystem.application.mapper.entityMapping.UserMapper;
+import body.movieSystem.application.mapper.relational.UserRelationalMapper;
 import body.movieSystem.domain.entity.User;
 import body.movieSystem.domain.repository.UserRepository;
 import body.movieSystem.exception.unchecked.UserOperationException;
@@ -21,13 +22,14 @@ public class UserService {
 
     private final UserRepository repository;
     private final UserMapper mapper;
+    private final UserRelationalMapper relationalMapper;
 
     public List<UserResponseDTO> findAll() {
-        return mapper.toResponseDTOList(repository.findAll());
+        return relationalMapper.toDTOList(repository.findAll());
     }
     public UserResponseDTO findById(Long id) {
         return repository.findById(id)
-                .map(mapper::toResponseDTO)
+                .map(relationalMapper::toDTO)
                 .orElseThrow(() -> new EntityNotFoundException("User not found with id: " + id));
     }
     public UserDTO save(UserDTO userDTO) {
@@ -47,6 +49,6 @@ public class UserService {
         repository.deleteById(id);
     }
     public Page<UserResponseDTO> filter(Specification<User> spec, Pageable pageable) {
-        return repository.findAll(spec, pageable).map(mapper::toResponseDTO);
+        return repository.findAll(spec, pageable).map(relationalMapper::toDTO);
     }
 }

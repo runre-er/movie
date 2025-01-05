@@ -2,8 +2,9 @@ package body.movieSystem.application.service;
 
 import body.movieSystem.api.dto.general.StarDTO;
 import body.movieSystem.api.dto.response.StarResponseDTO;
+import body.movieSystem.application.mapper.entityMapping.StarMapper;
+import body.movieSystem.application.mapper.relational.StarRelationalMapper;
 import body.movieSystem.domain.entity.Star;
-import body.movieSystem.application.mapper.StarMapper;
 import body.movieSystem.domain.repository.StarRepository;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
@@ -20,16 +21,17 @@ public class StarService {
 
     private final StarRepository repository;
     private final StarMapper mapper;
+    private final StarRelationalMapper relationalMapper;
 
     public List<StarResponseDTO> findByProductionId(Long id) {
-        return mapper.toResponseDTOList(repository.findByProductionId(id));
+        return relationalMapper.toDTOList(repository.findByProductionId(id));
     }
     public List<StarResponseDTO> findAll() {
-        return mapper.toResponseDTOList(repository.findAll());
+        return relationalMapper.toDTOList(repository.findAll());
     }
     public StarResponseDTO findById(Long id) {
         return repository.findById(id)
-                .map(mapper::toResponseDTO)
+                .map(relationalMapper::toDTO)
                 .orElseThrow(() -> new EntityNotFoundException("Star not found with id: " + id));
     }
     public StarDTO save(StarDTO starDTO) {
@@ -43,7 +45,7 @@ public class StarService {
         repository.deleteById(id);
     }
     public Page<StarResponseDTO> filter(Specification<Star> spec, Pageable pageable) {
-        return repository.findAll(spec, pageable).map(mapper::toResponseDTO);
+        return repository.findAll(spec, pageable).map(relationalMapper::toDTO);
     }
 }
 

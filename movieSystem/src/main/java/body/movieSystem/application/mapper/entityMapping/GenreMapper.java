@@ -1,4 +1,4 @@
-package body.movieSystem.application.mapper;
+package body.movieSystem.application.mapper.entityMapping;
 
 import body.movieSystem.api.dto.general.GenreDTO;
 import body.movieSystem.domain.entity.Genre;

@@ -1,8 +1,9 @@
 package body.movieSystem.application.service;
 
-import body.movieSystem.application.mapper.TechCrewMapper;
 import body.movieSystem.api.dto.general.TechCrewDTO;
 import body.movieSystem.api.dto.response.TechCrewResponseDTO;
+import body.movieSystem.application.mapper.entityMapping.TechCrewMapper;
+import body.movieSystem.application.mapper.relational.TechCrewRelationalMapper;
 import body.movieSystem.domain.entity.TechCrew;
 import body.movieSystem.domain.repository.TechCrewRepository;
 import jakarta.persistence.EntityNotFoundException;
@@ -20,17 +21,18 @@ public class TechCrewService {
 
     private final TechCrewRepository repository;
     private final TechCrewMapper mapper;
+    private final TechCrewRelationalMapper relationalMapper;
 
     public List<TechCrewResponseDTO> findByProductionId(Long id) {
-        return mapper.toResponseDTOList(repository.findByProductionId(id));
+        return relationalMapper.toDTOList(repository.findByProductionId(id));
     }
     public List<TechCrewResponseDTO> findAll() {
-        return mapper.toResponseDTOList(repository.findAll());
+        return relationalMapper.toDTOList(repository.findAll());
     }
     public TechCrewResponseDTO findById(Long id) {
         return repository
                 .findById(id)
-                .map(mapper::toResponseDTO)
+                .map(relationalMapper::toDTO)
                 .orElseThrow(() -> new EntityNotFoundException("Actor not found with id: " + id));
     }
     public TechCrewDTO save(TechCrewDTO techCrewDTO) {
@@ -44,6 +46,6 @@ public class TechCrewService {
         repository.deleteById(id);
     }
     public Page<TechCrewResponseDTO> filter(Specification<TechCrew> spec, Pageable pageable) {
-        return repository.findAll(spec, pageable).map(mapper::toResponseDTO);
+        return repository.findAll(spec, pageable).map(relationalMapper::toDTO);
     }
 }

@@ -1,8 +1,6 @@
-package body.movieSystem.application.mapper;
+package body.movieSystem.application.mapper.entityMapping;
 
 import body.movieSystem.api.dto.general.ProductionDTO;
-import body.movieSystem.api.dto.response.ProductionCrewDTO;
-import body.movieSystem.api.dto.response.ProductionResponseDTO;
 import body.movieSystem.domain.entity.Production;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -17,8 +15,6 @@ public interface ProductionMapper {
     @Mapping(target = "country_id", ignore = true)
     ProductionDTO toDTO(Production production);
 
-    ProductionResponseDTO toResponseDTO(Production production);
-
     @Mapping(target = "writers", ignore = true)
     @Mapping(target = "stars", ignore = true)
     @Mapping(target = "revenues", ignore = true)
@@ -31,9 +27,7 @@ public interface ProductionMapper {
     @Mapping(target = "actors", ignore = true)
     Production toEntity(ProductionDTO productionDTO);
 
-    List<ProductionDTO> toDTOList(List<ProductionDTO> productionDTO);
+    List<ProductionDTO> toDTOList(List<Production> production);// todo burada hata var
 
-    List<ProductionResponseDTO> toResponseDTOList(List<ProductionDTO> productionDTO);
-
-    ProductionCrewDTO toCrewDTO(Production production);
+    List<Production> toEntityList(List<ProductionDTO> productionDTOS);
 }

@@ -1,8 +1,8 @@
 package body.movieSystem.application.service;
 
 import body.movieSystem.api.dto.general.LanguageDTO;
+import body.movieSystem.application.mapper.entityMapping.LanguageMapper;
 import body.movieSystem.domain.entity.Language;
-import body.movieSystem.application.mapper.LanguageMapper;
 import body.movieSystem.domain.repository.LanguageRepository;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;

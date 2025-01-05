@@ -1,4 +1,4 @@
-package body.movieSystem.application.mapper;
+package body.movieSystem.application.mapper.entityMapping;
 
 import body.movieSystem.api.dto.general.CountryDTO;
 import body.movieSystem.domain.entity.Country;

@@ -2,8 +2,9 @@ package body.movieSystem.application.service;
 
 import body.movieSystem.api.dto.general.ImdbScoreDTO;
 import body.movieSystem.api.dto.response.ImdbScoreResponseDTO;
+import body.movieSystem.application.mapper.entityMapping.ImdbScoreMapper;
+import body.movieSystem.application.mapper.relational.ImdbScoreRelationalMapper;
 import body.movieSystem.domain.entity.ImdbScore;
-import body.movieSystem.application.mapper.ImdbScoreMapper;
 import body.movieSystem.domain.repository.ImdbScoreRepository;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
@@ -20,13 +21,14 @@ public class ImdbScoreService {
 
     private final ImdbScoreRepository repository;
     private final ImdbScoreMapper mapper;
+    private final ImdbScoreRelationalMapper relationalMapper;
 
     public List<ImdbScoreResponseDTO> findAll() {
-        return mapper.toResponseDTOList(repository.findAll());
+        return relationalMapper.toDTOList(repository.findAll());
     }
     public ImdbScoreResponseDTO findById(Long id) {
         return repository.findById(id)
-                .map(mapper::toResponseDTO)
+                .map(relationalMapper::toDTO)
                 .orElseThrow(() -> new EntityNotFoundException("ImdbScore not found with id: " + id));
     }
     public ImdbScoreDTO save(ImdbScoreDTO imdbScoreDTO) {
@@ -40,6 +42,6 @@ public class ImdbScoreService {
         repository.deleteById(id);
     }
     public Page<ImdbScoreResponseDTO> filter(Specification<ImdbScore> spec, Pageable pageable) {
-        return repository.findAll(spec, pageable).map(mapper::toResponseDTO);
+        return repository.findAll(spec, pageable).map(relationalMapper::toDTO);
     }
 }

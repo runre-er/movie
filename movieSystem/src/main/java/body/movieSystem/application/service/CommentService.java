@@ -2,8 +2,9 @@ package body.movieSystem.application.service;
 
 import body.movieSystem.api.dto.general.CommentDTO;
 import body.movieSystem.api.dto.response.CommentResponseDTO;
+import body.movieSystem.application.mapper.entityMapping.CommentMapper;
+import body.movieSystem.application.mapper.relational.CommentRelationalMapper;
 import body.movieSystem.domain.entity.Comment;
-import body.movieSystem.application.mapper.CommentMapper;
 import body.movieSystem.domain.repository.CommentRepository;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
@@ -20,19 +21,20 @@ public class CommentService {
 
     private final CommentRepository repository;
     private final CommentMapper mapper;
+    private final CommentRelationalMapper relationalMapper;
 
     public List<CommentResponseDTO> findByProductionId(Long id) {
-        return mapper.toResponseDTOList(repository.findByProductionId(id));
+        return relationalMapper.toDTOList(repository.findByProductionId(id));
     }
     public List<CommentResponseDTO> findByUserId(Long id) {
-        return mapper.toResponseDTOList(repository.findByUserId(id));
+        return relationalMapper.toDTOList(repository.findByUserId(id));
     }
     public List<CommentResponseDTO> findAll() {
-        return mapper.toResponseDTOList(repository.findAll());
+        return relationalMapper.toDTOList(repository.findAll());
     }
     public CommentResponseDTO findById(Long id) {
         return repository.findById(id)
-                .map(mapper::toResponseDTO)
+                .map(relationalMapper::toDTO)
                 .orElseThrow(() -> new EntityNotFoundException("Comment not found with id: " + id));
     }
     public CommentDTO save(CommentDTO commentDTO) {
@@ -46,6 +48,6 @@ public class CommentService {
         repository.deleteById(id);
     }
     public Page<CommentResponseDTO> filter(Specification<Comment> spec, Pageable pageable) {
-        return repository.findAll(spec, pageable).map(mapper::toResponseDTO);
+        return repository.findAll(spec, pageable).map(relationalMapper::toDTO);
     }
 }

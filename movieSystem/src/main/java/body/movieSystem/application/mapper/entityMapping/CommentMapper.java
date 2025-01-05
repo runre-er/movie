@@ -1,7 +1,6 @@
-package body.movieSystem.application.mapper;
+package body.movieSystem.application.mapper.entityMapping;
 
 import body.movieSystem.api.dto.general.CommentDTO;
-import body.movieSystem.api.dto.response.CommentResponseDTO;
 import body.movieSystem.domain.entity.Comment;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -15,14 +14,9 @@ public interface CommentMapper {
     @Mapping(target = "person_id", ignore = true)
     CommentDTO toDTO(Comment comment);
 
-    @Mapping(target = "user", source = "user")
-    CommentResponseDTO toResponseDTO(Comment comment);
-
     List<CommentDTO> toDTOList(List<Comment> comments);
 
     Comment toEntity(CommentDTO commentDTO);
-
-    List<CommentResponseDTO> toResponseDTOList(List<Comment> comments);
 
     List<Comment> toEntityList(List<CommentDTO> commentDTOS);
 }

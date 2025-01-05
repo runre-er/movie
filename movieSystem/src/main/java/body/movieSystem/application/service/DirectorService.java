@@ -2,8 +2,9 @@ package body.movieSystem.application.service;
 
 import body.movieSystem.api.dto.general.DirectorDTO;
 import body.movieSystem.api.dto.response.DirectorResponseDTO;
+import body.movieSystem.application.mapper.entityMapping.DirectorMapper;
+import body.movieSystem.application.mapper.relational.DirectorRelationalMapper;
 import body.movieSystem.domain.entity.Director;
-import body.movieSystem.application.mapper.DirectorMapper;
 import body.movieSystem.domain.repository.DirectorRepository;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
@@ -20,17 +21,18 @@ public class DirectorService {
 
     private final DirectorRepository repository;
     private final DirectorMapper mapper;
+    private final DirectorRelationalMapper relationalMapper;
 
     public List<DirectorResponseDTO> findByProductionId(Long id) {
-        return mapper.toResponseDTOList(repository.findByProductionId(id));
+        return relationalMapper.toDTOList(repository.findByProductionId(id));
     }
     public List<DirectorResponseDTO> findAll() {
-        return mapper.toResponseDTOList(repository.findAll());
+        return relationalMapper.toDTOList(repository.findAll());
     }
     public DirectorResponseDTO findById(Long id) {
         return repository
                 .findById(id)
-                .map(mapper::toResponseDTO)
+                .map(relationalMapper::toDTO)
                 .orElseThrow(() -> new EntityNotFoundException("Director not found with id: " + id));
     }
     public DirectorDTO save(DirectorDTO directorDTO) {
@@ -44,7 +46,7 @@ public class DirectorService {
         repository.deleteById(id);
     }
     public Page<DirectorResponseDTO> filter(Specification<Director> spec, Pageable pageable) {
-        return repository.findAll(spec, pageable).map(mapper::toResponseDTO);
+        return repository.findAll(spec, pageable).map(relationalMapper::toDTO);
     }
 }
 

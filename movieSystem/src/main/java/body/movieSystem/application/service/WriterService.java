@@ -2,8 +2,11 @@ package body.movieSystem.application.service;
 
 import body.movieSystem.api.dto.general.WriterDTO;
 import body.movieSystem.api.dto.response.WriterResponseDTO;
+import body.movieSystem.application.mapper.entityMapping.WriterMapper;
+import body.movieSystem.application.mapper.relational.WriterRelationalMapper;
 import body.movieSystem.domain.entity.Writer;
-import body.movieSystem.application.mapper.WriterMapper;
+import body.movieSystem.domain.repository.PersonRepository;
+import body.movieSystem.domain.repository.ProductionRepository;
 import body.movieSystem.domain.repository.WriterRepository;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
@@ -18,22 +21,34 @@ import java.util.List;
 @RequiredArgsConstructor
 public class WriterService {
 
-    private final WriterRepository repository;
     private final WriterMapper mapper;
+    private final WriterRepository repository;
+    private final PersonRepository personRepository;
+    private final WriterRelationalMapper relationalMapper;
+    private final ProductionRepository productionRepository;
 
     public List<WriterResponseDTO> findByProductionId(Long id) {
-        return mapper.toResponseDTOList(repository.findByProductionId(id));
+        return relationalMapper.toDTOList(repository.findByProductionId(id));
     }
     public List<WriterResponseDTO> findAll() {
-        return mapper.toResponseDTOList(repository.findAll());
+        return relationalMapper.toDTOList(repository.findAll());
     }
     public WriterResponseDTO findById(Long id) {
         return repository.findById(id)
-                .map(mapper::toResponseDTO)
+                .map(relationalMapper::toDTO)
                 .orElseThrow(() -> new EntityNotFoundException("Writer not found with id: " + id));
     }
     public WriterDTO save(WriterDTO writerDTO) {
         Writer entity = mapper.toEntity(writerDTO);
+        if (writerDTO.getProduction_id() != null) {
+            entity.setProduction(productionRepository.findById(writerDTO.getProduction_id())
+                    .orElseThrow(() -> new EntityNotFoundException("Production not found")));
+        }
+
+        if (writerDTO.getPerson_id() != null) {
+            entity.setPerson(personRepository.findById(writerDTO.getPerson_id())
+                    .orElseThrow(() -> new EntityNotFoundException("Person not found")));
+        }
         return mapper.toDTO(repository.save(entity));
     }
     public void delete(Long id) {
@@ -43,7 +58,7 @@ public class WriterService {
         repository.deleteById(id);
     }
     public Page<WriterResponseDTO> filter(Specification<Writer> spec, Pageable pageable) {
-        return repository.findAll(spec, pageable).map(mapper::toResponseDTO);
+        return repository.findAll(spec, pageable).map(relationalMapper::toDTO);
     }
 }
 
