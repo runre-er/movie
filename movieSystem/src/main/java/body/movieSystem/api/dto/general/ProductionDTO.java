@@ -1,9 +1,10 @@
 package body.movieSystem.api.dto.general;
 
 import body.movieSystem.api.dto.validation.annotation.NonNullId;
-import jakarta.validation.constraints.NotBlank;
+import body.movieSystem.api.dto.validation.annotation.NotBlankMessage;
+import body.movieSystem.api.dto.validation.annotation.SizeMessage;
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.Past;
-import jakarta.validation.constraints.Size;
 import lombok.*;
 
 import java.time.LocalDate;
@@ -15,14 +16,15 @@ import java.time.LocalDate;
 @AllArgsConstructor
 public class ProductionDTO {
     @NonNullId
+    @Schema(hidden = true)
     private Long id;
-    @NotBlank
+    @NotBlankMessage
     private String title;
-    @NotBlank
+    @NotBlankMessage
     private String originalTitle;
     @Past
     private LocalDate releaseDate;
-    @Size(min = 1)
+    @SizeMessage(min = 1)
     private int playTime;
     @NonNullId
     private Long country_id;

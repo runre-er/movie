@@ -1,7 +1,8 @@
 package body.movieSystem.api.dto.general;
 
 import body.movieSystem.api.dto.validation.annotation.NonNullId;
-import jakarta.validation.constraints.Size;
+import body.movieSystem.api.dto.validation.annotation.SizeMessage;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.*;
 
 @Getter
@@ -11,11 +12,13 @@ import lombok.*;
 @AllArgsConstructor
 public class ImdbScoreDTO {
     @NonNullId
+    @Schema(hidden = true)
     private Long id;
-    @Size(min = 0, max = 10)
+    @SizeMessage(min = 0, max = 10)
     private Double score;
-    @Size(min = 1)
+    @SizeMessage(min = 1)
     private Long votesCount; //todo burada ek fonksıyonlar olcak
     @NonNullId
     private Long productionId;
 }
+

@@ -1,8 +1,9 @@
 package body.movieSystem.api.dto.general;
 
 import body.movieSystem.api.dto.validation.annotation.NonNullId;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Size;
+import body.movieSystem.api.dto.validation.annotation.NotBlankMessage;
+import body.movieSystem.api.dto.validation.annotation.SizeMessage;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.*;
 
 @Getter
@@ -12,11 +13,12 @@ import lombok.*;
 @AllArgsConstructor
 public class RevenueDTO {
     @NonNullId
+    @Schema(hidden = true)
     private Long id;
     @NonNullId
     private Long productionId;
-    @Size(min = 1)
+    @SizeMessage(min = 1)
     private Double amount;
-    @NotBlank
+    @NotBlankMessage
     private String source;
 }

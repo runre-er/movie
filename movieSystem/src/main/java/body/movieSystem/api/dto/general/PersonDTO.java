@@ -1,7 +1,8 @@
 package body.movieSystem.api.dto.general;
 
 import body.movieSystem.api.dto.validation.annotation.NonNullId;
-import jakarta.validation.constraints.NotBlank;
+import body.movieSystem.api.dto.validation.annotation.NotBlankMessage;
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.Past;
 import lombok.*;
 
@@ -14,13 +15,14 @@ import java.time.LocalDate;
 @AllArgsConstructor
 public class PersonDTO {
     @NonNullId
+    @Schema(hidden = true)
     private Long id;
-    @NotBlank
+    @NotBlankMessage
     private String name;
-    @NotBlank
+    @NotBlankMessage
     private String surname;
-    @Past
+    @Past(message = "must be past time")
     private LocalDate birthDate;
-    @NotBlank
+    @NotBlankMessage
     private String birthCountry;
 }

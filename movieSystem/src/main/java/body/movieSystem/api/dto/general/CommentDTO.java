@@ -1,9 +1,9 @@
 package body.movieSystem.api.dto.general;
 
 import body.movieSystem.api.dto.validation.annotation.NonNullId;
-import jakarta.validation.constraints.NotBlank;
+import body.movieSystem.api.dto.validation.annotation.SizeMessage;
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.Pattern;
-import jakarta.validation.constraints.Size;
 import lombok.*;
 
 @Getter
@@ -13,9 +13,9 @@ import lombok.*;
 @AllArgsConstructor
 public class CommentDTO {
     @NonNullId
+    @Schema(hidden = true)
     private Long id;
-    @NotBlank
-    @Size(min = 3, max = 1000)
+    @SizeMessage(min = 3, max = 1000)
     @Pattern(regexp = "^[a-zA-Z0-9 .,!?']*$")
     private String message;
     @NonNullId
