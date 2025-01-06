@@ -14,8 +14,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
 @Service
 @RequiredArgsConstructor
 public class UserService {
@@ -24,8 +22,8 @@ public class UserService {
     private final UserMapper mapper;
     private final UserRelationalMapper relationalMapper;
 
-    public List<UserResponseDTO> findAll() {
-        return relationalMapper.toDTOList(repository.findAll());
+    public Page<UserResponseDTO> findAll(Pageable pageable) {
+        return repository.findAll(pageable).map(relationalMapper::toDTO);
     }
     public UserResponseDTO findById(Long id) {
         return repository.findById(id)

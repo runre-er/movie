@@ -10,8 +10,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/imdb-scores")
@@ -20,8 +18,8 @@ public class ImdbScoreController {
     private final ImdbScoreService service;
 
     @GetMapping
-    public ResponseEntity<List<ImdbScoreResponseDTO>> findAll() {
-        return ResponseEntity.ok(service.findAll());
+    public ResponseEntity<Page<ImdbScoreResponseDTO>> findAll(Pageable pageable) {
+        return ResponseEntity.ok(service.findAll(pageable));
     }
     @GetMapping("/{id}")
     public ResponseEntity<ImdbScoreResponseDTO> findById(@PathVariable Long id) {

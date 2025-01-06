@@ -9,9 +9,9 @@ import body.movieSystem.domain.repository.PersonRepository;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -21,8 +21,8 @@ public class PersonService {
     private final PersonMapper mapper;
     private final PersonRelationalMapper relationalMapper;
 
-    public List<PersonResponseDTO> findAll() {
-        return relationalMapper.toDTOList(repository.findAll());
+    public Page<PersonResponseDTO> findAll(Pageable pageable) {
+        return repository.findAll(pageable).map(relationalMapper::toDTO);
     }
     public PersonResponseDTO findById(Long id) {
         return relationalMapper.toDTO(repository.findById(id)

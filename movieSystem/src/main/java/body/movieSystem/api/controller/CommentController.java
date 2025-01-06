@@ -20,8 +20,8 @@ public class CommentController {
     private final CommentService service;
 
     @GetMapping
-    public ResponseEntity<List<CommentResponseDTO>> findAll() {
-        return ResponseEntity.ok(service.findAll());
+    public ResponseEntity<Page<CommentResponseDTO>> findAll(Pageable pageable) {
+        return ResponseEntity.ok(service.findAll(pageable));
     }
     @GetMapping("/{id}")
     public ResponseEntity<CommentResponseDTO> findById(@PathVariable Long id) {

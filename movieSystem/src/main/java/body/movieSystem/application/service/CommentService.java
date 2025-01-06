@@ -23,14 +23,8 @@ public class CommentService {
     private final CommentMapper mapper;
     private final CommentRelationalMapper relationalMapper;
 
-    public List<CommentResponseDTO> findByProductionId(Long id) {
-        return relationalMapper.toDTOList(repository.findByProductionId(id));
-    }
-    public List<CommentResponseDTO> findByUserId(Long id) {
-        return relationalMapper.toDTOList(repository.findByUserId(id));
-    }
-    public List<CommentResponseDTO> findAll() {
-        return relationalMapper.toDTOList(repository.findAll());
+    public Page<CommentResponseDTO> findAll(Pageable pageable) {
+        return repository.findAll(pageable).map(relationalMapper::toDTO);
     }
     public CommentResponseDTO findById(Long id) {
         return repository.findById(id)
@@ -49,5 +43,11 @@ public class CommentService {
     }
     public Page<CommentResponseDTO> filter(Specification<Comment> spec, Pageable pageable) {
         return repository.findAll(spec, pageable).map(relationalMapper::toDTO);
+    }
+    public List<CommentResponseDTO> findByProductionId(Long id) {
+        return relationalMapper.toDTOList(repository.findByProductionId(id));
+    }
+    public List<CommentResponseDTO> findByUserId(Long id) {
+        return relationalMapper.toDTOList(repository.findByUserId(id));
     }
 }

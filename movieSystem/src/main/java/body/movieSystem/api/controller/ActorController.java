@@ -1,7 +1,7 @@
 package body.movieSystem.api.controller;
 
-import body.movieSystem.api.dto.response.ActorResponseDTO;
 import body.movieSystem.api.dto.general.ActorDTO;
+import body.movieSystem.api.dto.response.ActorResponseDTO;
 import body.movieSystem.application.service.ActorService;
 import body.movieSystem.application.spec.ActorSpec;
 import lombok.RequiredArgsConstructor;
@@ -20,8 +20,8 @@ public class ActorController {
     private final ActorService service;
 
     @GetMapping
-    public ResponseEntity<List<ActorResponseDTO>> findAll() {
-        return ResponseEntity.ok(service.findAll());
+    public ResponseEntity<Page<ActorResponseDTO>> findAll(Pageable pageable) {
+        return ResponseEntity.ok(service.findAll(pageable));
     }
     @GetMapping("/{id}")
     public ResponseEntity<ActorResponseDTO> findById(@PathVariable Long id) {

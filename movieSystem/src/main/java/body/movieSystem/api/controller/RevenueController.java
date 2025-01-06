@@ -5,6 +5,8 @@ import body.movieSystem.api.dto.response.RevenueResponseDTO;
 import body.movieSystem.application.service.RevenueService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,8 +20,8 @@ public class RevenueController {
     private final RevenueService service;
 
     @GetMapping
-    public ResponseEntity<List<RevenueResponseDTO>> findAll() {
-        return ResponseEntity.ok(service.findAll());
+    public ResponseEntity<Page<RevenueResponseDTO>> findAll(Pageable pageable) {
+        return ResponseEntity.ok(service.findAll(pageable));
     }
     @GetMapping("/{id}")
     public ResponseEntity<RevenueResponseDTO> findById(@PathVariable Long id) {

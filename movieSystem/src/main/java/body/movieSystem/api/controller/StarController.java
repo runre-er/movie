@@ -20,8 +20,8 @@ public class StarController {
     private final StarService service;
 
     @GetMapping
-    public ResponseEntity<List<StarResponseDTO>> findAll() {
-        return ResponseEntity.ok(service.findAll());
+    public ResponseEntity<Page<StarResponseDTO>> findAll(Pageable pageable) {
+        return ResponseEntity.ok(service.findAll(pageable));
     }
     @GetMapping("/{id}")
     public ResponseEntity<StarResponseDTO> findById(@PathVariable Long id) {

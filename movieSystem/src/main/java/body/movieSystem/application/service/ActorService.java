@@ -23,11 +23,8 @@ public class ActorService {
     private final ActorMapper mapper;
     private final ActorRelationalMapper relationalMapper;
 
-    public List<ActorResponseDTO> findByProductionId(Long id) {
-        return relationalMapper.toDTOList(repository.findByProductionId(id));
-    }
-    public List<ActorResponseDTO> findAll() {
-        return relationalMapper.toDTOList(repository.findAll());
+    public Page<ActorResponseDTO> findAll(Pageable pageable) {
+        return repository.findAll(pageable).map(relationalMapper::toDTO);
     }
     public ActorResponseDTO findById(Long id) {
         return repository.findById(id)
@@ -46,6 +43,9 @@ public class ActorService {
     }
     public Page<ActorResponseDTO> filter(Specification<Actor> spec, Pageable pageable) {
         return repository.findAll(spec, pageable).map(relationalMapper::toDTO);
+    }
+    public List<ActorResponseDTO> findByProductionId(Long id) {
+        return relationalMapper.toDTOList(repository.findByProductionId(id));
     }
 }
 

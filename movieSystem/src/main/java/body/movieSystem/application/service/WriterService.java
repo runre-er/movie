@@ -27,11 +27,8 @@ public class WriterService {
     private final WriterRelationalMapper relationalMapper;
     private final ProductionRepository productionRepository;
 
-    public List<WriterResponseDTO> findByProductionId(Long id) {
-        return relationalMapper.toDTOList(repository.findByProductionId(id));
-    }
-    public List<WriterResponseDTO> findAll() {
-        return relationalMapper.toDTOList(repository.findAll());
+    public Page<WriterResponseDTO> findAll(Pageable pageable) {
+        return repository.findAll(pageable).map(relationalMapper::toDTO);
     }
     public WriterResponseDTO findById(Long id) {
         return repository.findById(id)
@@ -59,6 +56,9 @@ public class WriterService {
     }
     public Page<WriterResponseDTO> filter(Specification<Writer> spec, Pageable pageable) {
         return repository.findAll(spec, pageable).map(relationalMapper::toDTO);
+    }
+    public List<WriterResponseDTO> findByProductionId(Long id) {
+        return relationalMapper.toDTOList(repository.findByProductionId(id));
     }
 }
 

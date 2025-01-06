@@ -4,10 +4,10 @@ import body.movieSystem.api.dto.general.PersonDTO;
 import body.movieSystem.api.dto.response.PersonResponseDTO;
 import body.movieSystem.application.service.PersonService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -17,8 +17,8 @@ public class PersonController {
     private final PersonService service;
 
     @GetMapping
-    public ResponseEntity<List<PersonResponseDTO>> findAll() {
-        return ResponseEntity.ok(service.findAll());
+    public ResponseEntity<Page<PersonResponseDTO>> findAll(Pageable pageable) {
+        return ResponseEntity.ok(service.findAll(pageable));
     }
     @GetMapping("/{id}")
     public ResponseEntity<PersonResponseDTO> findById(@PathVariable Long id) {

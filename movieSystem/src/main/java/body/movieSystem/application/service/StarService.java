@@ -23,11 +23,8 @@ public class StarService {
     private final StarMapper mapper;
     private final StarRelationalMapper relationalMapper;
 
-    public List<StarResponseDTO> findByProductionId(Long id) {
-        return relationalMapper.toDTOList(repository.findByProductionId(id));
-    }
-    public List<StarResponseDTO> findAll() {
-        return relationalMapper.toDTOList(repository.findAll());
+    public Page<StarResponseDTO> findAll(Pageable pageable) {
+        return repository.findAll(pageable).map(relationalMapper::toDTO);
     }
     public StarResponseDTO findById(Long id) {
         return repository.findById(id)
@@ -46,6 +43,9 @@ public class StarService {
     }
     public Page<StarResponseDTO> filter(Specification<Star> spec, Pageable pageable) {
         return repository.findAll(spec, pageable).map(relationalMapper::toDTO);
+    }
+    public List<StarResponseDTO> findByProductionId(Long id) {
+        return relationalMapper.toDTOList(repository.findByProductionId(id));
     }
 }
 

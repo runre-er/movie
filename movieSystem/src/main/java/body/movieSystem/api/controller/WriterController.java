@@ -1,7 +1,7 @@
 package body.movieSystem.api.controller;
 
-import body.movieSystem.api.dto.response.WriterResponseDTO;
 import body.movieSystem.api.dto.general.WriterDTO;
+import body.movieSystem.api.dto.response.WriterResponseDTO;
 import body.movieSystem.application.service.WriterService;
 import body.movieSystem.application.spec.WriterSpec;
 import lombok.RequiredArgsConstructor;
@@ -20,8 +20,8 @@ public class WriterController {
     private final WriterService service;
 
     @GetMapping
-    public ResponseEntity<List<WriterResponseDTO>> findAll() {
-        return ResponseEntity.ok(service.findAll());
+    public ResponseEntity<Page<WriterResponseDTO>> findAll(Pageable pageable) {
+        return ResponseEntity.ok(service.findAll(pageable));
     }
     @GetMapping("/{id}")
     public ResponseEntity<WriterResponseDTO> findById(@PathVariable Long id) {
@@ -41,8 +41,7 @@ public class WriterController {
         return ResponseEntity.ok(service.findByProductionId(id));
     }
     @GetMapping("/filter")
-    public ResponseEntity<Page<WriterResponseDTO>> filter(WriterSpec spec,
-                                                          Pageable pageable) {
+    public ResponseEntity<Page<WriterResponseDTO>> filter(WriterSpec spec, Pageable pageable) {
         return ResponseEntity.ok(service.filter(spec, pageable));
     }
 }

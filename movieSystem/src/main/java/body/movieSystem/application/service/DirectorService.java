@@ -23,11 +23,8 @@ public class DirectorService {
     private final DirectorMapper mapper;
     private final DirectorRelationalMapper relationalMapper;
 
-    public List<DirectorResponseDTO> findByProductionId(Long id) {
-        return relationalMapper.toDTOList(repository.findByProductionId(id));
-    }
-    public List<DirectorResponseDTO> findAll() {
-        return relationalMapper.toDTOList(repository.findAll());
+    public Page<DirectorResponseDTO> findAll(Pageable pageable) {
+        return repository.findAll(pageable).map(relationalMapper::toDTO);
     }
     public DirectorResponseDTO findById(Long id) {
         return repository
@@ -47,6 +44,9 @@ public class DirectorService {
     }
     public Page<DirectorResponseDTO> filter(Specification<Director> spec, Pageable pageable) {
         return repository.findAll(spec, pageable).map(relationalMapper::toDTO);
+    }
+    public List<DirectorResponseDTO> findByProductionId(Long id) {
+        return relationalMapper.toDTOList(repository.findByProductionId(id));
     }
 }
 

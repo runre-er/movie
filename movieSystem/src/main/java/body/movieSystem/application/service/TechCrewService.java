@@ -23,11 +23,8 @@ public class TechCrewService {
     private final TechCrewMapper mapper;
     private final TechCrewRelationalMapper relationalMapper;
 
-    public List<TechCrewResponseDTO> findByProductionId(Long id) {
-        return relationalMapper.toDTOList(repository.findByProductionId(id));
-    }
-    public List<TechCrewResponseDTO> findAll() {
-        return relationalMapper.toDTOList(repository.findAll());
+    public Page<TechCrewResponseDTO> findAll(Pageable pageable) {
+        return repository.findAll(pageable).map(relationalMapper::toDTO);
     }
     public TechCrewResponseDTO findById(Long id) {
         return repository
@@ -47,5 +44,8 @@ public class TechCrewService {
     }
     public Page<TechCrewResponseDTO> filter(Specification<TechCrew> spec, Pageable pageable) {
         return repository.findAll(spec, pageable).map(relationalMapper::toDTO);
+    }
+    public List<TechCrewResponseDTO> findByProductionId(Long id) {
+        return relationalMapper.toDTOList(repository.findByProductionId(id));
     }
 }

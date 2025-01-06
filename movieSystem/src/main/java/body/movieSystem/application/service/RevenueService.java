@@ -8,6 +8,8 @@ import body.movieSystem.domain.entity.Revenue;
 import body.movieSystem.domain.repository.RevenueRepository;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -20,11 +22,8 @@ public class RevenueService {
     private final RevenueMapper mapper;
     private final RevenueRelationalMapper relationalMapper;
 
-    public List<RevenueResponseDTO> findByProductionId(Long id) {
-        return relationalMapper.toDTOList(repository.findByProductionId(id));
-    }
-    public List<RevenueResponseDTO> findAll() {
-        return relationalMapper.toDTOList(repository.findAll());
+    public Page<RevenueResponseDTO> findAll(Pageable pageable) {
+        return repository.findAll(pageable).map(relationalMapper::toDTO);
     }
     public RevenueResponseDTO findById(Long id) {
         return repository.findById(id)
@@ -40,6 +39,9 @@ public class RevenueService {
             throw new EntityNotFoundException("Star not found with id: " + id);
         }
         repository.deleteById(id);
+    }
+    public List<RevenueResponseDTO> findByProductionId(Long id) {
+        return relationalMapper.toDTOList(repository.findByProductionId(id));
     }
 }
 

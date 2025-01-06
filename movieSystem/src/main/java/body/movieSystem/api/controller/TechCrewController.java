@@ -20,8 +20,8 @@ public class TechCrewController {
     private final TechCrewService service;
 
     @GetMapping
-    public ResponseEntity<List<TechCrewResponseDTO>> findAll() {
-        return ResponseEntity.ok(service.findAll());
+    public ResponseEntity<Page<TechCrewResponseDTO>> findAll(Pageable pageable) {
+        return ResponseEntity.ok(service.findAll(pageable));
     }
     @GetMapping("/{id}")
     public ResponseEntity<TechCrewResponseDTO> findById(@PathVariable Long id) {

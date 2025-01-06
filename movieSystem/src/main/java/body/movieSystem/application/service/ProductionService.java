@@ -25,7 +25,7 @@ public class ProductionService {
     private final ProductionRelationalMapper relationalMapper;
     private final ProductionCrewMapper productionCrewMapper;
 
-    public Page<ProductionResponseDTO> findAll(Pageable pageable) { // todo specification arc resolver //
+    public Page<ProductionResponseDTO> findAll(Pageable pageable) {
         return repository.findAll(pageable).map(relationalMapper::toDTO);
     }
     public ProductionResponseDTO findById(Long id) {
