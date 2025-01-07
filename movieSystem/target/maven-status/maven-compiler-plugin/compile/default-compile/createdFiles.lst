@@ -11,6 +11,7 @@ body\movieSystem\domain\repository\CommentRepository.class
 body\movieSystem\application\mapper\entityMapping\PersonMapper.class
 body\movieSystem\api\dto\general\DirectorDTO$DirectorDTOBuilder.class
 body\movieSystem\application\mapper\entityMapping\StarMapperImpl.class
+body\movieSystem\application\mapper\relational\ProductionCastCrewMapper.class
 body\movieSystem\api\dto\general\LanguageDTO.class
 body\movieSystem\exception\unchecked\DuplicateResourceException.class
 body\movieSystem\application\service\LanguageService.class
@@ -87,6 +88,7 @@ body\movieSystem\application\mapper\relational\StarRelationalMapperImpl.class
 body\movieSystem\application\spec\DirectorSpec.class
 body\movieSystem\api\dto\general\ProductionDTO.class
 body\movieSystem\application\mapper\entityMapping\ProductionMapper.class
+body\movieSystem\application\mapper\relational\ProductionCastCrewMapperImpl.class
 body\movieSystem\api\controller\WriterController.class
 body\movieSystem\application\mapper\entityMapping\CommentMapperImpl.class
 body\movieSystem\application\mapper\entityMapping\PersonMapperImpl.class
@@ -111,11 +113,13 @@ body\movieSystem\domain\entity\Comment.class
 body\movieSystem\api\dto\general\StarDTO$StarDTOBuilder.class
 body\movieSystem\api\dto\response\StarResponseDTO.class
 body\movieSystem\application\mapper\relational\StarRelationalMapper.class
+body\movieSystem\api\dto\response\ProductionCastCrewDTO.class
 body\movieSystem\exception\unchecked\UserOperationException.class
 body\movieSystem\api\dto\response\CommentResponseDTO$CommentResponseDTOBuilder.class
 body\movieSystem\application\mapper\relational\ProductionRelationalMapperImpl.class
 body\movieSystem\domain\entity\Star.class
 body\movieSystem\api\controller\CountryController.class
+body\movieSystem\api\dto\response\ProductionCastCrewDTO$ProductionCastCrewDTOBuilder.class
 body\movieSystem\api\dto\general\UserDTO.class
 body\movieSystem\api\dto\response\PersonResponseDTO.class
 body\movieSystem\application\mapper\entityMapping\JobMapper.class
@@ -169,7 +173,6 @@ body\movieSystem\application\mapper\relational\TechCrewRelationalMapper.class
 body\movieSystem\api\dto\general\PersonDTO$PersonDTOBuilder.class
 body\movieSystem\domain\entity\Genre.class
 body\movieSystem\api\controller\RevenueController.class
-body\movieSystem\api\dto\response\ProductionCrewDTO.class
 body\movieSystem\domain\repository\DirectorRepository.class
 body\movieSystem\application\mapper\entityMapping\RevenueMapper.class
 body\movieSystem\application\mapper\entityMapping\ImdbScoreMapperImpl.class
@@ -186,7 +189,6 @@ body\movieSystem\application\mapper\entityMapping\ActorMapperImpl.class
 body\movieSystem\api\dto\general\UserDTO$UserDTOBuilder.class
 body\movieSystem\application\mapper\relational\TechCrewRelationalMapperImpl.class
 body\movieSystem\application\mapper\relational\ActorRelationalMapper.class
-body\movieSystem\api\dto\response\ProductionCrewDTO$ProductionCrewDTOBuilder.class
 body\movieSystem\application\mapper\entityMapping\JobMapperImpl.class
 body\movieSystem\domain\repository\StarRepository.class
 body\movieSystem\domain\repository\CountryRepository.class

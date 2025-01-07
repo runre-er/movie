@@ -1,10 +1,11 @@
 package body.movieSystem.application.service;
 
 import body.movieSystem.api.dto.general.ProductionDTO;
-import body.movieSystem.api.dto.response.ProductionCrewDTO;
+import body.movieSystem.api.dto.response.ProductionCastCrewDTO;
 import body.movieSystem.api.dto.response.ProductionResponseDTO;
+import body.movieSystem.api.dto.response.TechCrewResponseDTO;
 import body.movieSystem.application.mapper.entityMapping.ProductionMapper;
-import body.movieSystem.application.mapper.relational.ProductionCrewMapper;
+import body.movieSystem.application.mapper.relational.ProductionCastCrewMapper;
 import body.movieSystem.application.mapper.relational.ProductionRelationalMapper;
 import body.movieSystem.domain.entity.Production;
 import body.movieSystem.domain.repository.ProductionRepository;
@@ -16,14 +17,17 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class ProductionService {
 
     private final ProductionMapper mapper;
     private final ProductionRepository repository;
+    private final TechCrewService techCrewService;
     private final ProductionRelationalMapper relationalMapper;
-    private final ProductionCrewMapper productionCrewMapper;
+    private final ProductionCastCrewMapper productionCastCrewMapper;
 
     public Page<ProductionResponseDTO> findAll(Pageable pageable) {
         return repository.findAll(pageable).map(relationalMapper::toDTO);
@@ -34,11 +38,14 @@ public class ProductionService {
                         .findById(id)
                         .orElseThrow(() -> new EntityNotFoundException("Production not found with id: " + id)));
     }
-    public ProductionCrewDTO findCrewById(Long id) {
-        return productionCrewMapper.toDTO(
+    public ProductionCastCrewDTO findCastCrewByProductionId(Long id) {
+        return productionCastCrewMapper.toDTO(
                 repository
                         .findById(id)
                         .orElseThrow(() -> new EntityNotFoundException("Production not found with id: " + id)));
+    }
+    public List<TechCrewResponseDTO> findTechCrewByProductionId(Long id) {
+        return techCrewService.findByProductionId(id);
     }
     @Valid
     public ProductionDTO save(ProductionDTO productionDTO) {

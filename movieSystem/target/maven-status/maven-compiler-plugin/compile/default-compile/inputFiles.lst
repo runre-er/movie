@@ -5,9 +5,9 @@ C:\Users\ernur\Desktop\project\imdb-db\movie\movieSystem\src\main\java\body\movi
 C:\Users\ernur\Desktop\project\imdb-db\movie\movieSystem\src\main\java\body\movieSystem\domain\repository\TechCrewRepository.java
 C:\Users\ernur\Desktop\project\imdb-db\movie\movieSystem\src\main\java\body\movieSystem\domain\repository\RevenueRepository.java
 C:\Users\ernur\Desktop\project\imdb-db\movie\movieSystem\src\main\java\body\movieSystem\api\dto\general\UserDTO.java
-C:\Users\ernur\Desktop\project\imdb-db\movie\movieSystem\src\main\java\body\movieSystem\api\dto\response\ProductionCrewDTO.java
 C:\Users\ernur\Desktop\project\imdb-db\movie\movieSystem\src\main\java\body\movieSystem\api\dto\response\DirectorResponseDTO.java
 C:\Users\ernur\Desktop\project\imdb-db\movie\movieSystem\src\main\java\body\movieSystem\api\dto\general\TechCrewDTO.java
+C:\Users\ernur\Desktop\project\imdb-db\movie\movieSystem\src\main\java\body\movieSystem\api\dto\response\ProductionCastCrewDTO.java
 C:\Users\ernur\Desktop\project\imdb-db\movie\movieSystem\src\main\java\body\movieSystem\application\mapper\entityMapping\ActorMapper.java
 C:\Users\ernur\Desktop\project\imdb-db\movie\movieSystem\src\main\java\body\movieSystem\exception\unchecked\DuplicateResourceException.java
 C:\Users\ernur\Desktop\project\imdb-db\movie\movieSystem\src\main\java\body\movieSystem\application\mapper\entityMapping\UserMapper.java
@@ -28,6 +28,7 @@ C:\Users\ernur\Desktop\project\imdb-db\movie\movieSystem\src\main\java\body\movi
 C:\Users\ernur\Desktop\project\imdb-db\movie\movieSystem\src\main\java\body\movieSystem\application\mapper\entityMapping\CountryMapper.java
 C:\Users\ernur\Desktop\project\imdb-db\movie\movieSystem\src\main\java\body\movieSystem\application\service\GenreService.java
 C:\Users\ernur\Desktop\project\imdb-db\movie\movieSystem\src\main\java\body\movieSystem\api\controller\ProductionController.java
+C:\Users\ernur\Desktop\project\imdb-db\movie\movieSystem\src\main\java\body\movieSystem\application\mapper\relational\ProductionCastCrewMapper.java
 C:\Users\ernur\Desktop\project\imdb-db\movie\movieSystem\src\main\java\body\movieSystem\api\dto\validation\validator\NotBlankMessageValidator.java
 C:\Users\ernur\Desktop\project\imdb-db\movie\movieSystem\src\main\java\body\movieSystem\domain\repository\ActorRepository.java
 C:\Users\ernur\Desktop\project\imdb-db\movie\movieSystem\src\main\java\body\movieSystem\application\service\UserService.java

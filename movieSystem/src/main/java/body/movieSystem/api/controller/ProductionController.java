@@ -1,8 +1,9 @@
 package body.movieSystem.api.controller;
 
 import body.movieSystem.api.dto.general.ProductionDTO;
-import body.movieSystem.api.dto.response.ProductionCrewDTO;
+import body.movieSystem.api.dto.response.ProductionCastCrewDTO;
 import body.movieSystem.api.dto.response.ProductionResponseDTO;
+import body.movieSystem.api.dto.response.TechCrewResponseDTO;
 import body.movieSystem.application.service.ProductionService;
 import body.movieSystem.application.spec.ProductionSpec;
 import lombok.RequiredArgsConstructor;
@@ -10,6 +11,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -26,9 +29,13 @@ public class ProductionController {
     public ProductionResponseDTO findById(@PathVariable Long id) {
         return ResponseEntity.ok(service.findById(id)).getBody();
     }
-    @GetMapping("/{id}/crew")
-    public ProductionCrewDTO findCrewById(@PathVariable Long id) {
-        return ResponseEntity.ok(service.findCrewById(id)).getBody();
+    @GetMapping("/{id}/cast-crew")
+    public ProductionCastCrewDTO findCastCrewById(@PathVariable Long id) {
+        return ResponseEntity.ok(service.findCastCrewByProductionId(id)).getBody();
+    }
+    @GetMapping("/{id}/tech-crew")
+    public List<TechCrewResponseDTO> findTechCrewById(@PathVariable Long id) {
+        return ResponseEntity.ok(service.findTechCrewByProductionId(id)).getBody();
     }
     @PostMapping
     public ResponseEntity<ProductionDTO> save(@RequestBody ProductionDTO productionDTO) {

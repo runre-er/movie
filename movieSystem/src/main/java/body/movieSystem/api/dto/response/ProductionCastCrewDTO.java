@@ -9,7 +9,7 @@ import java.util.List;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class ProductionCrewDTO {
+public class ProductionCastCrewDTO {
     private List<ActorResponseDTO> actors;
     private List<WriterResponseDTO> writers;
     private List<DirectorResponseDTO> directors;
