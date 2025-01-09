@@ -6,7 +6,7 @@ import body.movieSystem.application.mapper.entityMapping.TechCrewMapper;
 import body.movieSystem.application.mapper.relational.TechCrewRelationalMapper;
 import body.movieSystem.domain.entity.TechCrew;
 import body.movieSystem.domain.repository.TechCrewRepository;
-import jakarta.persistence.EntityNotFoundException;
+import body.movieSystem.exception.unchecked.ResourceNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -30,7 +30,7 @@ public class TechCrewService {
         return repository
                 .findById(id)
                 .map(relationalMapper::toDTO)
-                .orElseThrow(() -> new EntityNotFoundException("Actor not found with id: " + id));
+                .orElseThrow(() -> new ResourceNotFoundException("Tech Crew", "id", id));
     }
     public TechCrewDTO save(TechCrewDTO techCrewDTO) {
         TechCrew entity = mapper.toEntity(techCrewDTO);
@@ -38,7 +38,7 @@ public class TechCrewService {
     }
     public void delete(Long id) {
         if (!repository.existsById(id)) {
-            throw new EntityNotFoundException("Actor not found with id: " + id);
+            throw new ResourceNotFoundException("Tech Crew", "id", id);
         }
         repository.deleteById(id);
     }

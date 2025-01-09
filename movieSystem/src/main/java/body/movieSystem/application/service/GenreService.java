@@ -4,7 +4,7 @@ import body.movieSystem.api.dto.general.GenreDTO;
 import body.movieSystem.application.mapper.entityMapping.GenreMapper;
 import body.movieSystem.domain.entity.Genre;
 import body.movieSystem.domain.repository.GenreRepository;
-import jakarta.persistence.EntityNotFoundException;
+import body.movieSystem.exception.unchecked.ResourceNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -23,7 +23,7 @@ public class GenreService {
     public GenreDTO findById(Long id) {
         return repository.findById(id)
                 .map(mapper::toDTO)
-                .orElseThrow(() -> new EntityNotFoundException("Genre not found with id: " + id));
+                .orElseThrow(() -> new ResourceNotFoundException("Genre", "id", id));
     }
     public GenreDTO save(GenreDTO genreDTO) {
         Genre entity = mapper.toEntity(genreDTO);
@@ -31,7 +31,7 @@ public class GenreService {
     }
     public void delete(Long id) {
         if (!repository.existsById(id)) {
-            throw new EntityNotFoundException("Genre not found with id: " + id);
+            throw new ResourceNotFoundException("Genre", "id", id);
         }
         repository.deleteById(id);
     }

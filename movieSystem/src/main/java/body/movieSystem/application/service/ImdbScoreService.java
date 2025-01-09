@@ -6,7 +6,7 @@ import body.movieSystem.application.mapper.entityMapping.ImdbScoreMapper;
 import body.movieSystem.application.mapper.relational.ImdbScoreRelationalMapper;
 import body.movieSystem.domain.entity.ImdbScore;
 import body.movieSystem.domain.repository.ImdbScoreRepository;
-import jakarta.persistence.EntityNotFoundException;
+import body.movieSystem.exception.unchecked.ResourceNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -27,7 +27,7 @@ public class ImdbScoreService {
     public ImdbScoreResponseDTO findById(Long id) {
         return repository.findById(id)
                 .map(relationalMapper::toDTO)
-                .orElseThrow(() -> new EntityNotFoundException("ImdbScore not found with id: " + id));
+                .orElseThrow(() -> new ResourceNotFoundException("ImdbScore", "id", id));
     }
     public ImdbScoreDTO save(ImdbScoreDTO imdbScoreDTO) {
         ImdbScore entity = mapper.toEntity(imdbScoreDTO);
@@ -35,7 +35,7 @@ public class ImdbScoreService {
     }
     public void delete(Long id) {
         if (!repository.existsById(id)) {
-            throw new EntityNotFoundException("ImdbScore not found with id: " + id);
+            throw new ResourceNotFoundException("ImdbScore", "id", id);
         }
         repository.deleteById(id);
     }

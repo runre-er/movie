@@ -4,7 +4,7 @@ import body.movieSystem.api.dto.general.CountryDTO;
 import body.movieSystem.application.mapper.entityMapping.CountryMapper;
 import body.movieSystem.domain.entity.Country;
 import body.movieSystem.domain.repository.CountryRepository;
-import jakarta.persistence.EntityNotFoundException;
+import body.movieSystem.exception.unchecked.ResourceNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -23,7 +23,7 @@ public class CountryService {
     public CountryDTO findById(Long id) {
         return repository.findById(id)
                 .map(mapper::toDTO)
-                .orElseThrow(() -> new EntityNotFoundException("Country not found with id: " + id));
+                .orElseThrow(() -> new ResourceNotFoundException("Country", "id", id));
     }
     public CountryDTO save(CountryDTO countryDTO) {
         Country entity = mapper.toEntity(countryDTO);
@@ -31,7 +31,7 @@ public class CountryService {
     }
     public void delete(Long id) {
         if (!repository.existsById(id)) {
-            throw new EntityNotFoundException("Country not found with id: " + id);
+            throw new ResourceNotFoundException("Country", "id", id);
         }
         repository.deleteById(id);
     }

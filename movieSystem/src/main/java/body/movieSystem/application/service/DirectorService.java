@@ -6,7 +6,7 @@ import body.movieSystem.application.mapper.entityMapping.DirectorMapper;
 import body.movieSystem.application.mapper.relational.DirectorRelationalMapper;
 import body.movieSystem.domain.entity.Director;
 import body.movieSystem.domain.repository.DirectorRepository;
-import jakarta.persistence.EntityNotFoundException;
+import body.movieSystem.exception.unchecked.ResourceNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -30,7 +30,7 @@ public class DirectorService {
         return repository
                 .findById(id)
                 .map(relationalMapper::toDTO)
-                .orElseThrow(() -> new EntityNotFoundException("Director not found with id: " + id));
+                .orElseThrow(() -> new ResourceNotFoundException("Director", "id", id));
     }
     public DirectorDTO save(DirectorDTO directorDTO) {
         Director entity = mapper.toEntity(directorDTO);
@@ -38,7 +38,7 @@ public class DirectorService {
     }
     public void delete(Long id) {
         if (!repository.existsById(id)) {
-            throw new EntityNotFoundException("Director not found with id: " + id);
+            throw new ResourceNotFoundException("Director", "id", id);
         }
         repository.deleteById(id);
     }

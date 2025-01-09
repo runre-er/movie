@@ -9,7 +9,7 @@ import body.movieSystem.application.mapper.relational.ProductionCastCrewMapper;
 import body.movieSystem.application.mapper.relational.ProductionRelationalMapper;
 import body.movieSystem.domain.entity.Production;
 import body.movieSystem.domain.repository.ProductionRepository;
-import jakarta.persistence.EntityNotFoundException;
+import body.movieSystem.exception.unchecked.ResourceNotFoundException;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -36,13 +36,13 @@ public class ProductionService {
         return relationalMapper.toDTO(
                 repository
                         .findById(id)
-                        .orElseThrow(() -> new EntityNotFoundException("Production not found with id: " + id)));
+                        .orElseThrow(() -> new ResourceNotFoundException("Production", "id", id)));
     }
     public ProductionCastCrewDTO findCastCrewByProductionId(Long id) {
         return productionCastCrewMapper.toDTO(
                 repository
                         .findById(id)
-                        .orElseThrow(() -> new EntityNotFoundException("Production not found with id: " + id)));
+                        .orElseThrow(() -> new ResourceNotFoundException("Production", "id", id)));
     }
     public List<TechCrewResponseDTO> findTechCrewByProductionId(Long id) {
         return techCrewService.findByProductionId(id);

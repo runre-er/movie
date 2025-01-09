@@ -4,7 +4,7 @@ import body.movieSystem.api.dto.general.LanguageDTO;
 import body.movieSystem.application.mapper.entityMapping.LanguageMapper;
 import body.movieSystem.domain.entity.Language;
 import body.movieSystem.domain.repository.LanguageRepository;
-import jakarta.persistence.EntityNotFoundException;
+import body.movieSystem.exception.unchecked.ResourceNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -23,7 +23,7 @@ public class LanguageService {
     public LanguageDTO findById(Long id) {
         return repository.findById(id)
                 .map(mapper::toDTO)
-                .orElseThrow(() -> new EntityNotFoundException("Language not found with id: " + id));
+                .orElseThrow(() -> new ResourceNotFoundException("Language", "id", id));
     }
     public LanguageDTO save(LanguageDTO languageDTO) {
         Language entity = mapper.toEntity(languageDTO);
@@ -31,7 +31,7 @@ public class LanguageService {
     }
     public void delete(Long id) {
         if (!repository.existsById(id)) {
-            throw new EntityNotFoundException("Language not found with id: " + id);
+            throw new ResourceNotFoundException("Language", "id", id);
         }
         repository.deleteById(id);
     }

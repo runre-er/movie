@@ -6,7 +6,7 @@ import body.movieSystem.application.mapper.entityMapping.StarMapper;
 import body.movieSystem.application.mapper.relational.StarRelationalMapper;
 import body.movieSystem.domain.entity.Star;
 import body.movieSystem.domain.repository.StarRepository;
-import jakarta.persistence.EntityNotFoundException;
+import body.movieSystem.exception.unchecked.ResourceNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -29,7 +29,7 @@ public class StarService {
     public StarResponseDTO findById(Long id) {
         return repository.findById(id)
                 .map(relationalMapper::toDTO)
-                .orElseThrow(() -> new EntityNotFoundException("Star not found with id: " + id));
+                .orElseThrow(() -> new ResourceNotFoundException("User", "id", id));
     }
     public StarDTO save(StarDTO starDTO) {
         Star entity = mapper.toEntity(starDTO);
@@ -37,7 +37,7 @@ public class StarService {
     }
     public void delete(Long id) {
         if (!repository.existsById(id)) {
-            throw new EntityNotFoundException("Star not found with id: " + id);
+            throw new ResourceNotFoundException("User", "id", id);
         }
         repository.deleteById(id);
     }

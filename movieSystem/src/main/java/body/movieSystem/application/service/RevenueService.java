@@ -6,7 +6,7 @@ import body.movieSystem.application.mapper.entityMapping.RevenueMapper;
 import body.movieSystem.application.mapper.relational.RevenueRelationalMapper;
 import body.movieSystem.domain.entity.Revenue;
 import body.movieSystem.domain.repository.RevenueRepository;
-import jakarta.persistence.EntityNotFoundException;
+import body.movieSystem.exception.unchecked.ResourceNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -28,7 +28,7 @@ public class RevenueService {
     public RevenueResponseDTO findById(Long id) {
         return repository.findById(id)
                 .map(relationalMapper::toDTO)
-                .orElseThrow(() -> new EntityNotFoundException("Star not found with id: " + id));
+                .orElseThrow(() -> new ResourceNotFoundException("Revenue", "id", id));
     }
     public RevenueDTO save(RevenueDTO revenueDTO) {
         Revenue revenue = mapper.toEntity(revenueDTO);
@@ -36,7 +36,7 @@ public class RevenueService {
     }
     public void delete(Long id) {
         if (!repository.existsById(id)) {
-            throw new EntityNotFoundException("Star not found with id: " + id);
+            throw new ResourceNotFoundException("Revenue", "id", id);
         }
         repository.deleteById(id);
     }

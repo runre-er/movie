@@ -6,7 +6,7 @@ import body.movieSystem.application.mapper.entityMapping.CommentMapper;
 import body.movieSystem.application.mapper.relational.CommentRelationalMapper;
 import body.movieSystem.domain.entity.Comment;
 import body.movieSystem.domain.repository.CommentRepository;
-import jakarta.persistence.EntityNotFoundException;
+import body.movieSystem.exception.unchecked.ResourceNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -29,7 +29,7 @@ public class CommentService {
     public CommentResponseDTO findById(Long id) {
         return repository.findById(id)
                 .map(relationalMapper::toDTO)
-                .orElseThrow(() -> new EntityNotFoundException("Comment not found with id: " + id));
+                .orElseThrow(() -> new ResourceNotFoundException("Comment", "id", id));
     }
     public CommentDTO save(CommentDTO commentDTO) {
         Comment entity = mapper.toEntity(commentDTO);
@@ -37,7 +37,7 @@ public class CommentService {
     }
     public void delete(Long id) {
         if (!repository.existsById(id)) {
-            throw new EntityNotFoundException("Comment not found with id: " + id);
+            throw new ResourceNotFoundException("Comment", "id", id);
         }
         repository.deleteById(id);
     }

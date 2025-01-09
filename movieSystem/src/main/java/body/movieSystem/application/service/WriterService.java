@@ -8,6 +8,7 @@ import body.movieSystem.domain.entity.Writer;
 import body.movieSystem.domain.repository.PersonRepository;
 import body.movieSystem.domain.repository.ProductionRepository;
 import body.movieSystem.domain.repository.WriterRepository;
+import body.movieSystem.exception.unchecked.ResourceNotFoundException;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -33,7 +34,7 @@ public class WriterService {
     public WriterResponseDTO findById(Long id) {
         return repository.findById(id)
                 .map(relationalMapper::toDTO)
-                .orElseThrow(() -> new EntityNotFoundException("Writer not found with id: " + id));
+                .orElseThrow(() -> new ResourceNotFoundException("Writer", "id", id));
     }
     public WriterDTO save(WriterDTO writerDTO) {
         Writer entity = mapper.toEntity(writerDTO);
@@ -50,7 +51,7 @@ public class WriterService {
     }
     public void delete(Long id) {
         if (!repository.existsById(id)) {
-            throw new EntityNotFoundException("Writer not found with id: " + id);
+            throw new ResourceNotFoundException("Writer", "id", id);
         }
         repository.deleteById(id);
     }

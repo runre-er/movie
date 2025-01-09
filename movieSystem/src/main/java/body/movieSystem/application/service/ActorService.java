@@ -6,7 +6,7 @@ import body.movieSystem.application.mapper.entityMapping.ActorMapper;
 import body.movieSystem.application.mapper.relational.ActorRelationalMapper;
 import body.movieSystem.domain.entity.Actor;
 import body.movieSystem.domain.repository.ActorRepository;
-import jakarta.persistence.EntityNotFoundException;
+import body.movieSystem.exception.unchecked.ResourceNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -29,7 +29,7 @@ public class ActorService {
     public ActorResponseDTO findById(Long id) {
         return repository.findById(id)
                 .map(relationalMapper::toDTO)
-                .orElseThrow(() -> new EntityNotFoundException("Actor not found with id: " + id));
+                .orElseThrow(() -> new ResourceNotFoundException("Actor", "id", id));
     }
     public ActorDTO save(ActorDTO actorDTO) {
         Actor entity = mapper.toEntity(actorDTO);
@@ -37,7 +37,7 @@ public class ActorService {
     }
     public void delete(Long id) {
         if (!repository.existsById(id)) {
-            throw new EntityNotFoundException("Actor not found with id: " + id);
+            throw new ResourceNotFoundException("Actor", "id", id);
         }
         repository.deleteById(id);
     }

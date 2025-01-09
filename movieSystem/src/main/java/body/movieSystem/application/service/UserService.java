@@ -6,8 +6,8 @@ import body.movieSystem.application.mapper.entityMapping.UserMapper;
 import body.movieSystem.application.mapper.relational.UserRelationalMapper;
 import body.movieSystem.domain.entity.User;
 import body.movieSystem.domain.repository.UserRepository;
-import body.movieSystem.exception.unchecked.UserOperationException;
-import jakarta.persistence.EntityNotFoundException;
+import body.movieSystem.exception.unchecked.DuplicateResourceException;
+import body.movieSystem.exception.unchecked.ResourceNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -28,21 +28,21 @@ public class UserService {
     public UserResponseDTO findById(Long id) {
         return repository.findById(id)
                 .map(relationalMapper::toDTO)
-                .orElseThrow(() -> new EntityNotFoundException("User not found with id: " + id));
+                .orElseThrow(() -> new ResourceNotFoundException("User", "id", id));
     }
     public UserDTO save(UserDTO userDTO) {
         if (repository.existsByEmail(userDTO.getEmail())) {
-            throw new UserOperationException("Email is already in use: " + userDTO.getEmail());
+            throw new DuplicateResourceException("Email is already in use: " + userDTO.getEmail());
         }
         if (repository.existsByNick(userDTO.getNick())) {
-            throw new UserOperationException("Nick is already in use: " + userDTO.getNick());
+            throw new DuplicateResourceException("Nick is already in use: " + userDTO.getNick());
         }
         User entity = mapper.toEntity(userDTO);
         return mapper.toDTO(repository.save(entity));
     }
     public void delete(Long id) {
         if (!repository.existsById(id)) {
-            throw new EntityNotFoundException("User not found with id: " + id);
+            throw new ResourceNotFoundException("User", "id", id);
         }
         repository.deleteById(id);
     }

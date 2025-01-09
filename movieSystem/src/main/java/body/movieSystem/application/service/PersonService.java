@@ -6,7 +6,7 @@ import body.movieSystem.application.mapper.entityMapping.PersonMapper;
 import body.movieSystem.application.mapper.relational.PersonRelationalMapper;
 import body.movieSystem.domain.entity.Person;
 import body.movieSystem.domain.repository.PersonRepository;
-import jakarta.persistence.EntityNotFoundException;
+import body.movieSystem.exception.unchecked.ResourceNotFoundException;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -26,7 +26,7 @@ public class PersonService {
     }
     public PersonResponseDTO findById(Long id) {
         return relationalMapper.toDTO(repository.findById(id)
-                .orElseThrow(() -> new EntityNotFoundException("person not found with id: " + id)));
+                .orElseThrow(() -> new ResourceNotFoundException("Person", "id", id)));
     }
     @Valid
     public PersonDTO save(PersonDTO personDTO) {
