@@ -10,9 +10,12 @@ import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.servlet.NoHandlerFoundException;
 
 import java.time.LocalDateTime;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 @ControllerAdvice
@@ -29,6 +32,14 @@ public class GlobalExceptionHandler {
                 .collect(Collectors.toList());
 
         return createValidationErrorResponse(errors);
+    }
+    @ExceptionHandler(NoHandlerFoundException.class)
+    public ResponseEntity<Map<String, String>> handleNoHandlerFoundException(NoHandlerFoundException ex) {
+        Map<String, String> response = new HashMap<>();
+        response.put("error", "Endpoint not found");
+        response.put("message", "The requested URL " + ex.getRequestURL() + " was not found on this server.");
+        response.put("status", "404");
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
     }
     // Business Logic Exceptions
     @ExceptionHandler({

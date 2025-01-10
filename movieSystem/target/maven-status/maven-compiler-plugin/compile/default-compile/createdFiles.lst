@@ -16,7 +16,6 @@ body\movieSystem\api\dto\general\LanguageDTO.class
 body\movieSystem\exception\unchecked\DuplicateResourceException.class
 body\movieSystem\application\service\LanguageService.class
 body\movieSystem\domain\repository\ImdbScoreRepository.class
-body\movieSystem\exception\unchecked\RelatedEntityNotFoundException.class
 body\movieSystem\application\service\CountryService.class
 body\movieSystem\domain\repository\ActorRepository.class
 body\movieSystem\application\mapper\relational\CommentRelationalMapperImpl.class
@@ -57,7 +56,6 @@ body\movieSystem\api\dto\response\DirectorResponseDTO.class
 body\movieSystem\domain\entity\TechCrew.class
 body\movieSystem\api\controller\UserController.class
 body\movieSystem\domain\entity\Production.class
-body\movieSystem\exception\unchecked\ProductionOperationException.class
 body\movieSystem\api\dto\general\TechCrewDTO.class
 body\movieSystem\application\spec\ActorSpec.class
 body\movieSystem\api\dto\validation\validator\NonNullIdValidator.class
@@ -65,6 +63,7 @@ body\movieSystem\application\mapper\entityMapping\GenreMapper.class
 body\movieSystem\application\service\StarService.class
 body\movieSystem\api\dto\response\CommentResponseDTO.class
 body\movieSystem\api\dto\response\DirectorResponseDTO$DirectorResponseDTOBuilder.class
+body\movieSystem\exception\unchecked\InvalidOperationException.class
 body\movieSystem\api\dto\ErrorResponse.class
 body\movieSystem\domain\repository\JobRepository.class
 body\movieSystem\api\dto\response\ProductionResponseDTO.class
@@ -114,7 +113,6 @@ body\movieSystem\api\dto\general\StarDTO$StarDTOBuilder.class
 body\movieSystem\api\dto\response\StarResponseDTO.class
 body\movieSystem\application\mapper\relational\StarRelationalMapper.class
 body\movieSystem\api\dto\response\ProductionCastCrewDTO.class
-body\movieSystem\exception\unchecked\UserOperationException.class
 body\movieSystem\api\dto\response\CommentResponseDTO$CommentResponseDTOBuilder.class
 body\movieSystem\application\mapper\relational\ProductionRelationalMapperImpl.class
 body\movieSystem\domain\entity\Star.class
@@ -136,7 +134,6 @@ body\movieSystem\application\mapper\entityMapping\WriterMapperImpl.class
 body\movieSystem\application\service\GenreService.class
 body\movieSystem\api\dto\validation\validator\SizeMessageValidator.class
 body\movieSystem\application\service\ActorService.class
-body\movieSystem\exception\unchecked\EntityRelationException.class
 body\movieSystem\domain\repository\RevenueRepository.class
 body\movieSystem\exception\unchecked\ValidationException.class
 body\movieSystem\application\mapper\relational\UserRelationalMapperImpl.class
