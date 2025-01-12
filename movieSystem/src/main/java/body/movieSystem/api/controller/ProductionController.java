@@ -42,8 +42,11 @@ public class ProductionController {
         return ResponseEntity.ok(service.save(productionDTO));
     }
     @GetMapping("/filter")
-    public ResponseEntity<Page<ProductionResponseDTO>> filter(ProductionSpec spec,
-                                                              Pageable pageable) {
+    public ResponseEntity<Page<ProductionResponseDTO>> filter(ProductionSpec spec, Pageable pageable) {
         return ResponseEntity.ok(service.filter(spec, pageable));
+    }
+    @GetMapping("/top/{limit}")
+    public List<ProductionResponseDTO> getTop(@PathVariable Long limit) {
+        return ResponseEntity.ok(service.getTop(limit)).getBody();
     }
 }

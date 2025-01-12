@@ -1,6 +1,7 @@
 package body.movieSystem.application.service;
 
 import body.movieSystem.api.dto.general.ProductionDTO;
+import body.movieSystem.api.dto.response.ImdbScoreResponseDTO;
 import body.movieSystem.api.dto.response.ProductionCastCrewDTO;
 import body.movieSystem.api.dto.response.ProductionResponseDTO;
 import body.movieSystem.api.dto.response.TechCrewResponseDTO;
@@ -26,6 +27,7 @@ public class ProductionService {
     private final ProductionMapper mapper;
     private final ProductionRepository repository;
     private final TechCrewService techCrewService;
+    private final ImdbScoreService imdbScoreService;
     private final ProductionRelationalMapper relationalMapper;
     private final ProductionCastCrewMapper productionCastCrewMapper;
 
@@ -54,5 +56,12 @@ public class ProductionService {
     }
     public Page<ProductionResponseDTO> filter(Specification<Production> spec, Pageable pageable) {
         return repository.findAll(spec, pageable).map(relationalMapper::toDTO);
+    }
+    public List<ProductionResponseDTO> getTop(Long limit) {
+        return relationalMapper.toDTOList(
+                repository.findAllById(
+                        imdbScoreService.getTop(limit).stream()
+                                .map(ImdbScoreResponseDTO::getProductionId)
+                                .toList()));
     }
 }
