@@ -3,6 +3,7 @@ package body.movieSystem.exception;
 import body.movieSystem.api.dto.ErrorResponse;
 import body.movieSystem.api.dto.ValidationErrorResponse;
 import body.movieSystem.exception.unchecked.DuplicateResourceException;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,6 +19,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+@Slf4j
 @ControllerAdvice
 public class GlobalExceptionHandler {
 
@@ -49,11 +51,13 @@ public class GlobalExceptionHandler {
     public ResponseEntity<ErrorResponse> handleDataIntegrityExceptions(RuntimeException ex) {
         String message = ex instanceof DataIntegrityViolationException ?
                 "Database error occurred" : ex.getMessage();
+        log.error(message, ex);
         return createErrorResponse(message, HttpStatus.CONFLICT);
     }
     // Generic Exception Handler
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ErrorResponse> handleGlobalException(Exception ex) {
+        log.error(ex.getMessage(), ex);
         return createErrorResponse(
                 "An unexpected error occurred",
                 HttpStatus.INTERNAL_SERVER_ERROR
