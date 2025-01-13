@@ -1,10 +1,7 @@
 package body.movieSystem.application.service;
 
 import body.movieSystem.api.dto.general.ProductionDTO;
-import body.movieSystem.api.dto.response.ImdbScoreResponseDTO;
-import body.movieSystem.api.dto.response.ProductionCastCrewDTO;
-import body.movieSystem.api.dto.response.ProductionResponseDTO;
-import body.movieSystem.api.dto.response.TechCrewResponseDTO;
+import body.movieSystem.api.dto.response.*;
 import body.movieSystem.application.mapper.entityMapping.ProductionMapper;
 import body.movieSystem.application.mapper.relational.ProductionCastCrewMapper;
 import body.movieSystem.application.mapper.relational.ProductionRelationalMapper;
@@ -63,5 +60,10 @@ public class ProductionService {
                         imdbScoreService.getTop(limit).stream()
                                 .map(ImdbScoreResponseDTO::getProductionId)
                                 .toList()));
+    }
+    public ProductionInfoDTO getInfoByID(Long id) {
+        return relationalMapper.toInfoDTO(
+                repository.findById(id)
+                        .orElseThrow(() -> new ResourceNotFoundException("Production", "id", id)));
     }
 }

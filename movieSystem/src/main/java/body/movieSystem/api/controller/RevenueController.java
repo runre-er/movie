@@ -33,7 +33,6 @@ public class RevenueController {
     }
     @GetMapping("/{id}/production")
     public ResponseEntity<List<RevenueResponseDTO>> findByProductionId(@PathVariable Long id) {
-
         return ResponseEntity.ok(service.findByProductionId(id));
     }
 }

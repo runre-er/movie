@@ -2,6 +2,7 @@ package body.movieSystem.api.controller;
 
 import body.movieSystem.api.dto.general.ProductionDTO;
 import body.movieSystem.api.dto.response.ProductionCastCrewDTO;
+import body.movieSystem.api.dto.response.ProductionInfoDTO;
 import body.movieSystem.api.dto.response.ProductionResponseDTO;
 import body.movieSystem.api.dto.response.TechCrewResponseDTO;
 import body.movieSystem.application.service.ProductionService;
@@ -48,5 +49,9 @@ public class ProductionController {
     @GetMapping("/top/{limit}")
     public List<ProductionResponseDTO> getTop(@PathVariable Long limit) {
         return ResponseEntity.ok(service.getTop(limit)).getBody();
+    }
+    @GetMapping("/info/{id}")
+    public ProductionInfoDTO getInfoById(@PathVariable Long id) {
+        return ResponseEntity.ok(service.getInfoByID(id)).getBody();
     }
 }

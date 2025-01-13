@@ -33,15 +33,15 @@ public class Production {
     @JoinColumn(name = "language_id", nullable = false)
     private Language language;
 
-    @ManyToOne(fetch = FetchType.LAZY) // todo dene bı yapmıcak bu
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "genre_id", nullable = false)
     private Genre genre;
 
-    @ManyToOne(fetch = FetchType.LAZY) // todo dene bı yapmıcak bu
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "country_id", nullable = false)
     private Country country;
 
-    @OneToMany(cascade = CascadeType.REMOVE) // todo dene bı yapmıcak bu
+    @OneToMany(cascade = CascadeType.REMOVE)
     @JoinColumn(name = "production_id", insertable = false, updatable = false)
     private List<Revenue> revenues;
 
