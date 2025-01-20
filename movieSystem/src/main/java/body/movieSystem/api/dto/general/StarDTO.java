@@ -14,7 +14,7 @@ public class StarDTO {
     @Schema(hidden = true)
     private Long id;
     @NonNullId
-    private Long production_id;
+    private Long productionId;
     @NonNullId
-    private Long person_id;
+    private Long personId;
 }

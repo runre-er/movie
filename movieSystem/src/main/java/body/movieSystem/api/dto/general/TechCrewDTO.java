@@ -14,7 +14,7 @@ public class TechCrewDTO {
     @Schema(hidden = true)
     private Long id;
     @NonNullId
-    private Long person_id;
+    private Long personId;
     @NonNullId
-    private Long job_id;
+    private Long jobId;
 }

@@ -10,9 +10,9 @@ import java.util.List;
 @Mapper
 public interface ProductionMapper {
 
-    @Mapping(target = "language_id", ignore = true)
-    @Mapping(target = "genre_id", ignore = true)
-    @Mapping(target = "country_id", ignore = true)
+    @Mapping(target = "languageId", ignore = true)
+    @Mapping(target = "genreId", ignore = true)
+    @Mapping(target = "countryId", ignore = true)
     ProductionDTO toDTO(Production production);
 
     @Mapping(target = "writers", ignore = true)

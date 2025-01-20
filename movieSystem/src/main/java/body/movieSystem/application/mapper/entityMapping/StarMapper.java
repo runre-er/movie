@@ -10,8 +10,8 @@ import java.util.List;
 @Mapper
 public interface StarMapper {
 
-    @Mapping(target = "production_id", source = "production.id")
-    @Mapping(target = "person_id", source = "person.id")
+    @Mapping(target = "productionId", source = "production.id")
+    @Mapping(target = "personId", source = "person.id")
     StarDTO toDTO(Star star);
 
     @Mapping(target = "person", ignore = true)

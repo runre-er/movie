@@ -10,8 +10,8 @@ import java.util.List;
 @Mapper
 public interface TechCrewMapper {
 
-    @Mapping(target = "person_id", ignore = true)
-    @Mapping(target = "job_id", ignore = true)
+    @Mapping(target = "personId", ignore = true)
+    @Mapping(target = "jobId", ignore = true)
     TechCrewDTO toDTO(TechCrew techCrew);
 
     @Mapping(target = "person", ignore = true)

@@ -27,9 +27,9 @@ public class ProductionDataBuilder {
                 .originalTitle("Test Original")
                 .releaseDate(LocalDate.of(2023, 1, 1))
                 .playTime(120)
-                .country_id(1L)
-                .genre_id(1L)
-                .language_id(1L)
+                .countryId(1L)
+                .genreId(1L)
+                .languageId(1L)
                 .build();
     }
     public static ProductionResponseDTO createSampleProductionResponseDTO() {

@@ -19,7 +19,7 @@ public class CommentDTO {
     @Pattern(regexp = "^[a-zA-Z0-9 .,!?']*$")
     private String message;
     @NonNullId
-    private Long production_id;
+    private Long productionId;
     @NonNullId
-    private Long person_id;
+    private Long personId;
 }

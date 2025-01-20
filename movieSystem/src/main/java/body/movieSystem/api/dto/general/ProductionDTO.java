@@ -27,9 +27,9 @@ public class ProductionDTO {
     @SizeMessage(min = 1)
     private int playTime;
     @NonNullId
-    private Long country_id;
+    private Long countryId;
     @NonNullId
-    private Long genre_id;
+    private Long genreId;
     @NonNullId
-    private Long language_id;
+    private Long languageId;
 }

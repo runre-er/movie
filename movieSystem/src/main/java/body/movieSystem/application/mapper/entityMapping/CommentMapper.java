@@ -10,8 +10,8 @@ import java.util.List;
 @Mapper
 public interface CommentMapper {
 
-    @Mapping(target = "production_id", ignore = true)
-    @Mapping(target = "person_id", ignore = true)
+    @Mapping(target = "productionId", ignore = true)
+    @Mapping(target = "personId", ignore = true)
     CommentDTO toDTO(Comment comment);
 
     List<CommentDTO> toDTOList(List<Comment> comments);
