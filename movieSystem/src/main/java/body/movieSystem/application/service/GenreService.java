@@ -6,6 +6,7 @@ import body.movieSystem.domain.entity.Genre;
 import body.movieSystem.domain.repository.GenreRepository;
 import body.movieSystem.exception.unchecked.ResourceNotFoundException;
 import lombok.RequiredArgsConstructor;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,6 +18,7 @@ public class GenreService {
     private final GenreRepository repository;
     private final GenreMapper mapper;
 
+    @Cacheable(value = "genres")
     public List<GenreDTO> findAll() {
         return mapper.toDTOList(repository.findAll());
     }

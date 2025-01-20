@@ -6,6 +6,7 @@ import body.movieSystem.domain.entity.Country;
 import body.movieSystem.domain.repository.CountryRepository;
 import body.movieSystem.exception.unchecked.ResourceNotFoundException;
 import lombok.RequiredArgsConstructor;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,6 +18,7 @@ public class CountryService {
     private final CountryRepository repository;
     private final CountryMapper mapper;
 
+    @Cacheable(value = "countries")
     public List<CountryDTO> findAll() {
         return mapper.toDTOList(repository.findAll());
     }

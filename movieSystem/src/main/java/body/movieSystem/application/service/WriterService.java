@@ -38,13 +38,13 @@ public class WriterService {
     }
     public WriterDTO save(WriterDTO writerDTO) {
         Writer entity = mapper.toEntity(writerDTO);
-        if (writerDTO.getProduction_id() != null) {
-            entity.setProduction(productionRepository.findById(writerDTO.getProduction_id())
+        if (writerDTO.getProductionId() != null) {
+            entity.setProduction(productionRepository.findById(writerDTO.getProductionId())
                     .orElseThrow(() -> new EntityNotFoundException("Production not found")));
         }
 
-        if (writerDTO.getPerson_id() != null) {
-            entity.setPerson(personRepository.findById(writerDTO.getPerson_id())
+        if (writerDTO.getPersonId() != null) {
+            entity.setPerson(personRepository.findById(writerDTO.getPersonId())
                     .orElseThrow(() -> new EntityNotFoundException("Person not found")));
         }
         return mapper.toDTO(repository.save(entity));

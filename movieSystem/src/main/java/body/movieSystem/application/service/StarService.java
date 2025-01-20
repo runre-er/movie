@@ -29,7 +29,7 @@ public class StarService {
     public StarResponseDTO findById(Long id) {
         return repository.findById(id)
                 .map(relationalMapper::toDTO)
-                .orElseThrow(() -> new ResourceNotFoundException("User", "id", id));
+                .orElseThrow(() -> new ResourceNotFoundException("Star", "id", id));
     }
     public StarDTO save(StarDTO starDTO) {
         Star entity = mapper.toEntity(starDTO);
@@ -37,7 +37,7 @@ public class StarService {
     }
     public void delete(Long id) {
         if (!repository.existsById(id)) {
-            throw new ResourceNotFoundException("User", "id", id);
+            throw new ResourceNotFoundException("Star", "id", id);
         }
         repository.deleteById(id);
     }
